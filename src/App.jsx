@@ -1,9 +1,8 @@
-import logo from "./logo.svg";
-import "./App.css";
+import "./App";
 
 function App() {
   return (
-    <div className="App">
+    <div className="wrapper">
       <h1>Hello, World!</h1>
     </div>
   );
