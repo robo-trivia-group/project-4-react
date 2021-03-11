@@ -21,11 +21,32 @@ function App() {
       });
   }, []);
 
+  // axios call to trivia db
+  useEffect(() =>{
+    axios({
+      url: 'https://opentdb.com/api.php?amount=10',
+      method: 'GET',
+      dataResponse: 'json',
+      params: {
+        amount: 10,
+        category: 27, // to be dynamic
+        difficulty: 'easy', // to be dynamic
+        type: 'multiple'
+      }
+    }).then(res => {
+      const triviaData = res.data.results;
+      console.log(triviaData);
+    }).catch(err => {
+      console.log(err);
+    })
+
+
+  },[]);
+
 
   return (
     <div className="wrapper">
       <h1>Hello, World!</h1>
-      <h2>testing-branch</h2>
     </div>
   );
 }
