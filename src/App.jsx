@@ -1,11 +1,38 @@
-<<<<<<< HEAD
+// the test will not start until user has made an account 
+  // if username exists - update latestScore
+  // if new user is added, their information is pushed to firebase creating a unique key
+  // user will be an object {username: xx, avatar: xx, latestScore: xx}
+  // latestScore will be useState that uses dbRef to UPDATE each unique key
+  // create a button to display highScores (display database)
+
+// create a form with three inputs: category, difficulty
+  // create state to encapsulate the selected values for each input
+  // once three inputs have been populated, onSubmit will send to API call
+
+// useEffects is binded by both useStates and pass in parameters to category and difficulty
+
+// create another state [] to store questions from data api
+  // push questions into empty array
+  // when user selects answer, pop question off array(?)
+  // compare the answer is correct 
+  // (answer === correct_answer) ? setCorrectAnswer.push() : null;
+
+// create another state[] to store correctAnswers 
+  // push correct answers into correctAnswers
+  // .length to show the amount of right answers
+
+// MULTIPLAYER:
+  // .map to create useStates for correctAnswers
+  // questionArray does not get popped off until BOTH users hit submit
+
+
+// Questions for Clients:
+// 1. can we use dropdown / radio for error handling quiz
+// 2. define multiplayer
+
 import "./styles/styles.scss";
 import axios from 'axios';
 import firebase from "./firebase";
-=======
-import  "./styles/styles.scss";
-// import firebase from "./firebase";
->>>>>>> ec18ca3ec92bdfb985d6dde4734f46e2422119ff
 import {useState, useEffect} from 'react';
 
 function App() {
@@ -44,8 +71,6 @@ function App() {
     }).catch(err => {
       console.log(err);
     })
-
-
   },[]);
 
 
