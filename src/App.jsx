@@ -1,25 +1,30 @@
+<<<<<<< HEAD
 import "./styles/styles.scss";
 import axios from 'axios';
 import firebase from "./firebase";
+=======
+import  "./styles/styles.scss";
+// import firebase from "./firebase";
+>>>>>>> ec18ca3ec92bdfb985d6dde4734f46e2422119ff
 import {useState, useEffect} from 'react';
 
 function App() {
-  const [ cityData, setCityData] = useState([]);
-  useEffect(() => {
-    const dbRef = firebase.database().ref();
-      dbRef.on("value", (data) => {
-        const cityData = data.val();
-        const cityBag = [];
-        for (let cityKey in cityData) {
-          cityBag.push({
-            uniqueKey: cityKey,
-            title: cityData[cityKey]
-          });
-        }
-        setCityData(cityBag);
-        console.log(cityData);
-      });
-  }, []);
+  // const [ cityData, setCityData] = useState([]);
+  // useEffect(() => {
+  //   const dbRef = firebase.database().ref();
+  //     dbRef.on("value", (data) => {
+  //       const cityData = data.val();
+  //       const cityBag = [];
+  //       for (let cityKey in cityData) {
+  //         cityBag.push({
+  //           uniqueKey: cityKey,
+  //           title: cityData[cityKey]
+  //         });
+  //       }
+  //       setCityData(cityBag);
+  //       console.log(cityData);
+  //     });
+  // }, []);
 
   // axios call to trivia db
   useEffect(() =>{
