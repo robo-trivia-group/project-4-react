@@ -1,13 +1,18 @@
-import Category from './Category';
+import CategoryMap from './CategoryMap';
 
-function Dropdown(props) {
+function Dropdown({onDifficultyChange, onCategoryChange, categoryList, onTypeChange}) {
   return (
     <div>
-      <form action=" " className="difficulty">
-        <label className="srOnly" htmlFor="">
-          Difficulty
+      <form action=" " className="dropDown">
+        <label className="srOnly" htmlFor="difficulty">
+          Select a Difficulty
         </label>
-        <select onChange={props.onChange} name="difficulty" id="difficulty">
+        <select
+          onChange={(e) => onDifficultyChange(e.target.value)}
+          defaultValue=""
+          name="difficulty"
+          id="difficulty"
+        >
           <option value="" disabled>
             Difficulty
           </option>
@@ -16,14 +21,35 @@ function Dropdown(props) {
           <option value="hard">Hard</option>
         </select>
 
-        <label className="srOnly" htmlFor="">
-          Category
+        <label className="srOnly" htmlFor="category">
+          Select a Category
         </label>
-        <select onChange={props.onChange} name="category" id="category">
+        <select
+          onChange={(e) => onCategoryChange(e.target.value)}
+          defaultValue=""
+          name="category"
+          id="category"
+        >
           <option value="" disabled>
-            Category
+            Select a Category
           </option>
-          <Category categoryName={props.data}/>
+          <CategoryMap categoryList={categoryList} />
+        </select>
+
+        <label className="srOnly" htmlFor="">
+          Select a Quiz Type
+        </label>
+        <select
+          onChange={(e) => onTypeChange(e.target.value)}
+          defaultValue=""
+          name="category"
+          id="type"
+        >
+          <option value="" disabled>
+            Quiz Type
+          </option>
+          <option value="boolean">True / False</option>
+          <option value="multiple">Multiple Choice</option>
         </select>
       </form>
     </div>

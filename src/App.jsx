@@ -33,58 +33,71 @@
 
 import './styles/styles.scss';
 import axios from 'axios';
-import firebase from './firebase';
 import { useState, useEffect } from 'react';
 import Dropdown from './Dropdown.jsx';
-import Category from './Category';
+import TriviaQuestions from './TriviaQuestions';
 
 function App() {
-  const [data, setDate] = useState ([]);
-  const [category, setCategory] = useState([]);
+  const [allCategory, setAllCategory] = useState([]);
   const [difficulty, setDifficulty] = useState('');
+  const [categoryChoice, setCategoryChoice] = useState('');
+  const [type, setType] = useState('');
+  const [allQuestions, setAllQuestions] = useState([]);
 
-  // axios call to trivia db
+
+  //todo: axios call to get a full list of Categories
   useEffect(() => {
-    axios({
-      url: 'https://opentdb.com/api.php',
-      method: 'GET',
-      dataResponse: 'json',
-      params: {
-        amount: 10,
-        category: category,
-        difficulty: difficulty,
-        // type: 'multiple',
-      },
-    })
-      .then((response) => {
-        response = response.data.results;
-        setDate(response);
-        console.log(response, 'data after diff');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [category, difficulty]);
+    const getCategories = async () => {
+      try {
+        const response = await axios.get(
+          'https://opentdb.com/api_category.php'
+        );
 
-  const mapData = () => {
+        //todo: store all categories in allCategory [], mape thru in CategoryMap to dinamicaly append the drop down menu
+        setAllCategory(response.data.trivia_categories);
+      } catch (error) {
+        alert(error);
+      }
+    };
 
-    data.map((categoryName, index) => {
-      const {category} = categoryName
+    getCategories();
+  }, []);
 
-      return category
-    })
-  }
+  //todo: main axios call to API to get the questions
+  useEffect(() => {
+    const getQuestions = async () => {
+      try {
+        const response = await axios.get('https://opentdb.com/api.php', {
+          params: {
+            amount: 10,
+            category: categoryChoice,
+            difficulty: difficulty,
+            type: type,
+          },
+        });
 
-  mapData ();
+        //todo: store allQuestions [] to later display them one at a time
+        setAllQuestions(response.data.results);
+      } catch (error) {
+        alert(error);
+      }
+    };
+
+    getQuestions();
+  }, [categoryChoice, difficulty, type]);
 
   return (
-    
     <div className="wrapper">
       <h1>Robo Trivia</h1>
 
-      <Dropdown data={data} onChange={(e) => setDifficulty(e.target.value)} />
-    
-
+      <Dropdown
+        categoryList={allCategory}
+        onDifficultyChange={setDifficulty}
+        onCategoryChange={setCategoryChoice}
+        onTypeChange={setType}
+      />
+      
+      <TriviaQuestions questions={allQuestions} />
     </div>
   );
 }
