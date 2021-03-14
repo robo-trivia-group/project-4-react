@@ -92,15 +92,19 @@ function App() {
     setGoButton(true);
   };
 
-  const handleAnswerSubmit = (e) => {
-    e.preventDefault();
+  const [ answersArray, setAnswersArray ] = useState([]);
+
+  function handleAnswerSubmit(usersChoice) {
+    answersArray.push(usersChoice)
     if (questionIndex < allQuestions.length - 1) {
       setquestionIndex(questionIndex + 1)
       
     } else {
       console.log('Quiz is over');
     }
+    console.log(answersArray);
   };
+
 
   const handleDifficultyChange = (e) => {
     setDifficulty(e.target.value);
@@ -117,7 +121,7 @@ function App() {
     setGoButton(false);
   };
 
-  console.log(questionIndex);
+  
 
   return (
     <>
@@ -136,6 +140,7 @@ function App() {
               <QuestionComponent
                 handleAnswerSubmit={handleAnswerSubmit}
                 singleQuestion={allQuestions[questionIndex]}
+                key={questionIndex}
               />
             ) : (
               <p>do the thing</p>
