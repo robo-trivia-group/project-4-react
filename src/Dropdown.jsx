@@ -1,6 +1,15 @@
 import CategoryMap from './CategoryMap';
 
-function Dropdown({onDifficultyChange, onCategoryChange, categoryList, onTypeChange}) {
+function Dropdown({
+  difficulty, 
+  onDifficultyChange, 
+  type, 
+  onTypeChange, 
+  categoryList, 
+  onCategoryChange, 
+  setShowQuestions
+}) {
+
   return (
     <div>
       <form action=" " className="dropDown">
@@ -8,10 +17,12 @@ function Dropdown({onDifficultyChange, onCategoryChange, categoryList, onTypeCha
           Select a Difficulty
         </label>
         <select
+          value={difficulty}
           onChange={(e) => onDifficultyChange(e.target.value)}
-          defaultValue=""
+          // defaultValue=""
           name="difficulty"
           id="difficulty"
+          required
         >
           <option value="" disabled>
             Difficulty
@@ -25,12 +36,15 @@ function Dropdown({onDifficultyChange, onCategoryChange, categoryList, onTypeCha
           Select a Category
         </label>
         <select
-          onChange={(e) => onCategoryChange(e.target.value)}
+        // value={categoryList}
+          onChange={(e) => {
+            onCategoryChange(e.target.value);}}
           defaultValue=""
           name="category"
           id="category"
+          required
         >
-          <option value="" disabled>
+          <option defaultValue="" default disabled>
             Select a Category
           </option>
           <CategoryMap categoryList={categoryList} />
@@ -40,10 +54,12 @@ function Dropdown({onDifficultyChange, onCategoryChange, categoryList, onTypeCha
           Select a Quiz Type
         </label>
         <select
-          onChange={(e) => onTypeChange(e.target.value)}
-          defaultValue=""
+        value={type}
+          onChange={(e) => {onTypeChange(e.target.value);}}
+          // defaultValue=""
           name="category"
           id="type"
+          required
         >
           <option value="" disabled>
             Quiz Type
@@ -51,6 +67,12 @@ function Dropdown({onDifficultyChange, onCategoryChange, categoryList, onTypeCha
           <option value="boolean">True / False</option>
           <option value="multiple">Multiple Choice</option>
         </select>
+        <button type='submit' onClick={
+          (e)=>{
+            e.preventDefault();
+            setShowQuestions(true);
+          }
+          }>Go!</button>
       </form>
     </div>
   );

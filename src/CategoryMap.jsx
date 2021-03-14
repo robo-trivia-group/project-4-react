@@ -3,7 +3,6 @@ function CategoryMap({ categoryList }) {
     <>
       {categoryList.map((category, index) => {
         const { id, name } = category
-
         return (
           <option key={index} value={id}>
             {name}
