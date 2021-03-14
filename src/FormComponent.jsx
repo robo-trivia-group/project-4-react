@@ -1,16 +1,16 @@
 import CategoryMap from './CategoryMap';
 
-function Dropdown({
+function FormComponent({
   handleDifficultyChange,
   handleCategoryChange,
   handleTypeChange,
   categoryList,
-  handleSubmit
+  handleGoSubmit
 }) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} action=" " className="dropDown">
+      <form onSubmit={handleGoSubmit} className="dropDown">
         <label className="srOnly" htmlFor="difficulty">
           Select a Difficulty
         </label>
@@ -68,4 +68,4 @@ function Dropdown({
   );
 }
 
-export default Dropdown;
+export default FormComponent;

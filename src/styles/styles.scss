@@ -44,6 +44,8 @@ p {
 }
 
 .choiceContainer {
+  display: flex;
+  flex-direction: column;
   padding: 15px 0;
 }
 
@@ -53,4 +55,14 @@ form {
 
 button {
   font-size: 2rem;
+}
+
+.answerLabel {
+  margin: 0 20px;
+  // width: 50%;
+
+}
+
+input #answer {
+  color: blue;
 }
