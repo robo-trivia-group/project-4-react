@@ -44,6 +44,9 @@ function App() {
   const [type, setType] = useState('');
   const [allQuestions, setAllQuestions] = useState([]);
 
+  const [ showQuestions, setShowQuestions ] = useState(false);
+  
+
 
   //todo: axios call to get a full list of Categories
   useEffect(() => {
@@ -75,9 +78,11 @@ function App() {
             type: type,
           },
         });
+          
+        
+        setAllQuestions(response.data.results);
 
         //todo: store allQuestions [] to later display them one at a time
-        setAllQuestions(response.data.results);
       } catch (error) {
         alert(error);
       }
@@ -86,18 +91,31 @@ function App() {
     getQuestions();
   }, [categoryChoice, difficulty, type]);
 
+
+  console.log(showQuestions);
+  
+
+
   return (
     <div className="wrapper">
       <h1>Robo Trivia</h1>
 
       <Dropdown
-        categoryList={allCategory}
+        difficulty={difficulty}
         onDifficultyChange={setDifficulty}
+        categoryList={allCategory}
         onCategoryChange={setCategoryChoice}
+        type={type}
         onTypeChange={setType}
+        setShowQuestions={setShowQuestions}
+        // onHandleClick={handleClick}
       />
+      {
+        showQuestions ? 
+        <TriviaQuestions questions={allQuestions} />
+        : <p>do the thing</p>  
+      }
       
-      <TriviaQuestions questions={allQuestions} />
     </div>
   );
 }
