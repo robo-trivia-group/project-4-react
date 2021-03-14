@@ -2,15 +2,14 @@ function TriviaQuestions({ questions }) {
   return (
     <>
       {questions.map((quizQuestions, index) => {
-        const { question, correct_answer, incorrect_answer } = quizQuestions;
-
+        const { question, correct_answer, incorrect_answers } = quizQuestions;
         return (
           <div>
-            <li key={index}>
+            <li>
               Q{index + 1} {question}
             </li>
-            <li key={index}>ANSWER: {correct_answer}</li>
-            <li key={index}>Incorrect: {incorrect_answer}</li>
+            <li>ANSWER: {correct_answer}</li>
+            <li>Incorrect: {incorrect_answers[0]}</li>
           </div>
         );
       })}
