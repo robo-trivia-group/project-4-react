@@ -34,16 +34,19 @@
 import './styles/styles.scss';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import Dropdown from './Dropdown.jsx';
-import TriviaQuestions from './TriviaQuestions';
+import FormComponent from './FormComponent.jsx';
+import QuestionComponent from './QuestionComponent';
+import HeaderComponent from './HeaderComponent';
 
 function App() {
   const [allCategory, setAllCategory] = useState([]);
   const [difficulty, setDifficulty] = useState('');
   const [categoryChoice, setCategoryChoice] = useState('');
+
   const [type, setType] = useState('');
   const [allQuestions, setAllQuestions] = useState([]);
-
+  const [goButton, setGoButton] = useState(false);
+  const [questionIndex, setquestionIndex] = useState(0);
 
   //todo: axios call to get a full list of Categories
   useEffect(() => {
@@ -63,42 +66,84 @@ function App() {
     getCategories();
   }, []);
 
-  //todo: main axios call to API to get the questions
-  useEffect(() => {
-    const getQuestions = async () => {
-      try {
-        const response = await axios.get('https://opentdb.com/api.php', {
-          params: {
-            amount: 10,
-            category: categoryChoice,
-            difficulty: difficulty,
-            type: type,
-          },
-        });
+  // //todo: main axios call to API to get the questions
+  const getQuestions = async () => {
+    try {
+      const response = await axios.get('https://opentdb.com/api.php', {
+        params: {
+          amount: 10,
+          encode: 'url3986',
+          category: categoryChoice,
+          difficulty: difficulty,
+          type: type,
+        },
+      });
 
-        //todo: store allQuestions [] to later display them one at a time
-        setAllQuestions(response.data.results);
-      } catch (error) {
-        alert(error);
-      }
-    };
+      //todo: store allQuestions [] to later display them one at a time
+      setAllQuestions(response.data.results);
+    } catch (error) {
+      alert(error);
+    }
+  };
 
-    getQuestions();
-  }, [categoryChoice, difficulty, type]);
+  const handleGoSubmit = (e) => {
+    e.preventDefault();
+    getQuestions(difficulty, categoryChoice, type);
+    setGoButton(true);
+  };
+
+  const handleAnswerSubmit = (e) => {
+    e.preventDefault();
+    if (questionIndex < allQuestions.length - 1) {
+      setquestionIndex(questionIndex + 1)
+      
+    } else {
+      console.log('Quiz is over');
+    }
+  };
+
+  const handleDifficultyChange = (e) => {
+    setDifficulty(e.target.value);
+    setGoButton(false);
+  };
+
+  const handleCategoryChange = (e) => {
+    setCategoryChoice(e.target.value);
+    setGoButton(false);
+  };
+
+  const handleTypeChange = (e) => {
+    setType(e.target.value);
+    setGoButton(false);
+  };
+
+  console.log(questionIndex);
 
   return (
-    <div className="wrapper">
-      <h1>Robo Trivia</h1>
-
-      <Dropdown
-        categoryList={allCategory}
-        onDifficultyChange={setDifficulty}
-        onCategoryChange={setCategoryChoice}
-        onTypeChange={setType}
-      />
-      
-      <TriviaQuestions questions={allQuestions} />
-    </div>
+    <>
+      <HeaderComponent />
+      <div className="wrapper">
+        <div className="mainContainer">
+          <FormComponent
+            handleDifficultyChange={handleDifficultyChange}
+            categoryList={allCategory}
+            handleCategoryChange={handleCategoryChange}
+            handleTypeChange={handleTypeChange}
+            handleGoSubmit={handleGoSubmit}
+          />
+          <div className="questionContainer">
+            {goButton && allQuestions[questionIndex] ? (
+              <QuestionComponent
+                handleAnswerSubmit={handleAnswerSubmit}
+                singleQuestion={allQuestions[questionIndex]}
+              />
+            ) : (
+              <p>do the thing</p>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 

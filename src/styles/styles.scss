@@ -5,3 +5,64 @@
 
 // font-family: 'Hind Siliguri', sans-serif;
 // font-family: 'Poiret One', cursive;
+
+
+header {
+  text-align: center;
+  height: 15vh;
+  color: $raspberryColor;
+  font-family: $h1font;
+  font-size: 4rem;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropDown {
+  margin: 20px 0;
+}
+
+li {
+  font-size: 2rem;
+  padding: 5px 0;
+}
+
+p {
+  font-size: 2rem;
+}
+
+.triviaQuestions {
+  text-align: left;
+}
+
+.questionContainer {
+  text-align: left;
+}
+
+.choiceContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0;
+}
+
+form {
+  font-size: 2rem;
+}
+
+button {
+  font-size: 2rem;
+}
+
+.answerLabel {
+  margin: 0 20px;
+  // width: 50%;
+
+}
+
+input #answer {
+  color: blue;
+}

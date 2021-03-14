@@ -1,17 +1,25 @@
 import CategoryMap from './CategoryMap';
 
-function Dropdown({onDifficultyChange, onCategoryChange, categoryList, onTypeChange}) {
+function FormComponent({
+  handleDifficultyChange,
+  handleCategoryChange,
+  handleTypeChange,
+  categoryList,
+  handleGoSubmit
+}) {
+
   return (
     <div>
-      <form action=" " className="dropDown">
+      <form onSubmit={handleGoSubmit} className="dropDown">
         <label className="srOnly" htmlFor="difficulty">
           Select a Difficulty
         </label>
         <select
-          onChange={(e) => onDifficultyChange(e.target.value)}
           defaultValue=""
+          onChange={handleDifficultyChange}
           name="difficulty"
           id="difficulty"
+          required
         >
           <option value="" disabled>
             Difficulty
@@ -25,12 +33,13 @@ function Dropdown({onDifficultyChange, onCategoryChange, categoryList, onTypeCha
           Select a Category
         </label>
         <select
-          onChange={(e) => onCategoryChange(e.target.value)}
+          onChange={handleCategoryChange}
           defaultValue=""
           name="category"
           id="category"
+          required
         >
-          <option value="" disabled>
+          <option value="" default disabled>
             Select a Category
           </option>
           <CategoryMap categoryList={categoryList} />
@@ -40,10 +49,11 @@ function Dropdown({onDifficultyChange, onCategoryChange, categoryList, onTypeCha
           Select a Quiz Type
         </label>
         <select
-          onChange={(e) => onTypeChange(e.target.value)}
           defaultValue=""
+          onChange={handleTypeChange}
           name="category"
           id="type"
+          required
         >
           <option value="" disabled>
             Quiz Type
@@ -51,9 +61,11 @@ function Dropdown({onDifficultyChange, onCategoryChange, categoryList, onTypeCha
           <option value="boolean">True / False</option>
           <option value="multiple">Multiple Choice</option>
         </select>
+
+        <button>Go!</button>
       </form>
     </div>
   );
 }
 
-export default Dropdown;
+export default FormComponent;
