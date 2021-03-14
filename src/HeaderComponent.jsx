@@ -1,4 +1,4 @@
-function Header() {
+function HeaderComponent() {
   return (
     <header>
       <h1>Robo Trivia</h1>
@@ -6,4 +6,4 @@ function Header() {
   )
 }
 
-export default Header
+export default HeaderComponent
