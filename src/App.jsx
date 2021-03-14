@@ -42,12 +42,10 @@ function App() {
   const [allCategory, setAllCategory] = useState([]);
   const [difficulty, setDifficulty] = useState('');
   const [categoryChoice, setCategoryChoice] = useState('');
+
   const [type, setType] = useState('');
   const [allQuestions, setAllQuestions] = useState([]);
-
-  const [ showQuestions, setShowQuestions ] = useState(false);
-  
-
+  const [goButton, setGoButton] = useState(false);
 
   //todo: axios call to get a full list of Categories
   useEffect(() => {
@@ -67,9 +65,8 @@ function App() {
     getCategories();
   }, []);
 
-  //todo: main axios call to API to get the questions
-  useEffect(() => {
-    const getQuestions = async () => {
+  // //todo: main axios call to API to get the questions
+  const getQuestions = async () => {
       try {
         const response = await axios.get('https://opentdb.com/api.php', {
           params: {
@@ -79,48 +76,57 @@ function App() {
             type: type,
           },
         });
-          
-        
-        setAllQuestions(response.data.results);
 
         //todo: store allQuestions [] to later display them one at a time
+        setAllQuestions(response.data.results);
+
       } catch (error) {
         alert(error);
       }
     };
 
-    getQuestions();
-  }, [categoryChoice, difficulty, type]);
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      getQuestions(difficulty, categoryChoice, type);
+      setGoButton(true);
+    };
 
-
-  console.log(showQuestions);
+    const handleDifficultyChange = (e) => {
+      setDifficulty(e.target.value);
+      setGoButton(false);
+    }
+    
+    const handleCategoryChange = (e) => {
+      setCategoryChoice(e.target.value);
+      setGoButton(false);
+    };
+    
+    const handleTypeChange = (e) => {
+      setType(e.target.value);
+      setGoButton(false);
+    };
   
-
 
   return (
     <>
     <Header />
     <div className="wrapper">
-    <div className="mainContainer">
-      <Dropdown
-        difficulty={difficulty}
-        onDifficultyChange={setDifficulty}
-        categoryList={allCategory}
-        onCategoryChange={setCategoryChoice}
-        type={type}
-        onTypeChange={setType}
-        setShowQuestions={setShowQuestions}
-        // onHandleClick={handleClick}
-      />
-      <div className="questionContainer">
-      {
-        showQuestions ? 
-        <TriviaQuestions questions={allQuestions} />
-        : <p>do the thing</p>  
-      }
+      <div className="mainContainer">
+        <Dropdown
+          handleDifficultyChange={handleDifficultyChange}
+          categoryList={allCategory}
+          handleCategoryChange={handleCategoryChange}
+          handleTypeChange={handleTypeChange}
+          handleSubmit={handleSubmit}
+        />
+        <div className="questionContainer">
+        {
+          goButton ? 
+          <TriviaQuestions questions={allQuestions} />
+          : <p>do the thing</p>  
+        }
+        </div>
       </div>
-    </div>
-      
     </div>
     </>
   );
