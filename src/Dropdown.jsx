@@ -1,18 +1,12 @@
 import CategoryMap from './CategoryMap';
 
 function Dropdown({
-  difficulty,
-  onDifficultyChange,
-  type,
-  onTypeChange,
+  handleDifficultyChange,
+  handleCategoryChange,
+  handleTypeChange,
   categoryList,
-  onCategoryChange,
-  setShowQuestions,
+  handleSubmit
 }) {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setShowQuestions(true);
-  };
 
   return (
     <div>
@@ -21,11 +15,8 @@ function Dropdown({
           Select a Difficulty
         </label>
         <select
-          value={difficulty}
-          onChange={(e) => {
-            onDifficultyChange(e.target.value);
-            setShowQuestions(false);
-          }}
+          defaultValue=""
+          onChange={handleDifficultyChange}
           name="difficulty"
           id="difficulty"
           required
@@ -42,10 +33,7 @@ function Dropdown({
           Select a Category
         </label>
         <select
-          onChange={(e) => {
-            onCategoryChange(e.target.value);
-            setShowQuestions(false);
-          }}
+          onChange={handleCategoryChange}
           defaultValue=""
           name="category"
           id="category"
@@ -61,11 +49,8 @@ function Dropdown({
           Select a Quiz Type
         </label>
         <select
-          value={type}
-          onChange={(e) => {
-            onTypeChange(e.target.value);
-            setShowQuestions(false);
-          }}
+          defaultValue=""
+          onChange={handleTypeChange}
           name="category"
           id="type"
           required

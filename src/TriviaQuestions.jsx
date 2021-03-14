@@ -1,5 +1,4 @@
 function TriviaQuestions({ questions }) {
-  
   return (
     <>
       {questions.map((quizQuestions, index) => {
