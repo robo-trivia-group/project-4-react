@@ -36,6 +36,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Dropdown from './Dropdown.jsx';
 import TriviaQuestions from './TriviaQuestions';
+import Header from './Header';
 
 function App() {
   const [allCategory, setAllCategory] = useState([]);
@@ -97,9 +98,10 @@ function App() {
 
 
   return (
+    <>
+    <Header />
     <div className="wrapper">
-      <h1>Robo Trivia</h1>
-
+    <div className="mainContainer">
       <Dropdown
         difficulty={difficulty}
         onDifficultyChange={setDifficulty}
@@ -110,13 +112,17 @@ function App() {
         setShowQuestions={setShowQuestions}
         // onHandleClick={handleClick}
       />
+      <div className="questionContainer">
       {
         showQuestions ? 
         <TriviaQuestions questions={allQuestions} />
         : <p>do the thing</p>  
       }
+      </div>
+    </div>
       
     </div>
+    </>
   );
 }
 

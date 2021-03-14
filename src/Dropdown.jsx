@@ -1,25 +1,31 @@
 import CategoryMap from './CategoryMap';
 
 function Dropdown({
-  difficulty, 
-  onDifficultyChange, 
-  type, 
-  onTypeChange, 
-  categoryList, 
-  onCategoryChange, 
-  setShowQuestions
+  difficulty,
+  onDifficultyChange,
+  type,
+  onTypeChange,
+  categoryList,
+  onCategoryChange,
+  setShowQuestions,
 }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowQuestions(true);
+  };
 
   return (
     <div>
-      <form action=" " className="dropDown">
+      <form onSubmit={handleSubmit} action=" " className="dropDown">
         <label className="srOnly" htmlFor="difficulty">
           Select a Difficulty
         </label>
         <select
           value={difficulty}
-          onChange={(e) => onDifficultyChange(e.target.value)}
-          // defaultValue=""
+          onChange={(e) => {
+            onDifficultyChange(e.target.value);
+            setShowQuestions(false);
+          }}
           name="difficulty"
           id="difficulty"
           required
@@ -36,15 +42,16 @@ function Dropdown({
           Select a Category
         </label>
         <select
-        // value={categoryList}
           onChange={(e) => {
-            onCategoryChange(e.target.value);}}
+            onCategoryChange(e.target.value);
+            setShowQuestions(false);
+          }}
           defaultValue=""
           name="category"
           id="category"
           required
         >
-          <option defaultValue="" default disabled>
+          <option value="" default disabled>
             Select a Category
           </option>
           <CategoryMap categoryList={categoryList} />
@@ -54,9 +61,11 @@ function Dropdown({
           Select a Quiz Type
         </label>
         <select
-        value={type}
-          onChange={(e) => {onTypeChange(e.target.value);}}
-          // defaultValue=""
+          value={type}
+          onChange={(e) => {
+            onTypeChange(e.target.value);
+            setShowQuestions(false);
+          }}
           name="category"
           id="type"
           required
@@ -67,12 +76,8 @@ function Dropdown({
           <option value="boolean">True / False</option>
           <option value="multiple">Multiple Choice</option>
         </select>
-        <button type='submit' onClick={
-          (e)=>{
-            e.preventDefault();
-            setShowQuestions(true);
-          }
-          }>Go!</button>
+
+        <button>Go!</button>
       </form>
     </div>
   );

@@ -5,11 +5,11 @@ function TriviaQuestions({ questions }) {
       {questions.map((quizQuestions, index) => {
         const { question, correct_answer, incorrect_answers } = quizQuestions;
         return (
-          <div>
+          <div className="triviaQuestions">
             <li>
               Q{index + 1} {question}
             </li>
-            <form action="">
+            <form className="choiceContainer" action="">
               <input type="radio" id="answer" name="answer" value={correct_answer}/>
               <label htmlFor="answer">{correct_answer}</label>
               <input type="radio" id="answer" name="answer" value={incorrect_answers[0]}/>
