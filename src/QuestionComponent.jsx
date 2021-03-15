@@ -3,17 +3,14 @@ function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
   
 
 let chosenAnswer;
-console.log(chosenAnswer, 'cash me outside')
 
 const handleSelected = (e) => {
   const isCorrectAnswer = e.target.attributes[3].value;
   chosenAnswer = isCorrectAnswer;
-  console.log(chosenAnswer, 'chosen one')
 }
 
 const handleSingleSubmit = (e) => {
   e.preventDefault();
-  console.log('question component')
   handleAnswerSubmit(chosenAnswer)
 }
 
@@ -31,6 +28,7 @@ const handleSingleSubmit = (e) => {
                 value={correct_answer}
                 onChange={handleSelected}
                 correct='true'
+                required
               />
               <label className="answerLabel" htmlFor="answer">
                 {decodeURIComponent(correct_answer)}

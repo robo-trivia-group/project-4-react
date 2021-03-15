@@ -102,7 +102,6 @@ function App() {
     } else {
       console.log('Quiz is over');
     }
-    console.log(answersArray);
   };
 
 
