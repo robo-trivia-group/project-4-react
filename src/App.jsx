@@ -93,16 +93,29 @@ function App() {
   };
 
   const [ answersArray, setAnswersArray ] = useState([]);
+  let totalScore;
 
   function handleAnswerSubmit(usersChoice) {
+    usersChoice === "true" 
+    ? alert('you got it right')
+    : alert ('you failed');
+    
     answersArray.push(usersChoice)
     if (questionIndex < allQuestions.length - 1) {
       setquestionIndex(questionIndex + 1)
       
     } else {
       console.log('Quiz is over');
+      checkAnswers();
+      console.log(totalScore);
+      setAnswersArray([]);
     }
   };
+
+  function checkAnswers() {
+    const correctAnswers = answersArray.filter(answer => answer === "true");
+    totalScore = correctAnswers.length;
+  }
 
 
   const handleDifficultyChange = (e) => {
