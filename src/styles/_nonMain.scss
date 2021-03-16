@@ -37,12 +37,13 @@ footer{
     text-align: center;
     background-color: rgba(251, 218, 237,0.4);  
     margin-bottom: 0;
-    @include animated-underline($turquoiseColor, 'span');
+    
     p{
         color: $whiteColor;
-        font-family: $basicFont;        
+        font-family: $basicFont;               
         @include fluid-font-size(1.6rem, 2rem);
         padding:10px auto;
+        @include animated-underline($turquoiseColor, 'span');
     }
     a{
         color: $turquoiseColor;

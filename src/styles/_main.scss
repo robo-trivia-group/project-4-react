@@ -35,8 +35,8 @@
 
   button{
     margin: 10px auto;
-    @include fluid-font-size(1.6rem, 3rem); 
-    width:60px;
+    @include fluid-font-size(2rem, 3rem); 
+    width:auto;
     padding: 5px;
     border-radius: 5px;
     background-color: $raspberryColor;
@@ -58,37 +58,77 @@
 
 .questions{
     background-color: rgba(185, 19, 114, 0.7);
+    box-shadow: 5px 5px $whiteColor;
     padding: 20px 40px;
-    font-family: $basicFont;   
+    font-family: $basicFont;
+    @include animated-underline-label($whiteColor, 'span');   
 
     h3 {
         display: flex;        
         list-style: none;
         color: $whiteColor;        
-        @include fluid-font-size(1.6rem, 3rem); 
+        @include fluid-font-size(2rem, 3rem); 
         padding: 5px 0;
         text-align: left;
-    }
-    
-    label.answerLabel{
-        color: $shadowColor;
-        @include fluid-font-size(1.6rem, 3rem); 
-        cursor: pointer;
-    }
+    }  
 
-    label.answerLabel:hover,
-    label.answerLabel:focus{
-        color: $whiteColor;
-        @include fluid-font-size(1.6rem, 3rem); 
-        cursor: pointer;
-    }
+  input[type="radio"] {
+	display: none;
+	+label.answerLabel {
+    display: inline-block;
+    position: relative;
+		color: $whiteColor;    
+		@include fluid-font-size-questions(2rem, 3rem); 
+    font-family: $basicFont;
+		cursor: pointer;
+		user-select: none;
+		margin-left: 20px;		
+		&::before {
+      position: absolute;            
+			transition: all 0.2s ease-in-out;
+			content: "";
+			@include fluid-width-height(1.6rem, 2rem);
+			border-radius: 50%;
+			background-color: $whiteColor;
+			border: 0px solid $whiteColor;
+			font-size: 0;
+			position: absolute;
+			bottom: 50%;
+			left:-25px;
+			transform: translate(-50%, 50%);
+		}
+		
+	}
+	&:checked + label.answerLabel
+    {     
+		&::before {
+			background-color: transparent;
+			@include fluid-width-height(1.6rem, 3rem);
+			border-width: 2px;
+		}	
+	} 
+}
+button{
+    margin: 20px auto;
+    @include fluid-font-size(2rem, 3rem); 
+    width:auto;
+    padding: 10px;
+    border-radius: 5px;    
+    font-family: $basicFont;
+    color: $whiteColor;
+    background-color: $blueColor;
+    border: 1px solid $whiteColor;
+    box-shadow: 3px 3px $shadowColor;
+    transition: all ease-in-out .2s;
+  }
 
-    input[type=radio]{
-        width: 25px;
-        height: 25px;
-        border: 1px solid $raspberryColor;
-
-    }
+  button:hover,
+  button:focus{
+    transform: translateY(4px);
+    box-shadow: 3px 3px $raspberryColor;
+    color: $raspberryColor;
+    background-color: $whiteColor;
+  }
 }
 
 
@@ -101,9 +141,6 @@
     h2{
         text-align: center;
         @include fluid-font-size(2rem, 4rem);  
-        color: $whiteColor;        
-        // text-shadow: 2px 2px 2px $raspberryColor;
-        // animation:shakeX 3s infinite;        
-    }
-
+        color: $whiteColor;      
+      }
 }

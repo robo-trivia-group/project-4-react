@@ -31,9 +31,10 @@ const handleSingleSubmit = (e) => {
                 required
               />
               <label className="answerLabel" htmlFor="answer">
-                {decodeURIComponent(correct_answer)}
-              </label>
-              <div class="check"><div class="inside"></div></div>
+                <span>
+                  {decodeURIComponent(correct_answer)}
+                </span>                
+              </label>              
             </span>
 
             <span>
@@ -46,7 +47,9 @@ const handleSingleSubmit = (e) => {
                 correct='false'
               />
               <label className="answerLabel" htmlFor="answer1">
-                {decodeURIComponent(incorrect_answers[0])}
+                <span>
+                  {decodeURIComponent(incorrect_answers[0])}
+                </span> 
               </label>
             </span>
 
@@ -60,7 +63,9 @@ const handleSingleSubmit = (e) => {
                 correct='false'
               />
               <label className="answerLabel" htmlFor="answer2">
-                {decodeURIComponent(incorrect_answers[1])}
+                <span>
+                  {decodeURIComponent(incorrect_answers[1])}
+                </span>                
               </label>
             </span>
 
@@ -74,10 +79,12 @@ const handleSingleSubmit = (e) => {
                 correct='false'
               />
               <label className="answerLabel" htmlFor="answer3">
-                {decodeURIComponent(incorrect_answers[2])}
+                <span>
+                  {decodeURIComponent(incorrect_answers[2])}
+                </span> 
               </label>
             </span>
-            <button>Submit</button>
+            <button>submit</button>
           </form>
         </div>
       }
