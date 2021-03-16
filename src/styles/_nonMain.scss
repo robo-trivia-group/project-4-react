@@ -1,0 +1,52 @@
+header {  
+    margin-bottom: 50px;
+    padding: 10px;
+    text-align: center;
+    height: auto;
+    background-color: rgba(251, 218, 237,0.4);
+    background-image: url("./Mini-Robot.png");
+    background-size: 150px 150px; 
+    background-repeat: no-repeat; 
+    background-position: 85% center;
+
+        h1{
+            margin: 20px auto;
+            color: $whiteColor;
+            font-family: $h1font;        
+            @include fluid-font-size(4rem, 8rem); 
+            text-transform: uppercase;
+            color: $shadowColor;
+            text-shadow: 1px 1px 1px $raspberryColor,
+            1px 2px 1px $raspberryColor,
+            1px 3px 1px $raspberryColor,
+            1px 4px 1px $raspberryColor,
+            1px 5px 1px $raspberryColor,
+            1px 6px 1px $raspberryColor,
+            1px 7px 1px $raspberryColor,
+            1px 8px 1px $raspberryColor,
+            1px 9px 1px $raspberryColor,
+            1px 10px 1px $raspberryColor,
+            1px 18px 6px rgba(4, 44, 78,0.4),
+            1px 22px 10px rgba(4, 44, 78,0.2),
+            1px 25px 35px rgba(4, 44, 78,0.2),
+            1px 30px 60px rgba(4, 44, 78,0.4)       
+        }
+}
+
+footer{
+    text-align: center;
+    background-color: rgba(251, 218, 237,0.4);  
+    margin-bottom: 0;
+    
+    p{
+        color: $whiteColor;
+        font-family: $basicFont;               
+        @include fluid-font-size(1.6rem, 2rem);
+        padding:10px auto;
+        @include animated-underline($turquoiseColor, 'span');
+    }
+    a{
+        color: $turquoiseColor;
+        text-decoration: none;
+    }
+}
