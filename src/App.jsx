@@ -50,6 +50,9 @@ function App() {
   const [allQuestions, setAllQuestions] = useState([]);
   const [goButton, setGoButton] = useState(false);
   const [questionIndex, setquestionIndex] = useState(0);
+  const [ answersArray, setAnswersArray ] = useState([]);
+  
+  let totalScore;
 
   //todo: axios call to get a full list of Categories
   useEffect(() => {
@@ -89,38 +92,6 @@ function App() {
     }
   };
 
-  const handleGoSubmit = (e) => {
-    e.preventDefault();
-    getQuestions(difficulty, categoryChoice, type);
-    setGoButton(true);
-  };
-
-  const [ answersArray, setAnswersArray ] = useState([]);
-  let totalScore;
-
-  function handleAnswerSubmit(usersChoice) {
-    usersChoice === "true" 
-    ? alert('you got it right')
-    : alert ('you failed');
-    
-    answersArray.push(usersChoice)
-    if (questionIndex < allQuestions.length - 1) {
-      setquestionIndex(questionIndex + 1)
-      
-    } else {
-      console.log('Quiz is over');
-      checkAnswers();
-      console.log(totalScore);
-      setAnswersArray([]);
-    }
-  };
-
-  function checkAnswers() {
-    const correctAnswers = answersArray.filter(answer => answer === "true");
-    totalScore = correctAnswers.length;
-  }
-
-
   const handleDifficultyChange = (e) => {
     setDifficulty(e.target.value);
     setGoButton(false);
@@ -136,7 +107,33 @@ function App() {
     setGoButton(false);
   };
 
-  
+  const handleGoSubmit = (e) => {
+    e.preventDefault();
+    getQuestions(difficulty, categoryChoice, type);
+    setGoButton(true);
+  };
+
+  function handleAnswerSubmit(usersChoice) {
+    usersChoice === "true" 
+    ? alert('you got it right')
+    : alert ('you failed');
+    
+    answersArray.push(usersChoice)
+    if (questionIndex < allQuestions.length - 1) {
+      setquestionIndex(questionIndex + 1)
+      
+    } else {
+      alert('Quiz is over');
+      checkAnswers();
+      alert(`${totalScore} out of 10!`);
+      setAnswersArray([]);
+    }
+  };
+
+  function checkAnswers() {
+    const correctAnswers = answersArray.filter(answer => answer === "true");
+    totalScore = correctAnswers.length;
+  }
 
   return (    
     <Router>   
