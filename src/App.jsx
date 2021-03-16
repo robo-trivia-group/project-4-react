@@ -36,7 +36,6 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import FormComponent from './FormComponent.jsx';
-// import PlayersData from './PlayersData';
 import UserComponent from './UserComponent';
 import QuestionComponent from './QuestionComponent';
 import HeaderComponent from './HeaderComponent';
@@ -51,13 +50,10 @@ function App() {
   const [allQuestions, setAllQuestions] = useState([]);
   const [goButton, setGoButton] = useState(false);
   const [questionIndex, setquestionIndex] = useState(0);
-<<<<<<< HEAD
-  const [ userInput, setUserInput] = useState('');
-=======
   const [ answersArray, setAnswersArray ] = useState([]);
-  
+
   let totalScore;
->>>>>>> c36548eb0147647de95a0f25cd57a5bfaf00e720
+  // const [ userInput, setUserInput] = useState('');
 
   //todo: axios call to get a full list of Categories
   useEffect(() => {
@@ -135,31 +131,21 @@ function App() {
     }
   };
 
-<<<<<<< HEAD
-  return (
-    <>
-      <HeaderComponent />
-      <div className="wrapper">
-        <div className="mainContainer">
-          <UserComponent />
-          {/* <PlayersData /> */}
-          <FormComponent
-=======
   function checkAnswers() {
     const correctAnswers = answersArray.filter(answer => answer === "true");
     totalScore = correctAnswers.length;
   }
 
-  return (    
+  return (
     <Router>   
       <div className="App">
         <div className="parent">
         <HeaderComponent /> 
         <div className="wrapper">
-        <div className="mainContainer">       
+        <div className="mainContainer">
+          <UserComponent />
           <Route exact path ="/" render={()=>
             <FormComponent
->>>>>>> c36548eb0147647de95a0f25cd57a5bfaf00e720
             handleDifficultyChange={handleDifficultyChange}
             categoryList={allCategory}
             handleCategoryChange={handleCategoryChange}
@@ -197,8 +183,8 @@ function App() {
         <Footer/>    
       
       </div>
-      </Router>    
+      </Router> 
   );
-}
+  }
 
 export default App;

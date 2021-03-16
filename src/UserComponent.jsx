@@ -5,8 +5,7 @@ import { useState } from 'react';
 const db = firebase.database();
 
 export default function UserComponent() {
-  const [player1, setPlayer1] = useState("Player 1");
-  const [player2, setPlayer2] = useState("Player 2");
+  const [player, setPlayer] = useState("Player");
 
   return (
     <div>
@@ -15,25 +14,24 @@ export default function UserComponent() {
         const quizRef = db.ref('quiz');
         const newQuizRef = quizRef.push();
         newQuizRef.set({
-          player1,
-          player2,
-          turn: "player1",
-          first: "player1"
+          player,
+          turn: "player",
+          first: "player"
         })
       }}>
       <label htmlFor="userInput"></label>
       <input 
       type="text" 
-      value={player1} 
-      onChange={(e) => setPlayer1(e.target.value)} 
+      value={player} 
+      onChange={(e) => setPlayer(e.target.value)} 
       id="userInput"
       />
-      <input 
+      {/* <input 
       type="text" 
       value={player2} 
       onChange={(e) => setPlayer2(e.target.value)} 
       id="userInput"
-      />
+      /> */}
       <button type='submit'>Start the Game!</button>
 
       </form>
