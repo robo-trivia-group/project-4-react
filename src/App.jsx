@@ -35,7 +35,8 @@ import './styles/styles.scss';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import FormComponent from './FormComponent.jsx';
-import UserComponent from './UserComponent';
+import PlayersData from './PlayersData';
+// import UserComponent from './UserComponent';
 import QuestionComponent from './QuestionComponent';
 import HeaderComponent from './HeaderComponent';
 
@@ -48,22 +49,6 @@ function App() {
   const [goButton, setGoButton] = useState(false);
   const [questionIndex, setquestionIndex] = useState(0);
   // const [ userInput, setUserInput] = useState('');
-
-  // Firebase Code
-  // useEffect(() => {
-  //   const dbRef = firebase.database().ref();
-  //   dbRef.on('value', (data) => {
-  //     const userData = data.val();
-  //     const users = [];
-  //     for (let userKey in userData){
-  //       users.push({
-  //         uniqueKey: userKey,
-  //         user: userData[userKey]
-  //       });
-  //     }
-  //     setUserInput(users);
-  //   })
-  // }, []);
 
   //todo: axios call to get a full list of Categories
   useEffect(() => {
@@ -144,7 +129,8 @@ function App() {
       <HeaderComponent />
       <div className="wrapper">
         <div className="mainContainer">
-          <UserComponent />
+          {/* <UserComponent /> */}
+          <PlayersData />
           <FormComponent
             handleDifficultyChange={handleDifficultyChange}
             categoryList={allCategory}
