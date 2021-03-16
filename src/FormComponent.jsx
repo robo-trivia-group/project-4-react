@@ -3,7 +3,6 @@ import CategoryMap from './CategoryMap';
 function FormComponent({
   handleDifficultyChange,
   handleCategoryChange,
-  handleTypeChange,
   categoryList,
   handleGoSubmit
 }) {
@@ -45,22 +44,6 @@ function FormComponent({
           <CategoryMap categoryList={categoryList} />
         </select>
 
-        <label className="srOnly" htmlFor="">
-          Select a Quiz Type
-        </label>
-        <select
-          defaultValue=""
-          onChange={handleTypeChange}
-          name="category"
-          id="type"
-          required
-        >
-          <option value="" disabled>
-            Quiz Type
-          </option>
-          <option value="boolean">True / False</option>
-          <option value="multiple">Multiple Choice</option>
-        </select>        
         <button>Go!</button>
       
 

@@ -4,6 +4,7 @@ function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
 
   let chosenAnswer;
 
+  // checks if answer is correct
   const handleSelected = (e) => {
     const isCorrectAnswer = e.target.value;
 
@@ -12,15 +13,18 @@ function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
     }
   }
 
+  // passes correct answer to app on submit
   const handleSingleSubmit = (e) => {
     e.preventDefault();
     handleAnswerSubmit(chosenAnswer)
   }
 
+  // puts all separate answers into an array
   const randomAnswers = [];
   randomAnswers.push(correct_answer);
   randomAnswers.push(...incorrect_answers);
   
+  // shuffles all answers
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const num = Math.floor(Math.random() * (i + 1));
