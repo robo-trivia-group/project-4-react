@@ -12,7 +12,6 @@ function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
     }
   }
 
-
   const handleSingleSubmit = (e) => {
     e.preventDefault();
     handleAnswerSubmit(chosenAnswer)
@@ -63,7 +62,6 @@ function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
                 name="answer"
                 value={randomAnswers[1]}
                 onChange={handleSelected}
-                // correct={chosenAnswer === correct_answer ? 'true' : 'false'}
               />
               <label className="answerLabel" htmlFor="answer1">
                 {decodeURIComponent(randomAnswers[1])}
@@ -77,7 +75,6 @@ function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
                 name="answer"
                 value={randomAnswers[2]}
                 onChange={handleSelected}
-                // correct={chosenAnswer === correct_answer ? 'true' : 'false'}
               />
               <label className="answerLabel" htmlFor="answer2">
                 {decodeURIComponent(randomAnswers[2])}
@@ -91,7 +88,6 @@ function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
                 name="answer"
                 value={randomAnswers[3]}
                 onChange={handleSelected}
-                // correct={chosenAnswer === correct_answer ? 'true' : 'false'}
               />
               <label className="answerLabel" htmlFor="answer3">
                 {decodeURIComponent(randomAnswers[3])}

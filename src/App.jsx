@@ -50,6 +50,9 @@ function App() {
   const [allQuestions, setAllQuestions] = useState([]);
   const [goButton, setGoButton] = useState(false);
   const [questionIndex, setquestionIndex] = useState(0);
+  const [ answersArray, setAnswersArray ] = useState([]);
+  
+  let totalScore;
 
   //todo: axios call to get a full list of Categories
   useEffect(() => {
@@ -89,14 +92,26 @@ function App() {
     }
   };
 
+  const handleDifficultyChange = (e) => {
+    setDifficulty(e.target.value);
+    setGoButton(false);
+  };
+
+  const handleCategoryChange = (e) => {
+    setCategoryChoice(e.target.value);
+    setGoButton(false);
+  };
+
+  const handleTypeChange = (e) => {
+    setType(e.target.value);
+    setGoButton(false);
+  };
+
   const handleGoSubmit = (e) => {
     e.preventDefault();
     getQuestions(difficulty, categoryChoice, type);
     setGoButton(true);
   };
-
-  const [ answersArray, setAnswersArray ] = useState([]);
-  let totalScore;
 
   function handleAnswerSubmit(usersChoice) {
     usersChoice === "true" 
@@ -119,24 +134,6 @@ function App() {
     const correctAnswers = answersArray.filter(answer => answer === "true");
     totalScore = correctAnswers.length;
   }
-
-
-  const handleDifficultyChange = (e) => {
-    setDifficulty(e.target.value);
-    setGoButton(false);
-  };
-
-  const handleCategoryChange = (e) => {
-    setCategoryChoice(e.target.value);
-    setGoButton(false);
-  };
-
-  const handleTypeChange = (e) => {
-    setType(e.target.value);
-    setGoButton(false);
-  };
-
-  
 
   return (    
     <Router>   
