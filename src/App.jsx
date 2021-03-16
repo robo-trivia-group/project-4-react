@@ -34,6 +34,7 @@
 import './styles/styles.scss';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import firebase from './firebase.jsx';
 import { useState, useEffect } from 'react';
 import FormComponent from './FormComponent.jsx';
 import UserComponent from './UserComponent';
@@ -46,13 +47,32 @@ function App() {
   const [allCategory, setAllCategory] = useState([]);
   const [difficulty, setDifficulty] = useState('');
   const [categoryChoice, setCategoryChoice] = useState('');
+
   const [allQuestions, setAllQuestions] = useState([]);
   const [goButton, setGoButton] = useState(false);
+
   const [questionIndex, setquestionIndex] = useState(0);
   const [ answersArray, setAnswersArray ] = useState([]);
 
+  const [ playerInfo, setPlayerInfo ] = useState({});
+
+
   let totalScore;
+  const db = firebase.database();
   // const [ userInput, setUserInput] = useState('');
+
+  // getting firebase data
+  useEffect(() => {
+    const dbRef = db.ref();
+
+    dbRef.on('value', (data) => {
+      const playerData = data.val();
+
+      for (let key in playerData) {
+        console.log(playerData[key]);
+      }
+    })
+  },[]);
 
   //todo: axios call to get a full list of Categories
   useEffect(() => {
@@ -72,7 +92,7 @@ function App() {
     getCategories();
   }, []);
 
-  // //todo: main axios call to API to get the questions
+  //todo: main axios call to API to get the questions
   const getQuestions = async () => {
     try {
       const response = await axios.get('https://opentdb.com/api.php', {
