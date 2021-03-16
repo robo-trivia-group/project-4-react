@@ -17,3 +17,10 @@ firebase.initializeApp(firebaseConfig);
 
 // exporting our initialized specifically configured version of OUR firebase app
 export default firebase;
+
+// data structure of an array of users, each user is an object: username, avatar, current score, highest score
+// data pushed into db on go - update username and score to zero
+// display user object onto page
+// if question is correct, update user current score
+// end of game, check the current score 
+// sort the values shown on the page to show the highest score

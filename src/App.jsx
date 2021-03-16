@@ -46,7 +46,6 @@ function App() {
   const [allCategory, setAllCategory] = useState([]);
   const [difficulty, setDifficulty] = useState('');
   const [categoryChoice, setCategoryChoice] = useState('');
-  const [type, setType] = useState('');
   const [allQuestions, setAllQuestions] = useState([]);
   const [goButton, setGoButton] = useState(false);
   const [questionIndex, setquestionIndex] = useState(0);
@@ -78,11 +77,11 @@ function App() {
     try {
       const response = await axios.get('https://opentdb.com/api.php', {
         params: {
-          amount: 10,
+          amount: 2,
           encode: 'url3986',
           category: categoryChoice,
           difficulty: difficulty,
-          type: type,
+          type: 'multiple',
         },
       });
 
@@ -103,17 +102,13 @@ function App() {
     setGoButton(false);
   };
 
-  const handleTypeChange = (e) => {
-    setType(e.target.value);
-    setGoButton(false);
-  };
-
   const handleGoSubmit = (e) => {
     e.preventDefault();
-    getQuestions(difficulty, categoryChoice, type);
+    getQuestions(difficulty, categoryChoice);
     setGoButton(true);
   };
 
+  // checks if user choice is correct and updates question index to next question
   function handleAnswerSubmit(usersChoice) {
     usersChoice === "true" 
     ? alert('you got it right')
@@ -131,6 +126,7 @@ function App() {
     }
   };
 
+  // tallies total correct score
   function checkAnswers() {
     const correctAnswers = answersArray.filter(answer => answer === "true");
     totalScore = correctAnswers.length;
@@ -149,7 +145,6 @@ function App() {
             handleDifficultyChange={handleDifficultyChange}
             categoryList={allCategory}
             handleCategoryChange={handleCategoryChange}
-            handleTypeChange={handleTypeChange}
             handleGoSubmit={handleGoSubmit}
           />
           } />          
