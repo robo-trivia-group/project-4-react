@@ -108,9 +108,9 @@ function App() {
       setquestionIndex(questionIndex + 1)
       
     } else {
-      console.log('Quiz is over');
+      alert('Quiz is over');
       checkAnswers();
-      console.log(totalScore);
+      alert(`${totalScore} out of 10!`);
       setAnswersArray([]);
     }
   };
