@@ -51,15 +51,8 @@ function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
                 required
               />
               <label className="answerLabel" htmlFor="answer">
-<<<<<<< HEAD
                 {decodeURIComponent(randomAnswers[0])}
               </label>
-=======
-                <span>
-                  {decodeURIComponent(correct_answer)}
-                </span>                
-              </label>              
->>>>>>> 8988671f9f4b70ea1816e3d4c16fef2d88384404
             </span>
 
             <span>
@@ -71,13 +64,7 @@ function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
                 onChange={handleSelected}
               />
               <label className="answerLabel" htmlFor="answer1">
-<<<<<<< HEAD
                 {decodeURIComponent(randomAnswers[1])}
-=======
-                <span>
-                  {decodeURIComponent(incorrect_answers[0])}
-                </span> 
->>>>>>> 8988671f9f4b70ea1816e3d4c16fef2d88384404
               </label>
             </span>
 
@@ -90,13 +77,7 @@ function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
                 onChange={handleSelected}
               />
               <label className="answerLabel" htmlFor="answer2">
-<<<<<<< HEAD
                 {decodeURIComponent(randomAnswers[2])}
-=======
-                <span>
-                  {decodeURIComponent(incorrect_answers[1])}
-                </span>                
->>>>>>> 8988671f9f4b70ea1816e3d4c16fef2d88384404
               </label>
             </span>
 
@@ -109,13 +90,7 @@ function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
                 onChange={handleSelected}
               />
               <label className="answerLabel" htmlFor="answer3">
-<<<<<<< HEAD
                 {decodeURIComponent(randomAnswers[3])}
-=======
-                <span>
-                  {decodeURIComponent(incorrect_answers[2])}
-                </span> 
->>>>>>> 8988671f9f4b70ea1816e3d4c16fef2d88384404
               </label>
             </span>
             <button>submit</button>
