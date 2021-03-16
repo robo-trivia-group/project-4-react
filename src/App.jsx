@@ -140,10 +140,11 @@ function App() {
 
   return (    
     <Router>   
-        <>
-      <HeaderComponent /> 
-      <div className="wrapper">      
-        <div className="mainContainer">
+      <div className="App">
+        <div className="parent">
+        <HeaderComponent /> 
+        <div className="wrapper">
+        <div className="mainContainer">       
           <Route exact path ="/" render={()=>
             <FormComponent
             handleDifficultyChange={handleDifficultyChange}
@@ -161,7 +162,7 @@ function App() {
               {goButton && allQuestions[questionIndex] ? 
               (
                 <>
-                <Redirect to ="/questions"/>
+                <Redirect exact from="/" to ="/questions"/>
                 <QuestionComponent
                   handleAnswerSubmit={handleAnswerSubmit}
                   singleQuestion={allQuestions[questionIndex]}
@@ -178,10 +179,11 @@ function App() {
             
           }/>
         </div>
-      
-      <Footer/>
+        </div>    
       </div>
-      </>
+        <Footer/>    
+      
+      </div>
       </Router>    
   );
 }
