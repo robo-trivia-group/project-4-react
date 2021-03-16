@@ -26,3 +26,25 @@
         }
     }
 }
+
+
+//animated underline on hover
+@mixin animated-underline($color, $el) {
+    a {
+        position: relative;
+    }
+    a:after {
+        content: '';
+        height: 1.5px;
+        position: absolute;
+        bottom: -4px;
+        background: $color; 
+        width: 0;
+        left: 50%;
+        transition: width 0.3s, left 0.3s;
+    }
+    #{$el}:hover a:after, #{$el}:focus a:after {
+        width: 100%;
+        left: 0;
+    }
+}

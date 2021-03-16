@@ -1,127 +1,31 @@
 html {
   font-size: 62.5%;
 }
+
 body{
   background-color:$blueColor;
-  min-height: 100vh;
+  // min-height: 100vh;
+  
 }
+.App{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .parent{
+    flex-grow:1;    
+    }
+  }
+
+.mainContainer{
+  margin: 20px auto;
+}
+
 .wrapper {
   max-width: 1600px;
   width: 90%;
   margin: 0 auto;
-}
-
-header {  
-  margin-bottom: 50px;
-  padding: 10px;
-  text-align: center;
-  height: auto;
-  background-color: rgba(251, 218, 237,0.4);
-  background-image: url("./Mini-Robot.png");
-  background-size: 150px 150px; 
-  background-repeat: no-repeat; 
-  background-position: 85% center;
-  
-    h1{
-        margin: 20px auto;
-        color: $whiteColor;
-        font-family: $h1font;        
-        @include fluid-font-size(4rem, 8rem); 
-        text-transform: uppercase;
-        color: $shadowColor;
-        text-shadow: 1px 1px 1px $raspberryColor,
-            1px 2px 1px $raspberryColor,
-            1px 3px 1px $raspberryColor,
-            1px 4px 1px $raspberryColor,
-            1px 5px 1px $raspberryColor,
-            1px 6px 1px $raspberryColor,
-            1px 7px 1px $raspberryColor,
-            1px 8px 1px $raspberryColor,
-            1px 9px 1px $raspberryColor,
-            1px 10px 1px $raspberryColor,
-        1px 18px 6px rgba(4, 44, 78,0.4),
-        1px 22px 10px rgba(4, 44, 78,0.2),
-        1px 25px 35px rgba(4, 44, 78,0.2),
-        1px 30px 60px rgba(4, 44, 78,0.4);
-        
-      }
-}
-.mainContainer {  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.dropDown {  
-  margin: 20px 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap; 
-  justify-content: space-around; 
-  select{
-    margin: 10px auto;
-    width: 100%;
-    background-image: url("./arrow.png");
-    background-repeat: no-repeat;
-    background-position: 95% center;
-    background-size: 15px 15px;  
-    font-family: $basicFont;
-    background-color: $whiteColor;
-    padding: 10px 25px 10px 10px;
-    text-transform: lowercase;
-    box-shadow: 4px 4px $shadowColor;
-    @include fluid-font-size(1.6rem, 2.5rem); 
-    border-radius: 15px;
-    border: 2px solid $raspberryColor;
-    appearance:none;
-    outline: none;
-    cursor: pointer;
-    text-align: center;
-    color: $blueColor;
-    transition: all ease-in-out .2s;
-  }
-
-  select:hover,
-  select:focus-within{
-    box-shadow: 4px 4px $raspberryColor;
-  }
-
-  button{
-    margin: 10px auto;
-    @include fluid-font-size(1.6rem, 3rem); 
-    width:60px;
-    padding: 5px;
-    border-radius: 5px;
-    background-color: $raspberryColor;
-    font-family: $basicFont;
-    color: $whiteColor;
-    border: none;
-    box-shadow: 3px 3px $shadowColor;
-    transition: all ease-in-out .2s;
-  }
-
-  button:hover,
-  button:focus-within{
-    transform: translateY(4px);
-    box-shadow: 3px 3px $shadowColor;
-  }
-}
-
-li {
-  list-style: none;
-  color: $whiteColor;
-  font-size: 2rem;
-  padding: 5px 0;
-}
-
-label.answerLabel{
-  color: $whiteColor;
-}
-
-p {
-  font-size: 2rem;
+  // border: 1px solid red;
 }
 
 .triviaQuestions {
@@ -138,13 +42,6 @@ p {
   padding: 15px 0;
 }
 
-form {
-  font-size: 2rem;
-}
-
-button {
-  font-size: 2rem;
-}
 
 .answerLabel {
   margin: 0 20px;
@@ -155,3 +52,6 @@ button {
 input #answer {
   color: blue;
 }
+
+
+

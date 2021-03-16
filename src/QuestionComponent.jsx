@@ -17,8 +17,8 @@ const handleSingleSubmit = (e) => {
   return (
     <>
       {
-        <>
-          <li>Question: {decodeURIComponent(question)}</li>
+        <div className="questions">          
+          <h3>{decodeURIComponent(question)}</h3>
           <form className="choiceContainer" onSubmit={handleSingleSubmit} >
             <span>
               <input
@@ -33,6 +33,7 @@ const handleSingleSubmit = (e) => {
               <label className="answerLabel" htmlFor="answer">
                 {decodeURIComponent(correct_answer)}
               </label>
+              <div class="check"><div class="inside"></div></div>
             </span>
 
             <span>
@@ -78,7 +79,7 @@ const handleSingleSubmit = (e) => {
             </span>
             <button>Submit</button>
           </form>
-        </>
+        </div>
       }
     </>
   );
