@@ -35,8 +35,8 @@ import './styles/styles.scss';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import FormComponent from './FormComponent.jsx';
-import PlayersData from './PlayersData';
-// import UserComponent from './UserComponent';
+// import PlayersData from './PlayersData';
+import UserComponent from './UserComponent';
 import QuestionComponent from './QuestionComponent';
 import HeaderComponent from './HeaderComponent';
 
@@ -48,7 +48,7 @@ function App() {
   const [allQuestions, setAllQuestions] = useState([]);
   const [goButton, setGoButton] = useState(false);
   const [questionIndex, setquestionIndex] = useState(0);
-  // const [ userInput, setUserInput] = useState('');
+  const [ userInput, setUserInput] = useState('');
 
   //todo: axios call to get a full list of Categories
   useEffect(() => {
@@ -129,8 +129,8 @@ function App() {
       <HeaderComponent />
       <div className="wrapper">
         <div className="mainContainer">
-          {/* <UserComponent /> */}
-          <PlayersData />
+          <UserComponent />
+          {/* <PlayersData /> */}
           <FormComponent
             handleDifficultyChange={handleDifficultyChange}
             categoryList={allCategory}

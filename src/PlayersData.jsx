@@ -1,11 +1,11 @@
-import PlayersInput from './PlayersInput'
+// import PlayersInput from './PlayersInput'
 
-function PlayersData(){
-  return(
-    <div>
-      <PlayersInput />
-    </div>
-  )
-}
+// function PlayersData(){
+//   return(
+//     <div>
+//       <PlayersInput />
+//     </div>
+//   )
+// }
 
-export default PlayersData;
+// export default PlayersData;
