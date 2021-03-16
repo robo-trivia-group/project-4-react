@@ -60,9 +60,11 @@ function FormComponent({
           </option>
           <option value="boolean">True / False</option>
           <option value="multiple">Multiple Choice</option>
-        </select>
-
+        </select>        
         <button>Go!</button>
+      
+
+        
       </form>
     </div>
   );

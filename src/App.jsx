@@ -33,10 +33,13 @@
 
 import './styles/styles.scss';
 import axios from 'axios';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import FormComponent from './FormComponent.jsx';
 import QuestionComponent from './QuestionComponent';
 import HeaderComponent from './HeaderComponent';
+import StartGame from './StartGame';
+import Footer from './Footer';
 
 function App() {
   const [allCategory, setAllCategory] = useState([]);
@@ -135,32 +138,51 @@ function App() {
 
   
 
-  return (
-    <>
-      <HeaderComponent />
-      <div className="wrapper">
+  return (    
+    <Router>   
+        <>
+      <HeaderComponent /> 
+      <div className="wrapper">      
         <div className="mainContainer">
-          <FormComponent
+          <Route exact path ="/" render={()=>
+            <FormComponent
             handleDifficultyChange={handleDifficultyChange}
             categoryList={allCategory}
             handleCategoryChange={handleCategoryChange}
             handleTypeChange={handleTypeChange}
             handleGoSubmit={handleGoSubmit}
           />
-          <div className="questionContainer">
-            {goButton && allQuestions[questionIndex] ? (
-              <QuestionComponent
-                handleAnswerSubmit={handleAnswerSubmit}
-                singleQuestion={allQuestions[questionIndex]}
-                key={questionIndex}
-              />
-            ) : (
-              <p>do the thing</p>
-            )}
-          </div>
+          } />          
+          
+          <Route path="/" 
+          render={()=>{
+            return(
+              <div className="questionContainer">              
+              {goButton && allQuestions[questionIndex] ? 
+              (
+                <>
+                <Redirect to ="/questions"/>
+                <QuestionComponent
+                  handleAnswerSubmit={handleAnswerSubmit}
+                  singleQuestion={allQuestions[questionIndex]}
+                  key={questionIndex}
+                />
+                </>
+                
+              ) : (
+                <StartGame />
+              )}
+            </div>
+            )
+          }
+            
+          }/>
         </div>
+      
+      <Footer/>
       </div>
-    </>
+      </>
+      </Router>    
   );
 }
 

@@ -46,8 +46,7 @@ header {
         
       }
 }
-.mainContainer {
-  border: 1px solid red;
+.mainContainer {  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,6 +71,7 @@ header {
     background-color: $whiteColor;
     padding: 10px 25px 10px 10px;
     text-transform: lowercase;
+    box-shadow: 4px 4px $shadowColor;
     @include fluid-font-size(1.6rem, 2.5rem); 
     border-radius: 15px;
     border: 2px solid $raspberryColor;
@@ -85,11 +85,12 @@ header {
 
   select:hover,
   select:focus-within{
-    box-shadow: 2px 2px $shadowColor;
+    box-shadow: 4px 4px $raspberryColor;
   }
 
   button{
     margin: 10px auto;
+    @include fluid-font-size(1.6rem, 3rem); 
     width:60px;
     padding: 5px;
     border-radius: 5px;
@@ -97,14 +98,14 @@ header {
     font-family: $basicFont;
     color: $whiteColor;
     border: none;
-    box-shadow: 2px 2px $shadowColor;
+    box-shadow: 3px 3px $shadowColor;
     transition: all ease-in-out .2s;
   }
 
   button:hover,
   button:focus-within{
-    transform: translateY(2px);
-    box-shadow: none;
+    transform: translateY(4px);
+    box-shadow: 3px 3px $shadowColor;
   }
 }
 
