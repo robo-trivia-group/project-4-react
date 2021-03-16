@@ -2,36 +2,56 @@ function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
   const { question, correct_answer, incorrect_answers } = singleQuestion;
   
 
-let chosenAnswer;
+  let chosenAnswer;
 
-const handleSelected = (e) => {
-  const isCorrectAnswer = e.target.attributes[3].value;
-  chosenAnswer = isCorrectAnswer;
-}
+  const handleSelected = (e) => {
+    const isCorrectAnswer = e.target.value;
 
-const handleSingleSubmit = (e) => {
-  e.preventDefault();
-  handleAnswerSubmit(chosenAnswer)
-}
+    if (isCorrectAnswer === correct_answer) {
+      chosenAnswer = 'true';
+    }
+  }
 
+  const handleSingleSubmit = (e) => {
+    e.preventDefault();
+    handleAnswerSubmit(chosenAnswer)
+  }
+
+  const randomAnswers = [];
+  randomAnswers.push(correct_answer);
+  randomAnswers.push(...incorrect_answers);
+  
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const num = Math.floor(Math.random() * (i + 1));
+
+      let temp = array[i];
+      array[i] = array[num];
+      array[num] = temp;
+    }
+
+    return array;
+  }
+
+  shuffle(randomAnswers);
+  
   return (
     <>
       {
-        <>
-          <li>Question: {decodeURIComponent(question)}</li>
+        <div className="questions">          
+          <h3>{decodeURIComponent(question)}</h3>
           <form className="choiceContainer" onSubmit={handleSingleSubmit} >
             <span>
               <input
                 type="radio"
                 id="answer"
                 name="answer"
-                value={correct_answer}
+                value={randomAnswers[0]}
                 onChange={handleSelected}
-                correct='true'
                 required
               />
               <label className="answerLabel" htmlFor="answer">
-                {decodeURIComponent(correct_answer)}
+                {decodeURIComponent(randomAnswers[0])}
               </label>
             </span>
 
@@ -40,13 +60,11 @@ const handleSingleSubmit = (e) => {
                 type="radio"
                 id="answer1"
                 name="answer"
-                value={incorrect_answers[0]}
-                // checked={selected === {correct_answer}}
+                value={randomAnswers[1]}
                 onChange={handleSelected}
-                correct='false'
               />
               <label className="answerLabel" htmlFor="answer1">
-                {decodeURIComponent(incorrect_answers[0])}
+                {decodeURIComponent(randomAnswers[1])}
               </label>
             </span>
 
@@ -55,13 +73,11 @@ const handleSingleSubmit = (e) => {
                 type="radio"
                 id="answer2"
                 name="answer"
-                value={incorrect_answers[1]}
-                // checked={selected === {correct_answer}}
+                value={randomAnswers[2]}
                 onChange={handleSelected}
-                correct='false'
               />
               <label className="answerLabel" htmlFor="answer2">
-                {decodeURIComponent(incorrect_answers[1])}
+                {decodeURIComponent(randomAnswers[2])}
               </label>
             </span>
 
@@ -70,18 +86,16 @@ const handleSingleSubmit = (e) => {
                 type="radio"
                 id="answer3"
                 name="answer"
-                value={incorrect_answers[2]}
-                // checked={selected === {correct_answer}}
+                value={randomAnswers[3]}
                 onChange={handleSelected}
-                correct='false'
               />
               <label className="answerLabel" htmlFor="answer3">
-                {decodeURIComponent(incorrect_answers[2])}
+                {decodeURIComponent(randomAnswers[3])}
               </label>
             </span>
-            <button>Submit</button>
+            <button>submit</button>
           </form>
-        </>
+        </div>
       }
     </>
   );
