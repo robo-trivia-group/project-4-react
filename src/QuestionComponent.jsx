@@ -1,6 +1,5 @@
 function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
   const { question, correct_answer, incorrect_answers } = singleQuestion;
-  
 
   let chosenAnswer;
 
@@ -11,19 +10,19 @@ function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
     if (isCorrectAnswer === correct_answer) {
       chosenAnswer = 'true';
     }
-  }
+  };
 
   // passes correct answer to app on submit
   const handleSingleSubmit = (e) => {
     e.preventDefault();
-    handleAnswerSubmit(chosenAnswer)
-  }
+    handleAnswerSubmit(chosenAnswer);
+  };
 
   // puts all separate answers into an array
   const randomAnswers = [];
   randomAnswers.push(correct_answer);
   randomAnswers.push(...incorrect_answers);
-  
+
   // shuffles all answers
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -38,13 +37,13 @@ function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
   }
 
   shuffle(randomAnswers);
-  
+
   return (
     <>
       {
-        <div className="questions">          
+        <div className="questions">
           <h3>{decodeURIComponent(question)}</h3>
-          <form className="choiceContainer" onSubmit={handleSingleSubmit} >
+          <form className="choiceContainer" onSubmit={handleSingleSubmit}>
             <span>
               <input
                 type="radio"

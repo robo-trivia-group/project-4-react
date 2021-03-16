@@ -49,7 +49,7 @@ function App() {
   const [allQuestions, setAllQuestions] = useState([]);
   const [goButton, setGoButton] = useState(false);
   const [questionIndex, setquestionIndex] = useState(0);
-  const [ answersArray, setAnswersArray ] = useState([]);
+  const [answersArray, setAnswersArray] = useState([]);
 
   let totalScore;
   // const [ userInput, setUserInput] = useState('');
@@ -110,76 +110,74 @@ function App() {
 
   // checks if user choice is correct and updates question index to next question
   function handleAnswerSubmit(usersChoice) {
-    usersChoice === "true" 
-    ? alert('you got it right')
-    : alert ('you failed');
-    
-    answersArray.push(usersChoice)
+    usersChoice === 'true' ? alert('you got it right') : alert('you failed');
+
+    answersArray.push(usersChoice);
     if (questionIndex < allQuestions.length - 1) {
-      setquestionIndex(questionIndex + 1)
-      
+      setquestionIndex(questionIndex + 1);
     } else {
       alert('Quiz is over');
       checkAnswers();
       alert(`${totalScore} out of 10!`);
       setAnswersArray([]);
     }
-  };
+  }
 
   // tallies total correct score
   function checkAnswers() {
-    const correctAnswers = answersArray.filter(answer => answer === "true");
+    const correctAnswers = answersArray.filter((answer) => answer === 'true');
     totalScore = correctAnswers.length;
   }
 
   return (
-    <Router>   
+    <Router>
       <div className="App">
         <div className="parent">
-        <HeaderComponent /> 
-        <div className="wrapper">
-        <div className="mainContainer">
-          <UserComponent />
-          <Route exact path ="/" render={()=>
-            <FormComponent
-            handleDifficultyChange={handleDifficultyChange}
-            categoryList={allCategory}
-            handleCategoryChange={handleCategoryChange}
-            handleGoSubmit={handleGoSubmit}
-          />
-          } />          
-          
-          <Route path="/" 
-          render={()=>{
-            return(
-              <div className="questionContainer">              
-              {goButton && allQuestions[questionIndex] ? 
-              (
-                <>
-                <Redirect exact from="/" to ="/questions"/>
-                <QuestionComponent
-                  handleAnswerSubmit={handleAnswerSubmit}
-                  singleQuestion={allQuestions[questionIndex]}
-                  key={questionIndex}
-                />
-                </>
-                
-              ) : (
-                <StartGame />
-              )}
+          <HeaderComponent />
+          <div className="wrapper">
+            <div className="mainContainer">
+              <UserComponent />
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <FormComponent
+                    handleDifficultyChange={handleDifficultyChange}
+                    categoryList={allCategory}
+                    handleCategoryChange={handleCategoryChange}
+                    handleGoSubmit={handleGoSubmit}
+                  />
+                )}
+              />
+
+              <Route
+                path="/"
+                render={() => {
+                  return (
+                    <div className="questionContainer">
+                      {goButton && allQuestions[questionIndex] ? (
+                        <>
+                          <Redirect exact from="/" to="/questions" />
+                          <QuestionComponent
+                            handleAnswerSubmit={handleAnswerSubmit}
+                            singleQuestion={allQuestions[questionIndex]}
+                            key={questionIndex}
+                          />
+                        </>
+                      ) : (
+                        <StartGame />
+                      )}
+                    </div>
+                  );
+                }}
+              />
             </div>
-            )
-          }
-            
-          }/>
+          </div>
         </div>
-        </div>    
+        <Footer />
       </div>
-        <Footer/>    
-      
-      </div>
-      </Router> 
+    </Router>
   );
-  }
+}
 
 export default App;
