@@ -41,7 +41,6 @@ const handleSingleSubmit = (e) => {
                 id="answer1"
                 name="answer"
                 value={incorrect_answers[0]}
-                // checked={selected === {correct_answer}}
                 onChange={handleSelected}
                 correct='false'
               />
@@ -56,7 +55,6 @@ const handleSingleSubmit = (e) => {
                 id="answer2"
                 name="answer"
                 value={incorrect_answers[1]}
-                // checked={selected === {correct_answer}}
                 onChange={handleSelected}
                 correct='false'
               />
@@ -71,7 +69,6 @@ const handleSingleSubmit = (e) => {
                 id="answer3"
                 name="answer"
                 value={incorrect_answers[2]}
-                // checked={selected === {correct_answer}}
                 onChange={handleSelected}
                 correct='false'
               />
