@@ -36,6 +36,7 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import FormComponent from './FormComponent.jsx';
+import UserComponent from './UserComponent';
 import QuestionComponent from './QuestionComponent';
 import HeaderComponent from './HeaderComponent';
 import StartGame from './StartGame';
@@ -45,13 +46,13 @@ function App() {
   const [allCategory, setAllCategory] = useState([]);
   const [difficulty, setDifficulty] = useState('');
   const [categoryChoice, setCategoryChoice] = useState('');
-
   const [allQuestions, setAllQuestions] = useState([]);
   const [goButton, setGoButton] = useState(false);
   const [questionIndex, setquestionIndex] = useState(0);
   const [ answersArray, setAnswersArray ] = useState([]);
-  
+
   let totalScore;
+  // const [ userInput, setUserInput] = useState('');
 
   //todo: axios call to get a full list of Categories
   useEffect(() => {
@@ -131,13 +132,14 @@ function App() {
     totalScore = correctAnswers.length;
   }
 
-  return (    
+  return (
     <Router>   
       <div className="App">
         <div className="parent">
         <HeaderComponent /> 
         <div className="wrapper">
-        <div className="mainContainer">       
+        <div className="mainContainer">
+          <UserComponent />
           <Route exact path ="/" render={()=>
             <FormComponent
             handleDifficultyChange={handleDifficultyChange}
@@ -176,8 +178,8 @@ function App() {
         <Footer/>    
       
       </div>
-      </Router>    
+      </Router> 
   );
-}
+  }
 
 export default App;
