@@ -166,6 +166,8 @@ function App() {
     setCorrectAnswers(answersArray.filter((answer) => answer === 'true'));
   }
 
+  console.log("SOMETHING SOMET HING SOMETHINSDFSFAS");
+
   return (
     <div className="App">
       <HeaderComponent />
