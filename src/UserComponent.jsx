@@ -2,40 +2,40 @@ import React from 'react';
 import firebase from './firebase';
 import { useState } from 'react';
 
-const db = firebase.database();
-
 export default function UserComponent() {
-  const [player, setPlayer] = useState("");
+  const db = firebase.database();
+  const [player, setPlayer] = useState('');
+
+  const handlePlayerChange = (e) => {
+    setPlayer(e.target.value);
+  }
+
+  const handlePlayerSubmit = (e) => {
+    e.preventDefault();
+    db.ref().push({
+      username: player,
+      avatar: `https://robohash.org/${player}`,
+      currentScore: 0,
+      highestScore: 0,
+    })
+    setPlayer('');
+  }
 
   return (
-    <div className="wrapper">
-      <form onSubmit={e => {
-        e.preventDefault();
-        const quizRef = db.ref('quiz');
-        const newQuizRef = quizRef.push();
-        newQuizRef.set({
-          player,
-          turn: "player",
-          first: "player"
-        })
-      }}>
-      <label htmlFor="userInput" className="srOnly">User Name</label>
+    <div>
+      <form onSubmit={handlePlayerSubmit}>
+      <label htmlFor="userInput" className="srOnly">Enter your username:</label>
       <input 
       type="text" 
+      placeholder='Username'
       value={player} 
-      onChange={(e) => setPlayer(e.target.value)} 
-      id="userInput"  
-      placeholder="your name"    
+      onChange={handlePlayerChange} 
+      id="userInput"
       required
       />
-      {/* <input 
-      type="text" 
-      value={player2} 
-      onChange={(e) => setPlayer2(e.target.value)} 
-      id="userInput"
-      /> */}      
-        <button type='submit'>Start the Game!</button>
-      
+
+      <button>Join the Bots</button>
+
       </form>
     </div>
   )

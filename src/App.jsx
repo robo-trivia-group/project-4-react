@@ -37,6 +37,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import { useState, useEffect } from 'react';
 import FormComponent from './FormComponent.jsx';
 import UserComponent from './UserComponent';
+import PlayerComponent from './PlayerComponent.jsx';
 import QuestionComponent from './QuestionComponent';
 import HeaderComponent from './HeaderComponent';
 import StartGame from './StartGame';
@@ -46,8 +47,10 @@ function App() {
   const [allCategory, setAllCategory] = useState([]);
   const [difficulty, setDifficulty] = useState('');
   const [categoryChoice, setCategoryChoice] = useState('');
+
   const [allQuestions, setAllQuestions] = useState([]);
   const [goButton, setGoButton] = useState(false);
+
   const [questionIndex, setquestionIndex] = useState(0);
   const [ answersArray, setAnswersArray ] = useState([]);
 
@@ -72,7 +75,7 @@ function App() {
     getCategories();
   }, []);
 
-  // //todo: main axios call to API to get the questions
+  //todo: main axios call to API to get the questions
   const getQuestions = async () => {
     try {
       const response = await axios.get('https://opentdb.com/api.php', {
@@ -138,13 +141,19 @@ function App() {
         <HeaderComponent /> 
         <div className="wrapper">
         <div className="mainContainer">
+<<<<<<< HEAD
           <Route exact path="/"  component ={UserComponent}/>
           <Route exact path ="/form" render={()=>
+=======
+          <UserComponent />
+          <PlayerComponent />
+          <Route exact path ="/" render={()=>
+>>>>>>> 30a1965fbfafe89391c4611f5689fc9dc23c5e54
             <FormComponent
-            handleDifficultyChange={handleDifficultyChange}
-            categoryList={allCategory}
-            handleCategoryChange={handleCategoryChange}
-            handleGoSubmit={handleGoSubmit}
+              handleDifficultyChange={handleDifficultyChange}
+              categoryList={allCategory}
+              handleCategoryChange={handleCategoryChange}
+              handleGoSubmit={handleGoSubmit}
           />
           } />          
           
