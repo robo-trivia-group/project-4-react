@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import firebase from './firebase.jsx';
 
-function PlayerComponent({handleLetsPlay}) {
+function PlayerComponent({ handleLetsPlay }) {
   const [playerInfo, setPlayerInfo] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ function PlayerComponent({handleLetsPlay}) {
       for (let key in playerData) {
         copyArray.push({
           uniqueKey: key,
-          playerData: playerData[key]
+          playerData: playerData[key],
         });
       }
 
@@ -24,23 +24,28 @@ function PlayerComponent({handleLetsPlay}) {
   }, []);
 
   return (
-    <div className="playerDisplay">
-      <h2>Current Players:</h2>
-      <ul className="playerContainer">
+    <>
+      <h3>Current Players:</h3>
+      <ul className="playingInfoContainer">
         {playerInfo.map((player, index) => {
-          const {username, avatar, currentScore, highestScore} = player.playerData;
+          const {
+            username,
+            avatar,
+            currentScore,
+            highestScore,
+          } = player.playerData;
           return (
             <li key={index}>
-              <div className='imgContainer'>
-              <img
-                className='userAvatar'
-                src={avatar}
-                alt={`Robot avatar for ${username}`}
-              />
+              <div className="imgContainer">
+                <img
+                  className="userAvatar"
+                  src={avatar}
+                  alt={`Robot avatar for ${username}`}
+                />
               </div>
-              
-              <div className='scoreContainer'>
-                <h3>{username}</h3>
+
+              <div className="scoreContainer">
+                <h4>{username}</h4>
                 <p>Current Score: {currentScore}</p>
                 <p>High Score: {highestScore}</p>
               </div>
@@ -48,9 +53,9 @@ function PlayerComponent({handleLetsPlay}) {
           );
         })}
       </ul>
-      
+
       <button onClick={handleLetsPlay}>Let's Play</button>
-    </div>
+    </>
   );
 }
 

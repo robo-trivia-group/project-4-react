@@ -51,12 +51,13 @@ function App() {
   const [allQuestions, setAllQuestions] = useState([]);
   const [goButton, setGoButton] = useState(false);
   const [letsPlay, setLetsPlay] = useState(false);
+  const [joinBots, setJoinBots] = useState(true);
 
   const [questionIndex, setquestionIndex] = useState(0);
   const [answersArray, setAnswersArray] = useState([]);
   const [correctAnswers, setCorrectAnswers] = useState([]);
 
-  const [ localUser, setLocalUser ] = useState([]);
+  const [localUser, setLocalUser] = useState([]);
 
   let totalScore;
   // const [ userInput, setUserInput] = useState('');
@@ -119,12 +120,18 @@ function App() {
   const handleLetsPlay = (e) => {
     e.preventDefault();
     setLetsPlay(true);
+    setGoButton(false);
+  };
+
+  const handleJoinBots = (e) => {
+    e.preventDefault();
+    setJoinBots(false);
   };
 
   // testing phase - getting local user
   const getLocalUser = (local) => {
-    setLocalUser(local)
-  }
+    setLocalUser(local);
+  };
 
   // checks if user choice is correct and updates question index to next question
   function handleAnswerSubmit(usersChoice) {
@@ -150,28 +157,36 @@ function App() {
       <div className="wrapper">
         <div className="mainContainer">
           <div className="userSetupContainer">
-            <UserComponent 
-              localUser={localUser}
-              getLocal={getLocalUser}/>
+            {joinBots && (
+              <UserComponent
+                handleJoinBots={handleJoinBots}
+                localUser={localUser}
+                getLocal={getLocalUser}
+              />
+            )}
             <PlayerComponent handleLetsPlay={handleLetsPlay} />
           </div>
 
           {letsPlay && (
-            <FormComponent
-              handleDifficultyChange={handleDifficultyChange}
-              categoryList={allCategory}
-              handleCategoryChange={handleCategoryChange}
-              handleGoSubmit={handleGoSubmit}
-            />
+            <div className="formContainer">
+              <FormComponent
+                handleDifficultyChange={handleDifficultyChange}
+                categoryList={allCategory}
+                handleCategoryChange={handleCategoryChange}
+                handleGoSubmit={handleGoSubmit}
+              />
+            </div>
           )}
 
           {goButton && allQuestions[questionIndex] && (
-            <QuestionComponent
-              correctAnswers={correctAnswers}
-              handleAnswerSubmit={handleAnswerSubmit}
-              singleQuestion={allQuestions[questionIndex]}
-              key={questionIndex}
-            />
+            <div className="questionContainer">
+              <QuestionComponent
+                correctAnswers={correctAnswers}
+                handleAnswerSubmit={handleAnswerSubmit}
+                singleQuestion={allQuestions[questionIndex]}
+                key={questionIndex}
+              />
+            </div>
           )}
         </div>
         {/**end of mainContainer */}
