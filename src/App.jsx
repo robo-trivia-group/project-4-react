@@ -141,14 +141,9 @@ function App() {
         <HeaderComponent /> 
         <div className="wrapper">
         <div className="mainContainer">
-<<<<<<< HEAD
-          <Route exact path="/"  component ={UserComponent}/>
-          <Route exact path ="/form" render={()=>
-=======
           <UserComponent />
           <PlayerComponent />
           <Route exact path ="/" render={()=>
->>>>>>> 30a1965fbfafe89391c4611f5689fc9dc23c5e54
             <FormComponent
               handleDifficultyChange={handleDifficultyChange}
               categoryList={allCategory}
