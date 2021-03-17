@@ -61,6 +61,7 @@ function App() {
   const [localUser, setLocalUser] = useState([]);
 
   let totalScore;
+  totalScore = correctAnswers.length;
   const db = firebase.database();
   // const [ userInput, setUserInput] = useState('');
 
@@ -146,7 +147,7 @@ function App() {
       dbRefUser.update({
         currentScore: firebase.database.ServerValue.increment(1)
       })
-      
+
     dbRefUser.update({
         currentQuestion: firebase.database.ServerValue.increment(1)
       })
@@ -165,6 +166,9 @@ function App() {
   function checkAnswers() {
     setCorrectAnswers(answersArray.filter((answer) => answer === 'true'));
   }
+
+  
+
 
   return questionIndex === 2 ? (
     <FinalResultComponent totalScore={totalScore} />
