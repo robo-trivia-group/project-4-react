@@ -100,7 +100,7 @@ function QuestionComponent({
                 {decodeURIComponent(randomAnswers[3])}
               </label>
             </span>
-            <p>{correctAnswers.length}</p>
+            <p>Your current score is: {correctAnswers.length}</p>
             <button>submit</button>
           </form>
         </div>

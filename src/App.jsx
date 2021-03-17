@@ -34,7 +34,7 @@
 import './styles/styles.scss';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import firebase from './firebase';
+import firebase from './firebase.jsx';
 import FormComponent from './FormComponent.jsx';
 import UserComponent from './UserComponent';
 import PlayerComponent from './PlayerComponent.jsx';
@@ -118,9 +118,9 @@ function App() {
     setGoButton(true);
     setLetsPlay(false);
     const dbRefUser = db.ref(`/currentPlayers/${localUser[0]}`);
-    dbRefUser.update({
-      currentQuestion: firebase.database.ServerValue.increment(1),
-    });
+      dbRefUser.update({
+        currentQuestion: firebase.database.ServerValue.increment(1)
+      })
   };
 
   const handleLetsPlay = (e) => {
@@ -144,17 +144,19 @@ function App() {
 
     if (usersChoice) {
       dbRefUser.update({
-        currentScore: firebase.database.ServerValue.increment(1),
-      });
-
-      dbRefUser.update({
-        currentQuestion: firebase.database.ServerValue.increment(1),
-      });
+        currentScore: firebase.database.ServerValue.increment(1)
+      })
     }
 
     answersArray.push(usersChoice);
     setQuestionIndex(questionIndex + 1);
     checkAnswers();
+
+    if (questionIndex < allQuestions.length - 1) {
+        dbRefUser.update({
+          currentQuestion: firebase.database.ServerValue.increment(1)
+      })
+    }
 
     if (questionIndex === allQuestions.length - 1) {
       setAnswersArray([]);
@@ -166,9 +168,8 @@ function App() {
     setCorrectAnswers(answersArray.filter((answer) => answer === 'true'));
   }
 
-  console.log("SOMETHING SOMEassssssssssssssasdwasdwadT HING SOMETHINSDFSFAS");
-
-  return (
+  
+return (
     <div className="App">
       <HeaderComponent />
 
@@ -215,6 +216,9 @@ function App() {
                 setJoinBots={setJoinBots}
                 setQuestionIndex={setQuestionIndex}
                 totalScore={totalScore}
+                localUser={localUser}
+                setLocalUser={setLocalUser}
+                setCorrectAnswers={setCorrectAnswers}
               />
             </div>
           ) : null}
