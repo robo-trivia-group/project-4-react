@@ -139,6 +139,7 @@ function App() {
           <div className="wrapper">
             <div className="mainContainer">
               <UserComponent />
+              <PlayerComponent />
               <Route
                 exact
                 path="/"
