@@ -12,10 +12,7 @@ export default function UserComponent() {
 
   const handlePlayerSubmit = (e) => {
     e.preventDefault();
-    // const playerRef = db.ref('players');
-    // const newPlayer = playerRef.push();
     db.ref().push({
-    // newPlayer.set({
       username: player,
       avatar: `https://robohash.org/${player}`,
       currentScore: 0,
