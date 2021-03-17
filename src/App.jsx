@@ -37,6 +37,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import FormComponent from './FormComponent.jsx';
 import UserComponent from './UserComponent';
+import PlayerComponent from './PlayerComponent.jsx';
 import QuestionComponent from './QuestionComponent';
 import HeaderComponent from './HeaderComponent';
 import StartGame from './StartGame';
@@ -46,8 +47,10 @@ function App() {
   const [allCategory, setAllCategory] = useState([]);
   const [difficulty, setDifficulty] = useState('');
   const [categoryChoice, setCategoryChoice] = useState('');
+
   const [allQuestions, setAllQuestions] = useState([]);
   const [goButton, setGoButton] = useState(false);
+
   const [questionIndex, setquestionIndex] = useState(0);
   const [ answersArray, setAnswersArray ] = useState([]);
 
@@ -72,7 +75,7 @@ function App() {
     getCategories();
   }, []);
 
-  // //todo: main axios call to API to get the questions
+  //todo: main axios call to API to get the questions
   const getQuestions = async () => {
     try {
       const response = await axios.get('https://opentdb.com/api.php', {
@@ -140,12 +143,13 @@ function App() {
         <div className="wrapper">
         <div className="mainContainer">
           <UserComponent />
+          <PlayerComponent />
           <Route exact path ="/" render={()=>
             <FormComponent
-            handleDifficultyChange={handleDifficultyChange}
-            categoryList={allCategory}
-            handleCategoryChange={handleCategoryChange}
-            handleGoSubmit={handleGoSubmit}
+              handleDifficultyChange={handleDifficultyChange}
+              categoryList={allCategory}
+              handleCategoryChange={handleCategoryChange}
+              handleGoSubmit={handleGoSubmit}
           />
           } />          
           
