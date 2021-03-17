@@ -6,7 +6,7 @@ function HeaderComponent() {
         <Link to={"/"}><h1>Robo Trivia</h1></Link>  
       </div>  
     </header>
-  )
+  );
 }
 
-export default HeaderComponent
+export default HeaderComponent;

@@ -43,6 +43,8 @@ import HeaderComponent from './HeaderComponent';
 import StartGame from './StartGame';
 import Footer from './Footer';
 
+import FinalResultComponent from './FinalResultComponent';
+
 function App() {
   const [allCategory, setAllCategory] = useState([]);
   const [difficulty, setDifficulty] = useState('');
@@ -52,7 +54,8 @@ function App() {
   const [goButton, setGoButton] = useState(false);
 
   const [questionIndex, setquestionIndex] = useState(0);
-  const [ answersArray, setAnswersArray ] = useState([]);
+  const [answersArray, setAnswersArray] = useState([]);
+  const [correctAnswers, setCorrectAnswers] = useState([]);
 
   let totalScore;
   // const [ userInput, setUserInput] = useState('');
@@ -113,76 +116,72 @@ function App() {
 
   // checks if user choice is correct and updates question index to next question
   function handleAnswerSubmit(usersChoice) {
-    usersChoice === "true" 
-    ? alert('you got it right')
-    : alert ('you failed');
-    
-    answersArray.push(usersChoice)
-    if (questionIndex < allQuestions.length - 1) {
-      setquestionIndex(questionIndex + 1)
-      
-    } else {
-      alert('Quiz is over');
-      checkAnswers();
-      alert(`${totalScore} out of 10!`);
+    answersArray.push(usersChoice);
+    setquestionIndex(questionIndex + 1);
+    checkAnswers();
+
+    if (questionIndex === allQuestions.length - 1) {
       setAnswersArray([]);
     }
-  };
+  }
 
   // tallies total correct score
   function checkAnswers() {
-    const correctAnswers = answersArray.filter(answer => answer === "true");
-    totalScore = correctAnswers.length;
+    setCorrectAnswers(answersArray.filter((answer) => answer === 'true'));
   }
+  return questionIndex === 2 ? (
+    <FinalResultComponent totalScore={totalScore} />
+  ) : (
+    <Router>
+      <div className="App">
+        <div className="parent">
+          <HeaderComponent />
+          <div className="wrapper">
+            <div className="mainContainer">
+              <UserComponent />
+              <PlayerComponent />
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <FormComponent
+                    handleDifficultyChange={handleDifficultyChange}
+                    categoryList={allCategory}
+                    handleCategoryChange={handleCategoryChange}
+                    handleGoSubmit={handleGoSubmit}
+                  />
+                )}
+              />
 
-  return (
-    <Router>   
-      <div className="App">        
-        <HeaderComponent /> 
-        <div className="wrapper">
-        <div className="mainContainer">
-          <UserComponent />
-          <PlayerComponent />
-          <Route exact path ="/" render={()=>
-            <FormComponent
-              handleDifficultyChange={handleDifficultyChange}
-              categoryList={allCategory}
-              handleCategoryChange={handleCategoryChange}
-              handleGoSubmit={handleGoSubmit}
-          />
-          } />          
-          
-          <Route path="/form" 
-          render={()=>{
-            return(
-              <div className="questionContainer">              
-              {goButton && allQuestions[questionIndex] ? 
-              (
-                <>
-                <Redirect from="/form" to ="/form/questions"/>
-                <QuestionComponent
-                  handleAnswerSubmit={handleAnswerSubmit}
-                  singleQuestion={allQuestions[questionIndex]}
-                  key={questionIndex}
-                />
-                </>
-                
-              ) : (
-                <StartGame />
-              )}
+              <Route
+                path="/"
+                render={() => {
+                  return (
+                    <div className="questionContainer">
+                      {goButton && allQuestions[questionIndex] ? (
+                        <>
+                          <Redirect from="/" exact to="/questions" />
+                          <QuestionComponent
+                            correctAnswers={correctAnswers}
+                            handleAnswerSubmit={handleAnswerSubmit}
+                            singleQuestion={allQuestions[questionIndex]}
+                            key={questionIndex}
+                          />
+                        </>
+                      ) : (
+                        <StartGame />
+                      )}
+                    </div>
+                  );
+                }}
+              />
             </div>
-            )
-          }
-            
-          }/>
+          </div>
         </div>
-        </div> 
-      
-        <Footer/>    
-      
+        <Footer />
       </div>
-      </Router> 
+    </Router>
   );
-  }
+}
 
 export default App;

@@ -4,9 +4,8 @@ function FormComponent({
   handleDifficultyChange,
   handleCategoryChange,
   categoryList,
-  handleGoSubmit
+  handleGoSubmit,
 }) {
-
   return (
     <div>
       <form onSubmit={handleGoSubmit} className="dropDown">
@@ -45,9 +44,6 @@ function FormComponent({
         </select>
 
         <button>Go!</button>
-      
-
-        
       </form>
     </div>
   );
