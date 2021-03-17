@@ -2,9 +2,8 @@ import React from 'react';
 import firebase from './firebase';
 import { useState } from 'react';
 
-const db = firebase.database();
-
 export default function UserComponent() {
+<<<<<<< HEAD
   const [player, setPlayer] = useState('Player');
 
   return (
@@ -35,6 +34,41 @@ export default function UserComponent() {
       id="userInput"
       /> */}
         <button type="submit">Start the Game!</button>
+=======
+  const db = firebase.database();
+  const [player, setPlayer] = useState('');
+
+  const handlePlayerChange = (e) => {
+    setPlayer(e.target.value);
+  }
+
+  const handlePlayerSubmit = (e) => {
+    e.preventDefault();
+    db.ref().push({
+      username: player,
+      avatar: `https://robohash.org/${player}`,
+      currentScore: 0,
+      highestScore: 0,
+    })
+    setPlayer('');
+  }
+
+  return (
+    <div>
+      <form onSubmit={handlePlayerSubmit}>
+      <label htmlFor="userInput" className="srOnly">Enter your username:</label>
+      <input 
+      type="text" 
+      placeholder='Username'
+      value={player} 
+      onChange={handlePlayerChange} 
+      id="userInput"
+      required
+      />
+
+      <button>Join the Bots</button>
+
+>>>>>>> 30a1965fbfafe89391c4611f5689fc9dc23c5e54
       </form>
     </div>
   );
