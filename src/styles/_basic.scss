@@ -2,20 +2,22 @@ html {
   font-size: 62.5%;
 }
 
-body {
-  background-color: $blueColor;
+body{
+  background-color:$blueColor;    
 }
-.App {
-  background-color: $blueColor;
+.App{
+  background-color:$blueColor;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-.parent {
-  flex-grow: 1;
-}
 
-.mainContainer {
+  
+  }
+  .parent{
+    flex-grow:1;    
+    }
+
+.mainContainer{
   margin: 20px auto;
 }
 
@@ -30,8 +32,16 @@ body {
   text-align: left;
 }
 
+
+
 .choiceContainer {
   display: flex;
   flex-direction: column;
   padding: 15px 0;
 }
+
+
+
+
+
+

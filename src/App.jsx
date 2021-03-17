@@ -139,7 +139,6 @@ function App() {
     <Router>
       <div className="App">
         <div className="parent">
-<<<<<<< HEAD
           <HeaderComponent />
           <div className="wrapper">
             <div className="mainContainer">
@@ -179,40 +178,6 @@ function App() {
                   );
                 }}
               />
-=======
-        <HeaderComponent /> 
-        <div className="wrapper">
-        <div className="mainContainer">
-          <UserComponent />
-          <PlayerComponent />
-          <Route exact path ="/" render={()=>
-            <FormComponent
-              handleDifficultyChange={handleDifficultyChange}
-              categoryList={allCategory}
-              handleCategoryChange={handleCategoryChange}
-              handleGoSubmit={handleGoSubmit}
-          />
-          } />          
-          
-          <Route path="/" 
-          render={()=>{
-            return(
-              <div className="questionContainer">              
-              {goButton && allQuestions[questionIndex] ? 
-              (
-                <>
-                <Redirect exact from="/" to ="/questions"/>
-                <QuestionComponent
-                  handleAnswerSubmit={handleAnswerSubmit}
-                  singleQuestion={allQuestions[questionIndex]}
-                  key={questionIndex}
-                />
-                </>
-                
-              ) : (
-                <StartGame />
-              )}
->>>>>>> 30a1965fbfafe89391c4611f5689fc9dc23c5e54
             </div>
           </div>
         </div>

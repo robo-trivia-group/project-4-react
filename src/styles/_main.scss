@@ -3,40 +3,40 @@
   width: 70%;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  select {
+  flex-wrap: wrap; 
+  justify-content: space-around; 
+  select{
     margin: 10px auto;
     width: 100%;
-    background-image: url('./arrow.png');
+    background-image: url("./arrow.png");
     background-repeat: no-repeat;
     background-position: 95% center;
-    background-size: 15px 15px;
+    background-size: 15px 15px;  
     font-family: $basicFont;
     background-color: $whiteColor;
     padding: 10px 25px 10px 10px;
     text-transform: lowercase;
     box-shadow: 4px 4px $shadowColor;
-    @include fluid-font-size(1.6rem, 2.5rem);
+    @include fluid-font-size(1.6rem, 2.5rem); 
     border-radius: 15px;
     border: 2px solid $raspberryColor;
-    appearance: none;
+    appearance:none;
     outline: none;
     cursor: pointer;
     text-align: center;
     color: $blueColor;
-    transition: all ease-in-out 0.2s;
+    transition: all ease-in-out .2s;
   }
 
   select:hover,
-  select:focus-within {
+  select:focus-within{
     box-shadow: 4px 4px $raspberryColor;
   }
 
-  button {
+  button{
     margin: 10px auto;
-    @include fluid-font-size(2rem, 3rem);
-    width: auto;
+    @include fluid-font-size(2rem, 3rem); 
+    width:auto;
     padding: 5px;
     border-radius: 5px;
     background-color: $raspberryColor;
@@ -44,11 +44,11 @@
     color: $whiteColor;
     border: none;
     box-shadow: 3px 3px $shadowColor;
-    transition: all ease-in-out 0.2s;
+    transition: all ease-in-out .2s;
   }
 
   button:hover,
-  button:focus {
+  button:focus{
     transform: translateY(4px);
     box-shadow: 3px 3px $raspberryColor;
     color: $raspberryColor;
@@ -56,72 +56,74 @@
   }
 }
 
-.questions {
-  background-color: rgba(185, 19, 114, 0.7);
-  box-shadow: 5px 5px $whiteColor;
-  padding: 20px 40px;
-  font-family: $basicFont;
-  @include animated-underline-label($whiteColor, 'span');
+.questions{
+    background-color: rgba(185, 19, 114, 0.7);
+    box-shadow: 5px 5px $whiteColor;
+    padding: 20px 40px;
+    font-family: $basicFont;
+    @include animated-underline-label($whiteColor, 'span');   
 
-  h3 {
-    display: flex;
-    list-style: none;
-    color: $whiteColor;
-    @include fluid-font-size(2rem, 3rem);
-    padding: 5px 0;
-    text-align: left;
-  }
+    h3 {
+        display: flex;        
+        list-style: none;
+        color: $whiteColor;        
+        @include fluid-font-size(2rem, 3rem); 
+        padding: 5px 0;
+        text-align: left;
+    }  
 
-  input[type='radio'] {
-    display: none;
-    + label.answerLabel {
-      display: inline-block;
-      position: relative;
-      color: $whiteColor;
-      @include fluid-font-size-questions(2rem, 3rem);
-      font-family: $basicFont;
-      cursor: pointer;
-      user-select: none;
-      margin-left: 20px;
-      &::before {
-        position: absolute;
-        transition: all 0.2s ease-in-out;
-        content: '';
-        @include fluid-width-height(1.6rem, 2rem);
-        border-radius: 50%;
-        background-color: $whiteColor;
-        border: 0px solid $whiteColor;
-        font-size: 0;
-        position: absolute;
-        bottom: 50%;
-        left: -25px;
-        transform: translate(-50%, 50%);
-      }
-    }
-    &:checked + label.answerLabel {
-      &::before {
-        background-color: transparent;
-        @include fluid-width-height(1.6rem, 3rem);
-        border-width: 2px;
-      }
-    }
-  }
-  button {
+  input[type="radio"] {
+	display: none;
+	+label.answerLabel {
+    display: inline-block;
+    position: relative;
+		color: $whiteColor;    
+		@include fluid-font-size-questions(2rem, 3rem); 
+    font-family: $basicFont;
+		cursor: pointer;
+		user-select: none;
+		margin-left: 20px;		
+		&::before {
+      position: absolute;            
+			transition: all 0.2s ease-in-out;
+			content: "";
+			@include fluid-width-height(1.6rem, 2rem);
+			border-radius: 50%;
+			background-color: $whiteColor;
+			border: 0px solid $whiteColor;
+			font-size: 0;
+			position: absolute;
+			bottom: 50%;
+			left:-25px;
+			transform: translate(-50%, 50%);
+		}
+		
+	}
+	&:checked + label.answerLabel
+    {     
+		&::before {
+			background-color: transparent;
+			@include fluid-width-height(1.6rem, 3rem);
+			border-width: 2px;
+		}	
+	} 
+}
+button{
     margin: 20px auto;
-    @include fluid-font-size(2rem, 3rem);
-    width: auto;
+    @include fluid-font-size(2rem, 3rem); 
+    width:auto;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 5px;    
     font-family: $basicFont;
     color: $whiteColor;
     background-color: $blueColor;
     border: 1px solid $whiteColor;
     box-shadow: 3px 3px $shadowColor;
-    transition: all ease-in-out 0.2s;
+    transition: all ease-in-out .2s;
   }
 
   button:hover,
-  button:focus {
+  button:focus{
     transform: translateY(4px);
     box-shadow: 3px 3px $raspberryColor;
     color: $raspberryColor;
@@ -129,12 +131,16 @@
   }
 }
 
-.startGame {
-  margin: 50px auto;
-  width: 60%;
-  h2 {
-    text-align: center;
-    @include fluid-font-size(2rem, 4rem);
-    color: $whiteColor;
-  }
+
+
+
+
+.startGame{
+    margin: 50px auto;
+    width: 60%;      
+    h2{
+        text-align: center;
+        @include fluid-font-size(2rem, 4rem);  
+        color: $whiteColor;      
+      }
 }
