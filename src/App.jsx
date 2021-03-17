@@ -115,13 +115,10 @@ function App() {
     getQuestions(difficulty, categoryChoice);
     setGoButton(true);
     setLetsPlay(false);
-<<<<<<< HEAD
-=======
     const dbRefUser = db.ref(`/currentPlayers/${localUser[0]}`);
     dbRefUser.update({
       currentQuestion: firebase.database.ServerValue.increment(1),
     });
->>>>>>> ebafdf5364a65da2775a13a953bd1dfab3f88c9c
   };
 
   const handleLetsPlay = (e) => {
@@ -141,8 +138,6 @@ function App() {
 
   // checks if user choice is correct and updates question index to next question
   function handleAnswerSubmit(usersChoice) {
-<<<<<<< HEAD
-=======
     const dbRefUser = db.ref(`/currentPlayers/${localUser[0]}`);
 
     if (usersChoice) {
@@ -155,7 +150,6 @@ function App() {
       });
     }
 
->>>>>>> ebafdf5364a65da2775a13a953bd1dfab3f88c9c
     answersArray.push(usersChoice);
     setQuestionIndex(questionIndex + 1);
     checkAnswers();
@@ -169,14 +163,8 @@ function App() {
   function checkAnswers() {
     setCorrectAnswers(answersArray.filter((answer) => answer === 'true'));
   }
-<<<<<<< HEAD
-  return questionIndex === 2 ? (
-    <FinalResultComponent totalScore={totalScore} />
-  ) : (
-=======
 
   return (
->>>>>>> ebafdf5364a65da2775a13a953bd1dfab3f88c9c
     <div className="App">
       <HeaderComponent />
 
