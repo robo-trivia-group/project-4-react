@@ -41,8 +41,7 @@ function QuestionComponent({
   }
 
   shuffle(randomAnswers);
-
-  console.log(correctAnswers, 'Answer');
+  
   return (
     <>
       {
