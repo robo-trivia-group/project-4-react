@@ -32,7 +32,7 @@ function PlayerComponent({ handleLetsPlay }) {
             username,
             avatar,
             currentScore,
-            highestScore,
+            currentQuestion,
           } = player.playerData;
           return (
             <li key={index}>
@@ -47,7 +47,7 @@ function PlayerComponent({ handleLetsPlay }) {
               <div className="scoreContainer">
                 <h4>{username}</h4>
                 <p>Current Score: {currentScore}</p>
-                <p>High Score: {highestScore}</p>
+                <p>{`Currently on: ${currentQuestion} / 10`}</p>
               </div>
             </li>
           );
