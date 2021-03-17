@@ -11,32 +11,29 @@ body{
   display: flex;
   flex-direction: column;
   min-height: 100vh; 
+  margin-bottom: 20px;  
   }
 
 .mainContainer{
   margin: 20px auto;
+  font-family: $basicFont;
 }
 
 .wrapper {
   max-width: 1600px;
   width: 90%;
   margin: 0 auto;
+  // border: 1px solid red;
 }
 
 .triviaQuestions {
   text-align: left;
 }
 
-
-
 .choiceContainer {
   display: flex;
   flex-direction: column;
   padding: 15px 0;
-}
-
-a{
-  text-decoration: none;
 }
 
 

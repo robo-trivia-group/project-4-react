@@ -16,7 +16,7 @@ export default function UserComponent({ localUser, getLocal, handleJoinBots }) {
       username: player,
       avatar: `https://robohash.org/${player}`,
       currentScore: 0,
-      currentQuestion: 0,
+      highestScore: 0,
     });
     setPlayer('');
     localUser.push(newUserObj.key, player);
