@@ -146,19 +146,23 @@ function App() {
       dbRefUser.update({
         currentScore: firebase.database.ServerValue.increment(1)
       })
-
-    dbRefUser.update({
-        currentQuestion: firebase.database.ServerValue.increment(1)
-      })
     }
 
     answersArray.push(usersChoice);
     setQuestionIndex(questionIndex + 1);
     checkAnswers();
 
-    if (questionIndex === allQuestions.length - 1) {
-      setAnswersArray([]);
+    if (questionIndex < allQuestions.length - 1) {
+        dbRefUser.update({
+          currentQuestion: firebase.database.ServerValue.increment(1)
+      })
     }
+    
+
+
+    // if (questionIndex === allQuestions.length - 1) {
+    //   setAnswersArray([]);
+    // }
   }
 
   // tallies total correct score
