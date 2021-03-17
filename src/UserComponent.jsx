@@ -21,6 +21,7 @@ export default function UserComponent({ localUser, getLocal, handleJoinBots }) {
     setPlayer('');
     localUser.push(newUserObj.key, player);
     getLocal(localUser);
+    handleJoinBots();
   };
 
   return (
@@ -38,7 +39,7 @@ export default function UserComponent({ localUser, getLocal, handleJoinBots }) {
           required
         />
 
-        <button onClick={handleJoinBots}>Join the Bots</button>
+        <button onClick={handlePlayerSubmit}>Join the Bots</button>
       </form>
     </div>
   );

@@ -123,8 +123,7 @@ function App() {
     setGoButton(false);
   };
 
-  const handleJoinBots = (e) => {
-    e.preventDefault();
+  const handleJoinBots = () => {
     setJoinBots(false);
   };
 
@@ -163,7 +162,7 @@ function App() {
                 localUser={localUser}
                 getLocal={getLocalUser}
               />
-            )}
+            )} 
             <PlayerComponent handleLetsPlay={handleLetsPlay} />
           </div>
 
