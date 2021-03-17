@@ -157,12 +157,10 @@ function App() {
           currentQuestion: firebase.database.ServerValue.increment(1)
       })
     }
-    
 
-
-    // if (questionIndex === allQuestions.length - 1) {
-    //   setAnswersArray([]);
-    // }
+    if (questionIndex === allQuestions.length - 1) {
+      setAnswersArray([]);
+    }
   }
 
   // tallies total correct score
