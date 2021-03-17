@@ -1,4 +1,5 @@
 input[type='text'] {
+  font-family: $basicFont;
   @include fluid-font-size(1.6rem, 2.5rem);
   padding: 10px 25px 10px 10px;
   width: 200px;
@@ -9,13 +10,13 @@ input[type='text'] {
   border-bottom: 2px solid $turquoiseColor;
 }
 button {
+  font-family: $basicFont;
   margin: 10px auto;
   @include fluid-font-size(2rem, 3rem);
   width: auto;
   padding: 10px;
   border-radius: 5px;
-  background-color: $turquoiseColor;
-  font-family: $basicFont;
+  background-color: $turquoiseColor;  
   color: $blueColor;
   border: none;
   box-shadow: 3px 3px $shadowColor;
@@ -44,8 +45,7 @@ button:focus {
     background-image: url('..//assets/arrow.png');
     background-repeat: no-repeat;
     background-position: 95% center;
-    background-size: 15px 15px;
-    font-family: $basicFont;
+    background-size: 15px 15px;    
     background-color: $whiteColor;
     padding: 10px 25px 10px 10px;
     text-transform: lowercase;
@@ -71,8 +71,7 @@ button:focus {
     width: auto;
     padding: 10px;
     border-radius: 5px;
-    background-color: $raspberryColor;
-    font-family: $basicFont;
+    background-color: $raspberryColor;    
     color: $whiteColor;
     border: none;
     box-shadow: 3px 3px $shadowColor;
@@ -91,8 +90,7 @@ button:focus {
 .questions {
   background-color: rgba(185, 19, 114, 0.7);
   box-shadow: 5px 5px $whiteColor;
-  padding: 20px 40px;
-  font-family: $basicFont;
+  padding: 20px 40px;  
   @include animated-underline-label($whiteColor, 'span');
 
   input[type='radio'] {
@@ -101,8 +99,7 @@ button:focus {
       display: inline-block;
       position: relative;
       color: $whiteColor;
-      @include fluid-font-size-questions(2rem, 3rem);
-      font-family: $basicFont;
+      @include fluid-font-size-questions(2rem, 3rem);      
       cursor: pointer;
       user-select: none;
       margin-left: 20px;
@@ -134,8 +131,7 @@ button:focus {
     @include fluid-font-size(2rem, 3rem);
     width: auto;
     padding: 10px;
-    border-radius: 5px;
-    font-family: $basicFont;
+    border-radius: 5px;    
     color: $whiteColor;
     background-color: $blueColor;
     border: 1px solid $whiteColor;
@@ -162,10 +158,6 @@ button:focus {
   }
 }
 
-.App {
-  margin-bottom: 80px;
-}
-
 h3 {
   display: flex;
   list-style: none;
@@ -179,25 +171,6 @@ p {
   font-size: 2rem;
 }
 
-li {
-  list-style: none;
-  display: flex;
-}
-
-.playingInfoContainer {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.imgContainer {
-  width: 195px;
-}
-
-.userAvatar {
-  max-width: 100%;
-  height: auto;
-}
-
 .mainContainer {
   display: flex;
 }
@@ -209,4 +182,49 @@ li {
 
 .userSetupContainer {
   min-width: 30%;
+  padding: 20px;
+  margin: 20px;
+    li {
+      width: 250px;
+      height: auto;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10px;
+      margin: 10px;
+  } 
+  
+  .playingInfoContainer {
+    display: flex;    
+    flex-wrap: wrap;
+  }
+
+  .imgContainer {
+    @include fluid-width-height(12rem, 20rem); 
+    margin: 10px auto; 
+
+    .userAvatar {
+      max-width: 100%;
+      height: auto;
+      border-radius: 50%;
+      border: 3px solid $whiteColor;
+    }
+  }
+
+  .scoreContainer{
+    text-align: center;
+    h4{
+      @include fluid-font-size(1.8rem, 3rem);
+      margin: 15px;
+    }
+
+    p{
+      @include fluid-font-size(1.6rem, 2rem);
+      margin: 0;
+    }
+  }
+
+  
+
 }
