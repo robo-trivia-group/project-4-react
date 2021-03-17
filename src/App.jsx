@@ -117,6 +117,10 @@ function App() {
     getQuestions(difficulty, categoryChoice);
     setGoButton(true);
     setLetsPlay(false);
+    const dbRefUser = db.ref(`/currentPlayers/${localUser[0]}`);
+      dbRefUser.update({
+        currentQuestion: firebase.database.ServerValue.increment(1)
+      })
   };
 
   const handleLetsPlay = (e) => {
@@ -136,12 +140,18 @@ function App() {
 
   // checks if user choice is correct and updates question index to next question
   function handleAnswerSubmit(usersChoice) {
+    const dbRefUser = db.ref(`/currentPlayers/${localUser[0]}`);
+
     if (usersChoice) {
-      const dbRefUser = db.ref(`/currentPlayers/${localUser[0]}`);
       dbRefUser.update({
         currentScore: firebase.database.ServerValue.increment(1)
       })
+      
+    dbRefUser.update({
+        currentQuestion: firebase.database.ServerValue.increment(1)
+      })
     }
+
     answersArray.push(usersChoice);
     setquestionIndex(questionIndex + 1);
     checkAnswers();
