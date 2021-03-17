@@ -33,7 +33,7 @@
 
 import './styles/styles.scss';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import FormComponent from './FormComponent.jsx';
 import UserComponent from './UserComponent';
@@ -134,13 +134,12 @@ function App() {
 
   return (
     <Router>   
-      <div className="App">
-        <div className="parent">
+      <div className="App">        
         <HeaderComponent /> 
         <div className="wrapper">
         <div className="mainContainer">
-          <UserComponent />
-          <Route exact path ="/" render={()=>
+          <Route exact path="/"  component ={UserComponent}/>
+          <Route exact path ="/form" render={()=>
             <FormComponent
             handleDifficultyChange={handleDifficultyChange}
             categoryList={allCategory}
@@ -149,14 +148,14 @@ function App() {
           />
           } />          
           
-          <Route path="/" 
+          <Route path="/form" 
           render={()=>{
             return(
               <div className="questionContainer">              
               {goButton && allQuestions[questionIndex] ? 
               (
                 <>
-                <Redirect exact from="/" to ="/questions"/>
+                <Redirect from="/form" to ="/form/questions"/>
                 <QuestionComponent
                   handleAnswerSubmit={handleAnswerSubmit}
                   singleQuestion={allQuestions[questionIndex]}
@@ -173,8 +172,8 @@ function App() {
             
           }/>
         </div>
-        </div>    
-      </div>
+        </div> 
+      
         <Footer/>    
       
       </div>

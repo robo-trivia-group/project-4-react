@@ -5,10 +5,10 @@ import { useState } from 'react';
 const db = firebase.database();
 
 export default function UserComponent() {
-  const [player, setPlayer] = useState("Player");
+  const [player, setPlayer] = useState("");
 
   return (
-    <div>
+    <div className="wrapper">
       <form onSubmit={e => {
         e.preventDefault();
         const quizRef = db.ref('quiz');
@@ -19,21 +19,23 @@ export default function UserComponent() {
           first: "player"
         })
       }}>
-      <label htmlFor="userInput"></label>
+      <label htmlFor="userInput" className="srOnly">User Name</label>
       <input 
       type="text" 
       value={player} 
       onChange={(e) => setPlayer(e.target.value)} 
-      id="userInput"
+      id="userInput"  
+      placeholder="your name"    
+      required
       />
       {/* <input 
       type="text" 
       value={player2} 
       onChange={(e) => setPlayer2(e.target.value)} 
       id="userInput"
-      /> */}
-      <button type='submit'>Start the Game!</button>
-
+      /> */}      
+        <button type='submit'>Start the Game!</button>
+      
       </form>
     </div>
   )

@@ -3,19 +3,14 @@ html {
 }
 
 body{
-  background-color:$blueColor;    
+  background-color:$blueColor;  
+  position: relative;
 }
-.App{
-  background-color:$blueColor;
+.App{  
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-
-  
+  min-height: 100vh; 
   }
-  .parent{
-    flex-grow:1;    
-    }
 
 .mainContainer{
   margin: 20px auto;
@@ -25,7 +20,6 @@ body{
   max-width: 1600px;
   width: 90%;
   margin: 0 auto;
-  // border: 1px solid red;
 }
 
 .triviaQuestions {
@@ -38,6 +32,10 @@ body{
   display: flex;
   flex-direction: column;
   padding: 15px 0;
+}
+
+a{
+  text-decoration: none;
 }
 
 
