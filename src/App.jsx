@@ -54,7 +54,7 @@ function App() {
   const [letsPlay, setLetsPlay] = useState(false);
   const [joinBots, setJoinBots] = useState(true);
 
-  const [questionIndex, setquestionIndex] = useState(0);
+  const [questionIndex, setQuestionIndex] = useState(0);
   const [answersArray, setAnswersArray] = useState([]);
   const [correctAnswers, setCorrectAnswers] = useState([]);
 
@@ -63,7 +63,6 @@ function App() {
   let totalScore;
   totalScore = correctAnswers.length;
   const db = firebase.database();
-  // const [ userInput, setUserInput] = useState('');
 
   //todo: axios call to get a full list of Categories
   useEffect(() => {
@@ -154,7 +153,7 @@ function App() {
     }
 
     answersArray.push(usersChoice);
-    setquestionIndex(questionIndex + 1);
+    setQuestionIndex(questionIndex + 1);
     checkAnswers();
 
     if (questionIndex === allQuestions.length - 1) {
@@ -168,13 +167,7 @@ function App() {
   }
 
   
-
-
-  return questionIndex === 2 ? (
-    <FinalResultComponent 
-      totalScore={totalScore} 
-      localUser={localUser}/>
-  ) : (
+return (
     <div className="App">
       <HeaderComponent />
 
@@ -187,7 +180,7 @@ function App() {
                 localUser={localUser}
                 getLocal={getLocalUser}
               />
-            )} 
+            )}
             <PlayerComponent handleLetsPlay={handleLetsPlay} />
           </div>
 
@@ -212,6 +205,21 @@ function App() {
               />
             </div>
           )}
+
+          {questionIndex > 0 && questionIndex === allQuestions.length ? (
+            <div className="finalResultContainer">
+              <FinalResultComponent
+                setGoButton={setGoButton}
+                setLetsPlay={setLetsPlay}
+                setJoinBots={setJoinBots}
+                setQuestionIndex={setQuestionIndex}
+                totalScore={totalScore}
+                localUser={localUser}
+                setLocalUser={setLocalUser}
+                setCorrectAnswers={setCorrectAnswers}
+              />
+            </div>
+          ) : null}
         </div>
         {/**end of mainContainer */}
       </div>
