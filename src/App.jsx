@@ -39,7 +39,6 @@ import UserComponent from './UserComponent';
 import PlayerComponent from './PlayerComponent.jsx';
 import QuestionComponent from './QuestionComponent';
 import HeaderComponent from './HeaderComponent';
-import InstructionComponent from './InstructionComponent';
 import Footer from './Footer';
 
 import FinalResultComponent from './FinalResultComponent';
