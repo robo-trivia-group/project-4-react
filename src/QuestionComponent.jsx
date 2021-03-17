@@ -1,4 +1,8 @@
-function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
+function QuestionComponent({
+  singleQuestion,
+  handleAnswerSubmit,
+  correctAnswers,
+}) {
   const { question, correct_answer, incorrect_answers } = singleQuestion;
 
   let chosenAnswer;
@@ -38,6 +42,7 @@ function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
 
   shuffle(randomAnswers);
 
+  console.log(correctAnswers, 'Answer');
   return (
     <>
       {
@@ -96,6 +101,7 @@ function QuestionComponent({ singleQuestion, handleAnswerSubmit }) {
                 {decodeURIComponent(randomAnswers[3])}
               </label>
             </span>
+            <p>{correctAnswers.length}</p>
             <button>submit</button>
           </form>
         </div>
