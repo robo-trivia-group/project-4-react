@@ -32,14 +32,15 @@ export default function UserComponent({ localUser, getLocal, handleJoinBots }) {
         </label>
         <input
           type="text"
-          placeholder="Username"
+          placeholder="username"
           value={player}
           onChange={handlePlayerChange}
           id="userInput"
+          maxLength={15}
           required
         />
 
-        <button onClick={handlePlayerSubmit}>Join the Bots</button>
+        <button>Join the Bots</button>
       </form>
     </div>
   );
