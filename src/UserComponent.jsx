@@ -12,9 +12,10 @@ export default function UserComponent() {
 
   const handlePlayerSubmit = (e) => {
     e.preventDefault();
-    const playerRef = db.ref('players');
-    const newPlayer = playerRef.push();
-    newPlayer.set({
+    // const playerRef = db.ref('players');
+    // const newPlayer = playerRef.push();
+    db.ref().push({
+    // newPlayer.set({
       username: player,
       avatar: `https://robohash.org/${player}`,
       currentScore: 0,
@@ -33,9 +34,10 @@ export default function UserComponent() {
       value={player} 
       onChange={handlePlayerChange} 
       id="userInput"
+      required
       />
 
-      <button type='submit'>Start the Game!</button>
+      <button>Join the Bots</button>
 
       </form>
     </div>
