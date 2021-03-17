@@ -166,7 +166,7 @@ function App() {
     setCorrectAnswers(answersArray.filter((answer) => answer === 'true'));
   }
 
-  console.log("SOMETHING SOMET HING SOMETHINSDFSFAS");
+  console.log("SOMETHING SOMEassssssssssssssasdwasdwadT HING SOMETHINSDFSFAS");
 
   return (
     <div className="App">
