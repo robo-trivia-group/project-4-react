@@ -34,7 +34,6 @@
 import './styles/styles.scss';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import firebase from './firebase.jsx';
 import FormComponent from './FormComponent.jsx';
 import UserComponent from './UserComponent';
 import PlayerComponent from './PlayerComponent.jsx';
@@ -61,8 +60,6 @@ function App() {
   const [localUser, setLocalUser] = useState([]);
 
   let totalScore;
-  totalScore = correctAnswers.length;
-  const db = firebase.database();
   // const [ userInput, setUserInput] = useState('');
 
   //todo: axios call to get a full list of Categories
@@ -118,10 +115,6 @@ function App() {
     getQuestions(difficulty, categoryChoice);
     setGoButton(true);
     setLetsPlay(false);
-    const dbRefUser = db.ref(`/currentPlayers/${localUser[0]}`);
-      dbRefUser.update({
-        currentQuestion: firebase.database.ServerValue.increment(1)
-      })
   };
 
   const handleLetsPlay = (e) => {
@@ -141,18 +134,6 @@ function App() {
 
   // checks if user choice is correct and updates question index to next question
   function handleAnswerSubmit(usersChoice) {
-    const dbRefUser = db.ref(`/currentPlayers/${localUser[0]}`);
-
-    if (usersChoice) {
-      dbRefUser.update({
-        currentScore: firebase.database.ServerValue.increment(1)
-      })
-
-    dbRefUser.update({
-        currentQuestion: firebase.database.ServerValue.increment(1)
-      })
-    }
-
     answersArray.push(usersChoice);
     setquestionIndex(questionIndex + 1);
     checkAnswers();
@@ -166,10 +147,6 @@ function App() {
   function checkAnswers() {
     setCorrectAnswers(answersArray.filter((answer) => answer === 'true'));
   }
-
-  
-
-
   return questionIndex === 2 ? (
     <FinalResultComponent totalScore={totalScore} />
   ) : (

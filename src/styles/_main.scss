@@ -3,7 +3,7 @@ input[type='text'] {
   @include fluid-font-size(1.6rem, 2.5rem);
   padding: 10px 25px 10px 10px;
   width: 200px;
-  margin: 50px 5px;
+  margin: 20px 0px;
   color: $turquoiseColor;
   background-color: transparent;
   border: none;
@@ -12,7 +12,7 @@ input[type='text'] {
 button {
   font-family: $basicFont;
   margin: 10px auto;
-  @include fluid-font-size(2rem, 3rem);
+  @include fluid-font-size(1.6rem, 2rem);
   width: auto;
   padding: 10px;
   border-radius: 5px;
@@ -159,16 +159,19 @@ button:focus {
 }
 
 h3 {
-  display: flex;
+  display: flex;  
   list-style: none;
   color: $whiteColor;
   @include fluid-font-size(2rem, 3rem);
-  padding: 5px 0;
+  padding: 5px;
+  margin:15px 0;
   text-align: left;
-}
-
-p {
-  font-size: 2rem;
+  text-shadow: 1px 1px 1px $raspberryColor,
+            1px 2px 1px $raspberryColor,
+            1px 3px 1px $raspberryColor,
+            1px 4px 1px $raspberryColor,
+            1px 5px 1px $raspberryColor,
+            1px 6px 1px $raspberryColor,            
 }
 
 .mainContainer {
@@ -176,7 +179,8 @@ p {
 }
 
 .formContainer,
-.questionContainer {
+.questionContainer,
+.finalResultContainer {
   min-width: 70%;
 }
 
@@ -185,20 +189,21 @@ p {
   padding: 20px;
   margin: 20px;
     li {
-      width: 250px;
-      height: auto;
+      @include fluid-width-height(25rem, 40rem); 
       list-style: none;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 10px;
+      flex-direction: column;           
+      padding: 15px;
       margin: 10px;
+      background-color: $raspberryColor;
   } 
   
   .playingInfoContainer {
     display: flex;    
     flex-wrap: wrap;
-  }
+    justify-content: center;
+    padding: 10px;      
+    }
 
   .imgContainer {
     @include fluid-width-height(12rem, 20rem); 
@@ -216,7 +221,7 @@ p {
     text-align: center;
     h4{
       @include fluid-font-size(1.8rem, 3rem);
-      margin: 15px;
+      margin: 15px;      
     }
 
     p{
