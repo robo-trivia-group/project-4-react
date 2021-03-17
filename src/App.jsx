@@ -34,6 +34,7 @@
 import './styles/styles.scss';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import firebase from './firebase';
 import FormComponent from './FormComponent.jsx';
 import UserComponent from './UserComponent';
 import PlayerComponent from './PlayerComponent.jsx';
@@ -60,7 +61,8 @@ function App() {
   const [localUser, setLocalUser] = useState([]);
 
   let totalScore;
-  // const [ userInput, setUserInput] = useState('');
+  totalScore = correctAnswers.length;
+  const db = firebase.database();
 
   //todo: axios call to get a full list of Categories
   useEffect(() => {
