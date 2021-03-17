@@ -2,7 +2,7 @@ import React from 'react';
 import firebase from './firebase';
 import { useState } from 'react';
 
-export default function UserComponent() {
+export default function UserComponent({localUser, getLocal}) {
   const db = firebase.database();
   const [player, setPlayer] = useState('');
 
@@ -12,13 +12,15 @@ export default function UserComponent() {
 
   const handlePlayerSubmit = (e) => {
     e.preventDefault();
-    db.ref().push({
+    const newUserObj = db.ref('/currentPlayers').push({
       username: player,
       avatar: `https://robohash.org/${player}`,
       currentScore: 0,
       highestScore: 0,
     })
     setPlayer('');
+    localUser.push(newUserObj.key, player);
+    getLocal(localUser);
   }
 
   return (

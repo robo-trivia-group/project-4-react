@@ -5,7 +5,7 @@ function PlayerComponent({handleLetsPlay}) {
   const [playerInfo, setPlayerInfo] = useState([]);
 
   useEffect(() => {
-    const dbRef = firebase.database().ref();
+    const dbRef = firebase.database().ref('/currentPlayers');
 
     dbRef.on('value', (data) => {
       const playerData = data.val();
@@ -13,7 +13,10 @@ function PlayerComponent({handleLetsPlay}) {
       const copyArray = [];
 
       for (let key in playerData) {
-        copyArray.push(playerData[key]);
+        copyArray.push({
+          uniqueKey: key,
+          playerData: playerData[key]
+        });
       }
 
       setPlayerInfo(copyArray);
@@ -25,20 +28,21 @@ function PlayerComponent({handleLetsPlay}) {
       <h2>Current Players:</h2>
       <ul className="playerContainer">
         {playerInfo.map((player, index) => {
+          const {username, avatar, currentScore, highestScore} = player.playerData;
           return (
             <li key={index}>
               <div className='imgContainer'>
               <img
                 className='userAvatar'
-                src={player.avatar}
-                alt={`Robot avatar for ${player.username}`}
+                src={avatar}
+                alt={`Robot avatar for ${username}`}
               />
               </div>
               
               <div className='scoreContainer'>
-                <h3>{player.username}</h3>
-                <p>Current Score: {player.currentScore}</p>
-                <p>High Score: {player.highestScore}</p>
+                <h3>{username}</h3>
+                <p>Current Score: {currentScore}</p>
+                <p>High Score: {highestScore}</p>
               </div>
             </li>
           );

@@ -56,6 +56,8 @@ function App() {
   const [answersArray, setAnswersArray] = useState([]);
   const [correctAnswers, setCorrectAnswers] = useState([]);
 
+  const [ localUser, setLocalUser ] = useState([]);
+
   let totalScore;
   // const [ userInput, setUserInput] = useState('');
 
@@ -119,6 +121,11 @@ function App() {
     setLetsPlay(true);
   };
 
+  // testing phase - getting local user
+  const getLocalUser = (local) => {
+    setLocalUser(local)
+  }
+
   // checks if user choice is correct and updates question index to next question
   function handleAnswerSubmit(usersChoice) {
     answersArray.push(usersChoice);
@@ -143,7 +150,9 @@ function App() {
       <div className="wrapper">
         <div className="mainContainer">
           <div className="userSetupContainer">
-            <UserComponent />
+            <UserComponent 
+              localUser={localUser}
+              getLocal={getLocalUser}/>
             <PlayerComponent handleLetsPlay={handleLetsPlay} />
           </div>
 
