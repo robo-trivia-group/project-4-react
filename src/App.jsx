@@ -34,7 +34,7 @@
 import './styles/styles.scss';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import firebase from './firebase';
+import firebase from './firebase.jsx';
 import FormComponent from './FormComponent.jsx';
 import UserComponent from './UserComponent';
 import PlayerComponent from './PlayerComponent.jsx';
@@ -54,7 +54,7 @@ function App() {
   const [letsPlay, setLetsPlay] = useState(false);
   const [joinBots, setJoinBots] = useState(true);
 
-  const [questionIndex, setQuestionIndex] = useState(0);
+  const [questionIndex, setquestionIndex] = useState(0);
   const [answersArray, setAnswersArray] = useState([]);
   const [correctAnswers, setCorrectAnswers] = useState([]);
 
@@ -63,6 +63,7 @@ function App() {
   let totalScore;
   totalScore = correctAnswers.length;
   const db = firebase.database();
+  // const [ userInput, setUserInput] = useState('');
 
   //todo: axios call to get a full list of Categories
   useEffect(() => {
@@ -118,9 +119,9 @@ function App() {
     setGoButton(true);
     setLetsPlay(false);
     const dbRefUser = db.ref(`/currentPlayers/${localUser[0]}`);
-    dbRefUser.update({
-      currentQuestion: firebase.database.ServerValue.increment(1),
-    });
+      dbRefUser.update({
+        currentQuestion: firebase.database.ServerValue.increment(1)
+      })
   };
 
   const handleLetsPlay = (e) => {
@@ -144,16 +145,16 @@ function App() {
 
     if (usersChoice) {
       dbRefUser.update({
-        currentScore: firebase.database.ServerValue.increment(1),
-      });
+        currentScore: firebase.database.ServerValue.increment(1)
+      })
 
-      dbRefUser.update({
-        currentQuestion: firebase.database.ServerValue.increment(1),
-      });
+    dbRefUser.update({
+        currentQuestion: firebase.database.ServerValue.increment(1)
+      })
     }
 
     answersArray.push(usersChoice);
-    setQuestionIndex(questionIndex + 1);
+    setquestionIndex(questionIndex + 1);
     checkAnswers();
 
     if (questionIndex === allQuestions.length - 1) {
@@ -166,9 +167,14 @@ function App() {
     setCorrectAnswers(answersArray.filter((answer) => answer === 'true'));
   }
 
-  console.log("SOMETHING SOMEassssssssssssssasdwasdwadT HING SOMETHINSDFSFAS");
+  
 
-  return (
+
+  return questionIndex === 2 ? (
+    <FinalResultComponent 
+      totalScore={totalScore} 
+      localUser={localUser}/>
+  ) : (
     <div className="App">
       <HeaderComponent />
 
@@ -181,7 +187,7 @@ function App() {
                 localUser={localUser}
                 getLocal={getLocalUser}
               />
-            )}
+            )} 
             <PlayerComponent handleLetsPlay={handleLetsPlay} />
           </div>
 
@@ -206,18 +212,6 @@ function App() {
               />
             </div>
           )}
-
-          {questionIndex > 0 && questionIndex === allQuestions.length ? (
-            <div className="finalResultContainer">
-              <FinalResultComponent
-                setGoButton={setGoButton}
-                setLetsPlay={setLetsPlay}
-                setJoinBots={setJoinBots}
-                setQuestionIndex={setQuestionIndex}
-                totalScore={totalScore}
-              />
-            </div>
-          ) : null}
         </div>
         {/**end of mainContainer */}
       </div>
