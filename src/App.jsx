@@ -33,7 +33,7 @@
 
 import './styles/styles.scss';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import FormComponent from './FormComponent.jsx';
 import UserComponent from './UserComponent';
@@ -121,7 +121,6 @@ function App() {
     checkAnswers();
 
     if (questionIndex === allQuestions.length - 1) {
-      
       setAnswersArray([]);
     }
   }
@@ -130,11 +129,8 @@ function App() {
   function checkAnswers() {
     setCorrectAnswers(answersArray.filter((answer) => answer === 'true'));
   }
-
   return questionIndex === 2 ? (
-    <FinalResultComponent
-      totalScore={totalScore}
-    />
+    <FinalResultComponent totalScore={totalScore} />
   ) : (
     <Router>
       <div className="App">

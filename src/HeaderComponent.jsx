@@ -3,10 +3,8 @@ function HeaderComponent() {
   return (
     <header>
       <div className="wrapper">
-        <Link to="/">
-          <h1>Robo Trivia</h1>
-        </Link>
-      </div>
+        <Link to={"/"}><h1>Robo Trivia</h1></Link>  
+      </div>  
     </header>
   );
 }
