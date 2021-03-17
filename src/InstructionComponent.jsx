@@ -1,4 +1,4 @@
-function StartGame() {
+function InstructionComponent() {
   return (
     <div className="startGame">
       <h2 className="animate__shakeX">
@@ -8,4 +8,4 @@ function StartGame() {
   );
 }
 
-export default StartGame;
+export default InstructionComponent;

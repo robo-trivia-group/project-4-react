@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import firebase from './firebase.jsx';
 
-function PlayerComponent() {
+function PlayerComponent({handleLetsPlay}) {
   const [playerInfo, setPlayerInfo] = useState([]);
 
   useEffect(() => {
@@ -27,17 +27,25 @@ function PlayerComponent() {
         {playerInfo.map((player, index) => {
           return (
             <li key={index}>
+              <div className='imgContainer'>
               <img
+                className='userAvatar'
                 src={player.avatar}
                 alt={`Robot avatar for ${player.username}`}
               />
-              <h3>{player.username}</h3>
-              <p>Current Score: {player.currentScore}</p>
-              <p>High Score: {player.highestScore}</p>
+              </div>
+              
+              <div className='scoreContainer'>
+                <h3>{player.username}</h3>
+                <p>Current Score: {player.currentScore}</p>
+                <p>High Score: {player.highestScore}</p>
+              </div>
             </li>
           );
         })}
       </ul>
+      
+      <button onClick={handleLetsPlay}>Let's Play</button>
     </div>
   );
 }

@@ -4,7 +4,7 @@ header {
     text-align: center;
     height: auto;
     background-color: rgba(251, 218, 237,0.4);
-    background-image: url("./Mini-Robot.png");
+    background-image: url('../assets/Mini-Robot.png');
     background-size: 150px 150px; 
     background-repeat: no-repeat; 
     background-position: 85% center;
@@ -38,7 +38,7 @@ footer{
     bottom: 0;
     width: 100%;
     text-align: center;
-    background-color: rgba(251, 218, 237,0.4);  
+    background-color: rgba(251, 218, 237,0.4);
     margin-bottom: 0;
     
     p{
