@@ -1,4 +1,5 @@
 import CategoryMap from './CategoryMap';
+import InstructionComponent from './InstructionComponent'
 
 function FormComponent({
   handleDifficultyChange,
@@ -8,6 +9,7 @@ function FormComponent({
 }) {
   return (
     <div>
+      <InstructionComponent />
       <form onSubmit={handleGoSubmit} className="dropDown">
         <label className="srOnly" htmlFor="difficulty">
           Select a Difficulty

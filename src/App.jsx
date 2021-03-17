@@ -33,14 +33,13 @@
 
 import './styles/styles.scss';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import FormComponent from './FormComponent.jsx';
 import UserComponent from './UserComponent';
 import PlayerComponent from './PlayerComponent.jsx';
 import QuestionComponent from './QuestionComponent';
 import HeaderComponent from './HeaderComponent';
-import StartGame from './StartGame';
+import InstructionComponent from './InstructionComponent';
 import Footer from './Footer';
 
 import FinalResultComponent from './FinalResultComponent';
@@ -52,6 +51,7 @@ function App() {
 
   const [allQuestions, setAllQuestions] = useState([]);
   const [goButton, setGoButton] = useState(false);
+  const [letsPlay, setLetsPlay] = useState(false);
 
   const [questionIndex, setquestionIndex] = useState(0);
   const [answersArray, setAnswersArray] = useState([]);
@@ -112,6 +112,12 @@ function App() {
     e.preventDefault();
     getQuestions(difficulty, categoryChoice);
     setGoButton(true);
+    setLetsPlay(false);
+  };
+
+  const handleLetsPlay = (e) => {
+    e.preventDefault();
+    setLetsPlay(true);
   };
 
   // checks if user choice is correct and updates question index to next question
@@ -132,55 +138,40 @@ function App() {
   return questionIndex === 2 ? (
     <FinalResultComponent totalScore={totalScore} />
   ) : (
-    <Router>
-      <div className="App">
-        <div className="parent">
-          <HeaderComponent />
-          <div className="wrapper">
-            <div className="mainContainer">
-              <UserComponent />
-              <PlayerComponent />
-              <Route
-                exact
-                path="/"
-                render={() => (
-                  <FormComponent
-                    handleDifficultyChange={handleDifficultyChange}
-                    categoryList={allCategory}
-                    handleCategoryChange={handleCategoryChange}
-                    handleGoSubmit={handleGoSubmit}
-                  />
-                )}
-              />
+    <div className="App">
+      <HeaderComponent />
 
-              <Route
-                path="/"
-                render={() => {
-                  return (
-                    <div className="questionContainer">
-                      {goButton && allQuestions[questionIndex] ? (
-                        <>
-                          <Redirect from="/" exact to="/questions" />
-                          <QuestionComponent
-                            correctAnswers={correctAnswers}
-                            handleAnswerSubmit={handleAnswerSubmit}
-                            singleQuestion={allQuestions[questionIndex]}
-                            key={questionIndex}
-                          />
-                        </>
-                      ) : (
-                        <StartGame />
-                      )}
-                    </div>
-                  );
-                }}
-              />
-            </div>
+      <div className="wrapper">
+        <div className="mainContainer">
+          <div className="userSetupContainer">
+            <UserComponent />
+            <PlayerComponent handleLetsPlay={handleLetsPlay} />
           </div>
+
+          {letsPlay && (
+            <FormComponent
+              handleDifficultyChange={handleDifficultyChange}
+              categoryList={allCategory}
+              handleCategoryChange={handleCategoryChange}
+              handleGoSubmit={handleGoSubmit}
+            />
+          )}
+
+          {goButton && allQuestions[questionIndex] && (
+            <QuestionComponent
+              correctAnswers={correctAnswers}
+              handleAnswerSubmit={handleAnswerSubmit}
+              singleQuestion={allQuestions[questionIndex]}
+              key={questionIndex}
+            />
+          )}
         </div>
-        <Footer />
+        {/**end of mainContainer */}
       </div>
-    </Router>
+      {/**end of wrapper*/}
+
+      <Footer />
+    </div>
   );
 }
 
