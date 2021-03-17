@@ -1,14 +1,22 @@
 import firebase from './firebase.jsx';
 
-const FinalResultComponent = ({totalScore}) => {
-
-  console.log(totalScore)
+const FinalResultComponent = ({
+  totalScore,
+  setQuestionIndex,
+  setJoinBots,
+  setLetsPlay,
+  setGoButton,
+}) => {
+  // console.log(totalScore)
 
   const restartGame = () => {
     const dbRefPlayers = firebase.database().ref().child('currentPlayers');
     dbRefPlayers.remove();
-  }
-
+    setQuestionIndex(0);
+    setLetsPlay(false);
+    setGoButton(false);
+    setJoinBots(true);
+  };
 
   return (
     <div>
@@ -17,8 +25,7 @@ const FinalResultComponent = ({totalScore}) => {
 
       <button onClick={restartGame}>Play Again!</button>
     </div>
-    
-  )
-}
+  );
+};
 
-export default FinalResultComponent
+export default FinalResultComponent;
