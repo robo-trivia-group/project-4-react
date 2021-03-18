@@ -8,26 +8,25 @@ const FinalResultComponent = ({
   setGoButton,
   localUser,
   setLocalUser,
-  setCorrectAnswers
+  setCorrectAnswers,
+  setDisabled,
 }) => {
-
   const restartGame = () => {
+    const dbRefCurrent = firebase
+      .database()
+      .ref('/currentPlayers')
+      .child(localUser[0]);
+    dbRefCurrent.once('value').then((snapshot) => {
+      const username = snapshot.child('username').val();
+      const score = snapshot.child('currentScore').val();
 
-
-    const dbRefCurrent = firebase.database().ref('/currentPlayers').child(localUser[0]);
-    dbRefCurrent.once('value')
-      .then(snapshot => {
-        const username = snapshot.child('username').val();
-        const score = snapshot.child('currentScore').val();
-
-        const dbRefScore = firebase.database().ref('/highScore');
-        const setRefScore = dbRefScore.push();
-        setRefScore.set({
-          username: username,
-          highScore: score
-        })
-        
-      })
+      const dbRefScore = firebase.database().ref('/highScore');
+      const setRefScore = dbRefScore.push();
+      setRefScore.set({
+        username: username,
+        highScore: score,
+      });
+    });
 
     const dbRefPlayers = firebase.database().ref().child('currentPlayers');
     dbRefPlayers.remove();
@@ -37,6 +36,7 @@ const FinalResultComponent = ({
     setLetsPlay(false);
     setGoButton(false);
     setJoinBots(true);
+    setDisabled(false);
   };
 
   return (

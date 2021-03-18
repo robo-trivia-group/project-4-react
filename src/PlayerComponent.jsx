@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import firebase from './firebase.jsx';
 
-function PlayerComponent({ handleLetsPlay }) {
+function PlayerComponent({ handleLetsPlay, disabled }) {
   const [playerInfo, setPlayerInfo] = useState([]);
+
+  // function disableLetsPlayButton() {
+  //   this.state.disabled
+  // }
 
   useEffect(() => {
     const dbRef = firebase.database().ref('/currentPlayers');
@@ -25,8 +29,10 @@ function PlayerComponent({ handleLetsPlay }) {
 
   return (
     <>
-    <button onClick={handleLetsPlay}>Let's Play</button>
-      <h3>Current Players:</h3>      
+      <button className="letsPlay" disabled={disabled} onClick={handleLetsPlay}>
+        Let's Play
+      </button>
+      <h3>Current Players:</h3>
       <ul className="playingInfoContainer">
         {playerInfo.map((player, index) => {
           const {
@@ -54,8 +60,6 @@ function PlayerComponent({ handleLetsPlay }) {
           );
         })}
       </ul>
-
-      
     </>
   );
 }
