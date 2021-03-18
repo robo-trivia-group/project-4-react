@@ -7,6 +7,13 @@ body{
   background-color:$blueColor;  
   position: relative;
 }
+
+.wrapper {
+  max-width: 1600px;
+  width: 90%;
+  margin: 0 auto;
+}
+
 .App{  
   display: flex;
   flex-direction: column;
@@ -14,27 +21,49 @@ body{
   margin-bottom: 20px;  
   }
 
-.mainContainer{
-  margin: 20px auto;
+.mainContainer {
+  display: flex;
+  font-family: $basicFont;
+  margin-bottom: 20px 20px 80px 20px;
+  @include tablet{
+    &{
+      flex-direction: column;
+    }
+  }
+}
+
+button, input, select{
   font-family: $basicFont;
 }
 
-.wrapper {
-  max-width: 1600px;
-  width: 90%;
-  margin: 0 auto;
-  // border: 1px solid red;
+button{
+  width: auto;
+  border-radius: 5px; 
+  padding: 10px;
+  transition: box-shadow ease-in-out 0.2s,color ease-in-out 0.2s,background-color ease-in-out 0.2s,transform ease-in-out 0.1s;
+  @include fluid-font-size(2rem, 3rem);
 }
 
-.triviaQuestions {
-  text-align: left;
+button:active{
+  transform: translateY(4px);
 }
 
-.choiceContainer {
-  display: flex;
-  flex-direction: column;
-  padding: 15px 0;
+
+
+
+.formContainer,
+.questionContainer,
+.finalResultContainer {
+  min-width: 70%;
+  margin-bottom: 70px;
+  @include tablet{
+    &{
+      width: 100%;
+    }
+  }
 }
+
+
 
 
 
