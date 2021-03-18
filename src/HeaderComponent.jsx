@@ -3,24 +3,32 @@ import {useEffect, useState} from 'react';
 
 function HeaderComponent() {
 
-  const [ scoreBoard, setScoreBoard ] = useState([]);
+  // const [ scoreBoard, setScoreBoard ] = useState([]);
   
+  // get data from firebase, store into an array
+  // make a copy of sort by either reduce()
+  // set sorted into state
+
   useEffect(() => {
     const dbScores = firebase.database().ref('/highScore');
-    dbScores.on('value', (data) => {
-      const recordedScores = data.val();
-      const scoreArray = [];
-      scoreArray.push(recordedScores);
-      setScoreBoard(scoreArray);
-    })
+    dbScores.once('value')
+      .then(snapshot => {
+        const key = snapshot.val();
+        console.log(key);
+      })
+      // console.log(data.val());
+      // const recordedScores = data.val();
+      // const scoreArray = [];
+      // scoreArray.push(recordedScores);
+      // setScoreBoard(scoreArray);
   }, [])
 
-  scoreBoard.sort((a, b) => {
-    return parseFloat(a.highScore) - parseFloat(b.highScore);
+  // const sortedArray = scoreBoard.sort((a, b) => {
+  //   return parseFloat(a.highScore) - parseFloat(b.highScore);
     
-  })
+  // })
   
-  console.log(scoreBoard, 'score');
+  // console.log(sortedArray);
 
 
   return (
