@@ -53,6 +53,7 @@ function App() {
   const [goButton, setGoButton] = useState(false);
   const [letsPlay, setLetsPlay] = useState(false);
   const [joinBots, setJoinBots] = useState(true);
+  const [disabled, setDisabled] = useState(false);
 
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answersArray, setAnswersArray] = useState([]);
@@ -118,15 +119,16 @@ function App() {
     setGoButton(true);
     setLetsPlay(false);
     const dbRefUser = db.ref(`/currentPlayers/${localUser[0]}`);
-      dbRefUser.update({
-        currentQuestion: firebase.database.ServerValue.increment(1)
-      })
+    dbRefUser.update({
+      currentQuestion: firebase.database.ServerValue.increment(1),
+    });
   };
 
   const handleLetsPlay = (e) => {
     e.preventDefault();
     setLetsPlay(true);
     setGoButton(false);
+    setDisabled(true);
   };
 
   const handleJoinBots = () => {
@@ -144,8 +146,8 @@ function App() {
 
     if (usersChoice) {
       dbRefUser.update({
-        currentScore: firebase.database.ServerValue.increment(1)
-      })
+        currentScore: firebase.database.ServerValue.increment(1),
+      });
     }
 
     answersArray.push(usersChoice);
@@ -153,9 +155,9 @@ function App() {
     checkAnswers();
 
     if (questionIndex < allQuestions.length - 1) {
-        dbRefUser.update({
-          currentQuestion: firebase.database.ServerValue.increment(1)
-      })
+      dbRefUser.update({
+        currentQuestion: firebase.database.ServerValue.increment(1),
+      });
     }
 
     if (questionIndex === allQuestions.length - 1) {
@@ -168,8 +170,7 @@ function App() {
     setCorrectAnswers(answersArray.filter((answer) => answer === 'true'));
   }
 
-  
-return (
+  return (
     <div className="App">
       <HeaderComponent />
 
@@ -183,7 +184,10 @@ return (
                 getLocal={getLocalUser}
               />
             )}
-            <PlayerComponent handleLetsPlay={handleLetsPlay} />
+            <PlayerComponent
+              disabled={disabled}
+              handleLetsPlay={handleLetsPlay}
+            />
           </div>
 
           {letsPlay && (
@@ -219,6 +223,7 @@ return (
                 localUser={localUser}
                 setLocalUser={setLocalUser}
                 setCorrectAnswers={setCorrectAnswers}
+                setDisabled={setDisabled}
               />
             </div>
           ) : null}
