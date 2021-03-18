@@ -10,6 +10,9 @@ const FinalResultComponent = ({
   setLocalUser,
   setCorrectAnswers,
   setDisabled,
+  handlePlayAgain,
+  letsPlayDisabled,
+  setLetsPlayDisabled
 }) => {
   const restartGame = () => {
     const dbRefCurrent = firebase
@@ -37,6 +40,7 @@ const FinalResultComponent = ({
     setGoButton(false);
     setJoinBots(true);
     setDisabled(false);
+    setLetsPlayDisabled(false)
   };
 
   return (
@@ -44,7 +48,24 @@ const FinalResultComponent = ({
       <h3>The Quiz is Over!</h3>
       <h3>{`Your Total Score is: ${totalScore} /10`}</h3>
 
-      <button onClick={restartGame}>Play Again!</button>
+      <button 
+      className="playAgainBtn" 
+      disabled={letsPlayDisabled} 
+      onClick={handlePlayAgain}>
+        Play Again?
+        </button>
+      <button 
+      className="playAgainBtn" 
+      disabled={!letsPlayDisabled} 
+      onClick={restartGame}>
+          Confirm?
+        </button>
+        {letsPlayDisabled && (
+          <>
+            <p>WARNING! Your fellow Bots might still be playing...</p>
+            <p>Are they done?</p>
+          </>
+        )}
     </div>
   );
 };

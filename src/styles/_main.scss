@@ -8,18 +8,18 @@ input[type='text'] {
   border: none;
   border-bottom: 2px solid $whiteColor;
 }
-button {  
+button {
   margin: 10px auto;
   @include fluid-font-size(1.6rem, 3rem);
   width: auto;
-  
+
   border-radius: 5px;
-  background-color: $turquoiseColor;  
+  background-color: $turquoiseColor;
   color: $blueColor;
   border: 1px solid transparent;
   box-shadow: 3px 3px $shadowColor;
-  transition: box-shadow ease-in-out 0.2s,color ease-in-out 0.2s, background-color ease-in-out 0.2s,transform ease-in-out 0.1s;
-  
+  transition: box-shadow ease-in-out 0.2s, color ease-in-out 0.2s,
+    background-color ease-in-out 0.2s, transform ease-in-out 0.1s;
 }
 
 button:hover,
@@ -30,7 +30,7 @@ button:focus {
   border: 1px solid $turquoiseColor;
 }
 
-button:active{
+button:active {
   transform: translateY(6px);
 }
 
@@ -47,7 +47,7 @@ button:active{
     background-image: url('..//assets/arrow.png');
     background-repeat: no-repeat;
     background-position: 95% center;
-    background-size: 15px 15px;    
+    background-size: 15px 15px;
     background-color: $whiteColor;
     padding: 10px 25px 10px 10px;
     text-transform: lowercase;
@@ -73,11 +73,12 @@ button:active{
     width: auto;
     padding: 10px;
     border-radius: 5px;
-    background-color: $raspberryColor;    
+    background-color: $raspberryColor;
     color: $whiteColor;
     border: none;
     box-shadow: 3px 3px $shadowColor;
-    transition: box-shadow ease-in-out 0.2s,color ease-in-out 0.2s,background-color ease-in-out 0.2s,transform ease-in-out 0.1s;
+    transition: box-shadow ease-in-out 0.2s, color ease-in-out 0.2s,
+      background-color ease-in-out 0.2s, transform ease-in-out 0.1s;
   }
 
   button:hover,
@@ -86,7 +87,7 @@ button:active{
     color: $raspberryColor;
     background-color: $whiteColor;
   }
-  button:active{
+  button:active {
     transform: translateY(4px);
   }
 }
@@ -97,11 +98,9 @@ button:active{
     text-align: center;
     @include fluid-font-size(2rem, 4rem);
     color: $whiteColor;
-    text-shadow: 1px 1px 1px $raspberryColor,
-            1px 2px 1px $raspberryColor,
-            1px 3px 1px $raspberryColor,
-            1px 4px 1px $raspberryColor,
-            1px 5px 1px $raspberryColor,
+    text-shadow: 1px 1px 1px $raspberryColor, 1px 2px 1px $raspberryColor,
+      1px 3px 1px $raspberryColor, 1px 4px 1px $raspberryColor,
+      1px 5px 1px $raspberryColor;
   }
 }
 
@@ -109,100 +108,96 @@ button:active{
   min-width: 30%;
   padding: 0 20px 20px 20px;
   margin-top: 0;
-  margin-bottom: 20px;  
-    li {
-      @include fluid-width-height(15rem, 25rem); 
-      list-style: none;
-      display: flex;
-      flex-direction: column; 
-      justify-content: center;          
-      padding: 5px 2px;
-      margin: 10px;
-      border-radius: 15px;
-      box-shadow: 3px 3px $whiteColor;
-      background-color: rgba(65, 234, 212, 0.4);
-  } 
-  
+  margin-bottom: 20px;
+  li {
+    @include fluid-width-height(15rem, 25rem);
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px 2px;
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 3px 3px $whiteColor;
+    background-color: rgba(65, 234, 212, 0.4);
+  }
+
   .playingInfoContainer {
-    display: flex;    
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 10px;
     margin-top: 0;
   }
 
-  
   h3 {
-  display: flex;  
-  color: $whiteColor;
-  @include fluid-font-size(2rem, 3rem);
-  padding: 5px;
-  margin:25px 0 0 0;
-  text-align: left;  
+    display: flex;
+    color: $whiteColor;
+    @include fluid-font-size(2rem, 3rem);
+    padding: 5px;
+    margin: 25px 0 0 0;
+    text-align: left;
   }
 
   .imgContainer {
-    @include fluid-width-height(6rem, 12rem); 
+    @include fluid-width-height(6rem, 12rem);
     border-radius: 50%;
-    margin: 0 auto; 
-    border: 2px solid $whiteColor;   
+    margin: 0 auto;
+    border: 2px solid $whiteColor;
 
     .userAvatar {
       width: 100%;
       border-radius: 50%;
-      height: 100%;       
-      @include fluid-font-size(1.6rem, 1.6rem); 
-      text-align: center;        
+      height: 100%;
+      @include fluid-font-size(1.6rem, 1.6rem);
+      text-align: center;
     }
   }
 
-  .scoreContainer{
+  .scoreContainer {
     text-align: center;
-    h4{
+    h4 {
       @include fluid-font-size(1.6rem, 1.8rem);
-      margin: 5px auto;      
+      margin: 5px auto;
     }
 
-    p{
+    p {
       @include fluid-font-size(1.6rem, 1.6rem);
       margin: 0;
     }
   }
 
-  @include tablet{
-    &{
+  @include tablet {
+    & {
       width: 100%;
     }
   }
-
 }
 
-.finalResultContainer{
+.finalResultContainer {
   text-align: center;
 
-  h3 {      
-      color: $whiteColor;
-      @include fluid-font-size(2rem, 4rem);
-      text-align: center;
-      text-shadow: 1px 1px 1px $raspberryColor,
-                1px 2px 1px $raspberryColor,
-                1px 3px 1px $raspberryColor,
-                1px 4px 1px $raspberryColor,
-                1px 5px 1px $raspberryColor,
-                1px 6px 1px $raspberryColor,            
-    }
+  h3 {
+    color: $whiteColor;
+    @include fluid-font-size(2rem, 4rem);
+    text-align: center;
+    text-shadow: 1px 1px 1px $raspberryColor, 1px 2px 1px $raspberryColor,
+      1px 3px 1px $raspberryColor, 1px 4px 1px $raspberryColor,
+      1px 5px 1px $raspberryColor, 1px 6px 1px $raspberryColor;
+  }
 
-    button {
+  button {
     margin: 10px auto;
     @include fluid-font-size(2rem, 3rem);
     width: auto;
     padding: 10px;
     border-radius: 5px;
-    background-color: $raspberryColor;    
+    background-color: $raspberryColor;
     color: $whiteColor;
     border: none;
     box-shadow: 3px 3px $shadowColor;
-    transition: box-shadow ease-in-out 0.2s,color ease-in-out 0.2s,background-color ease-in-out 0.2s,transform ease-in-out 0.1s;
+    transition: box-shadow ease-in-out 0.2s, color ease-in-out 0.2s,
+      background-color ease-in-out 0.2s, transform ease-in-out 0.1s;
   }
 
   button:hover,
@@ -211,14 +206,15 @@ button:active{
     color: $raspberryColor;
     background-color: $whiteColor;
   }
-  button:active{
+  button:active {
     transform: translateY(4px);
   }
 }
 
-.letsPlay:disabled{
+.letsPlay:disabled {
   display: none;
 }
 
-
-
+.playAgainBtn:disabled {
+  display: none;
+}
