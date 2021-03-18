@@ -2,6 +2,7 @@ function QuestionComponent({
   singleQuestion,
   handleAnswerSubmit,
   correctAnswers,
+  index
 }) {
   const { question, correct_answer, incorrect_answers } = singleQuestion;
 
@@ -47,7 +48,7 @@ function QuestionComponent({
       {
         <div className="wrapper">
         <div className="questions">
-          <h3>{decodeURIComponent(question)}</h3>
+          <h3>Question #{index + 1}: {decodeURIComponent(question)}</h3>
           <form className="choiceContainer" onSubmit={handleSingleSubmit}>
             <span>
               <input
