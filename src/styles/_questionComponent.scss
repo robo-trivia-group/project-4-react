@@ -1,0 +1,104 @@
+.questions {
+    position: relative;
+    background-color: rgba(185, 19, 114, 0.7);
+    box-shadow: 5px 5px $whiteColor;
+    padding: 20px 40px;  
+    @include animated-underline-label($whiteColor, 'span');
+
+    .choiceContainer {
+        display: flex;
+        flex-direction: column;
+        padding: 15px 0;
+    }
+    
+    input[type='radio'] {
+        display: none;
+        + label.answerLabel {
+        display: inline-block;
+        position: relative;
+        color: $whiteColor;
+        @include fluid-font-size-questions(2rem, 3rem);      
+        cursor: pointer;
+        user-select: none;
+        margin-left: 20px;
+        &::before {
+            position: absolute;
+            transition: all 0.2s ease-in-out;
+            content: '';
+            @include fluid-width-height(1.6rem, 2rem);
+            border-radius: 50%;
+            background-color: $whiteColor;
+            border: 0px solid $whiteColor;
+            font-size: 0;
+            position: absolute;
+            bottom: 50%;
+            left: -25px;
+            transform: translate(-50%, 50%);
+        }
+        }
+        &:checked + label.answerLabel {
+        &::before {
+            background-color: transparent;
+            @include fluid-width-height(1.6rem, 3rem);
+            border-width: 2px;
+        }
+        }
+    }
+    button {
+        margin: 20px auto;
+        @include fluid-font-size(2rem, 3rem);
+        width: auto;
+        padding: 10px;
+        border-radius: 5px;    
+        color: $whiteColor;
+        background-color: $blueColor;
+        border: 1px solid $whiteColor;
+        box-shadow: 3px 3px $shadowColor;
+        transition: box-shadow ease-in-out 0.2s,color ease-in-out 0.2s,background-color ease-in-out 0.2s,transform ease-in-out 0.1s;
+    }
+
+    button:hover,
+    button:focus {    
+        box-shadow: 3px 3px $raspberryColor;
+        color: $raspberryColor;
+        background-color: $whiteColor;
+        border: 1px solid transparent;
+    }
+    button:active{
+        transform: translateY(4px);
+    }
+
+    h3 {
+        display: flex;  
+        list-style: none;
+        color: $whiteColor;
+        @include fluid-font-size(2rem, 3rem);
+        padding: 5px;
+        margin:15px 0;
+        text-align: left;
+        text-shadow: 1px 1px 1px $blueColor,
+                    1px 2px 1px $blueColor,
+                    1px 3px 1px $blueColor,
+                    1px 4px 1px $blueColor,
+                    1px 5px 1px $blueColor,
+                    1px 6px 1px $blueColor,            
+    }
+
+    p{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0 30px 20px 0;
+    @include fluid-font-size-questions(1.6rem, 2rem); 
+
+    span.animate__shakeX{
+        @include fluid-font-size-questions(2rem, 5rem);
+        animation-name: shakeX;
+        animation-duration: 5s;
+        animation-delay: 1s;
+        // animation-repeat: 1;  
+    } 
+    
+    }
+
+}

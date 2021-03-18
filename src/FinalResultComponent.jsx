@@ -41,8 +41,8 @@ const FinalResultComponent = ({
 
   return (
     <div>
-      <p>The Quiz is Over!</p>
-      <p>{`Your Total Score is: ${totalScore} /10`}</p>
+      <h3>The Quiz is Over!</h3>
+      <h3>{`Your Total Score is: ${totalScore} /10`}</h3>
 
       <button onClick={restartGame}>Play Again!</button>
     </div>

@@ -19,22 +19,39 @@ body{
   font-family: $basicFont;
 }
 
+button, input, select{
+  font-family: $basicFont;
+}
+
 .wrapper {
   max-width: 1600px;
   width: 90%;
   margin: 0 auto;
-  // border: 1px solid red;
 }
 
-.triviaQuestions {
-  text-align: left;
-}
-
-.choiceContainer {
+.mainContainer {
   display: flex;
-  flex-direction: column;
-  padding: 15px 0;
+  margin-bottom: 80px;
+  @include tablet{
+    &{
+      flex-direction: column;
+    }
+  }
 }
+
+.formContainer,
+.questionContainer,
+.finalResultContainer {
+  min-width: 70%;
+  margin-bottom: 70px;
+  @include tablet{
+    &{
+      width: 100%;
+    }
+  }
+}
+
+
 
 
 

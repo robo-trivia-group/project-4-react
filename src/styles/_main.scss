@@ -1,35 +1,37 @@
 input[type='text'] {
-  font-family: $basicFont;
   @include fluid-font-size(1.6rem, 2.5rem);
   padding: 10px 25px 10px 10px;
   width: 200px;
   margin: 20px 0px;
-  color: $turquoiseColor;
+  color: $whiteColor;
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid $turquoiseColor;
+  border-bottom: 2px solid $whiteColor;
 }
-button {
-  font-family: $basicFont;
+button {  
   margin: 10px auto;
-  @include fluid-font-size(1.6rem, 2rem);
+  @include fluid-font-size(1.6rem, 3rem);
   width: auto;
   padding: 10px;
   border-radius: 5px;
   background-color: $turquoiseColor;  
   color: $blueColor;
-  border: none;
+  border: 1px solid transparent;
   box-shadow: 3px 3px $shadowColor;
-  transition: all ease-in-out 0.2s;
+  transition: box-shadow ease-in-out 0.2s,color ease-in-out 0.2s, background-color ease-in-out 0.2s,transform ease-in-out 0.1s;
+  
 }
 
 button:hover,
 button:focus {
-  transform: translateY(4px);
   box-shadow: 3px 3px $turquoiseColor;
   color: $whiteColor;
   background-color: $blueColor;
   border: 1px solid $turquoiseColor;
+}
+
+button:active{
+  transform: translateY(6px);
 }
 
 .dropDown {
@@ -75,161 +77,144 @@ button:focus {
     color: $whiteColor;
     border: none;
     box-shadow: 3px 3px $shadowColor;
-    transition: all ease-in-out 0.2s;
+    transition: box-shadow ease-in-out 0.2s,color ease-in-out 0.2s,background-color ease-in-out 0.2s,transform ease-in-out 0.1s;
   }
 
   button:hover,
   button:focus {
-    transform: translateY(4px);
     box-shadow: 3px 3px $raspberryColor;
     color: $raspberryColor;
     background-color: $whiteColor;
   }
-}
-
-.questions {
-  background-color: rgba(185, 19, 114, 0.7);
-  box-shadow: 5px 5px $whiteColor;
-  padding: 20px 40px;  
-  @include animated-underline-label($whiteColor, 'span');
-
-  input[type='radio'] {
-    display: none;
-    + label.answerLabel {
-      display: inline-block;
-      position: relative;
-      color: $whiteColor;
-      @include fluid-font-size-questions(2rem, 3rem);      
-      cursor: pointer;
-      user-select: none;
-      margin-left: 20px;
-      &::before {
-        position: absolute;
-        transition: all 0.2s ease-in-out;
-        content: '';
-        @include fluid-width-height(1.6rem, 2rem);
-        border-radius: 50%;
-        background-color: $whiteColor;
-        border: 0px solid $whiteColor;
-        font-size: 0;
-        position: absolute;
-        bottom: 50%;
-        left: -25px;
-        transform: translate(-50%, 50%);
-      }
-    }
-    &:checked + label.answerLabel {
-      &::before {
-        background-color: transparent;
-        @include fluid-width-height(1.6rem, 3rem);
-        border-width: 2px;
-      }
-    }
-  }
-  button {
-    margin: 20px auto;
-    @include fluid-font-size(2rem, 3rem);
-    width: auto;
-    padding: 10px;
-    border-radius: 5px;    
-    color: $whiteColor;
-    background-color: $blueColor;
-    border: 1px solid $whiteColor;
-    box-shadow: 3px 3px $shadowColor;
-    transition: all ease-in-out 0.2s;
-  }
-
-  button:hover,
-  button:focus {
+  button:active{
     transform: translateY(4px);
-    box-shadow: 3px 3px $raspberryColor;
-    color: $raspberryColor;
-    background-color: $whiteColor;
   }
 }
-
 .startGame {
-  margin: 50px auto;
+  margin: 0 auto;
   width: 60%;
   h2 {
     text-align: center;
     @include fluid-font-size(2rem, 4rem);
     color: $whiteColor;
-  }
-}
-
-h3 {
-  display: flex;  
-  list-style: none;
-  color: $whiteColor;
-  @include fluid-font-size(2rem, 3rem);
-  padding: 5px;
-  margin:15px 0;
-  text-align: left;
-  text-shadow: 1px 1px 1px $raspberryColor,
+    text-shadow: 1px 1px 1px $raspberryColor,
             1px 2px 1px $raspberryColor,
             1px 3px 1px $raspberryColor,
             1px 4px 1px $raspberryColor,
             1px 5px 1px $raspberryColor,
-            1px 6px 1px $raspberryColor,            
-}
-
-.mainContainer {
-  display: flex;
-}
-
-.formContainer,
-.questionContainer,
-.finalResultContainer {
-  min-width: 70%;
+  }
 }
 
 .userSetupContainer {
   min-width: 30%;
-  padding: 20px;
-  margin: 20px;
+  padding: 0 20px 20px 20px;
+  margin-top: 0;
+  margin-bottom: 20px;  
     li {
-      @include fluid-width-height(25rem, 40rem); 
+      @include fluid-width-height(15rem, 25rem); 
       list-style: none;
       display: flex;
-      flex-direction: column;           
-      padding: 15px;
+      flex-direction: column; 
+      justify-content: center;          
+      padding: 5px 2px;
       margin: 10px;
-      background-color: $raspberryColor;
+      border-radius: 15px;
+      box-shadow: 3px 3px $whiteColor;
+      background-color: rgba(65, 234, 212, 0.4);
   } 
   
   .playingInfoContainer {
     display: flex;    
     flex-wrap: wrap;
     justify-content: center;
-    padding: 10px;      
-    }
+    padding: 10px;
+    margin-top: 0;
+  }
+
+  
+  h3 {
+  display: flex;  
+  color: $whiteColor;
+  @include fluid-font-size(2rem, 3rem);
+  padding: 5px;
+  margin:25px 0 0 0;
+  text-align: left;  
+  }
 
   .imgContainer {
-    @include fluid-width-height(12rem, 20rem); 
-    margin: 10px auto; 
+    @include fluid-width-height(6rem, 12rem); 
+    border-radius: 50%;
+    margin: 0 auto; 
+    border: 2px solid $whiteColor;   
 
     .userAvatar {
-      max-width: 100%;
-      height: auto;
+      width: 100%;
       border-radius: 50%;
-      border: 3px solid $turquoiseColor;
+      height: 100%;       
+      @include fluid-font-size(1.6rem, 1.6rem); 
+      text-align: center;        
     }
   }
 
   .scoreContainer{
     text-align: center;
     h4{
-      @include fluid-font-size(1.8rem, 3rem);
-      margin: 15px;      
+      @include fluid-font-size(1.6rem, 1.8rem);
+      margin: 5px auto;      
     }
 
     p{
-      @include fluid-font-size(1.6rem, 2rem);
+      @include fluid-font-size(1.6rem, 1.6rem);
       margin: 0;
     }
   }
 
-  
+  @include tablet{
+    &{
+      width: 100%;
+    }
+  }
 
 }
+
+.finalResultContainer{
+  text-align: center;
+
+  h3 {      
+      color: $whiteColor;
+      @include fluid-font-size(2rem, 4rem);
+      text-align: center;
+      text-shadow: 1px 1px 1px $raspberryColor,
+                1px 2px 1px $raspberryColor,
+                1px 3px 1px $raspberryColor,
+                1px 4px 1px $raspberryColor,
+                1px 5px 1px $raspberryColor,
+                1px 6px 1px $raspberryColor,            
+    }
+
+    button {
+    margin: 10px auto;
+    @include fluid-font-size(2rem, 3rem);
+    width: auto;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: $raspberryColor;    
+    color: $whiteColor;
+    border: none;
+    box-shadow: 3px 3px $shadowColor;
+    transition: box-shadow ease-in-out 0.2s,color ease-in-out 0.2s,background-color ease-in-out 0.2s,transform ease-in-out 0.1s;
+  }
+
+  button:hover,
+  button:focus {
+    box-shadow: 3px 3px $raspberryColor;
+    color: $raspberryColor;
+    background-color: $whiteColor;
+  }
+  button:active{
+    transform: translateY(4px);
+  }
+}
+
+
+
