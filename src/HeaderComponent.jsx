@@ -38,14 +38,14 @@ function HeaderComponent() {
         <h1>Robo Trivia</h1>  
       </div>  
 
-      <div className="scoreContainer">
-        <h2>Genius-Bots:</h2>
+      <div className="scoreBoard">
+        <h5>Genius-Bots:</h5>
         <ul className="highScores">
           {
             scoreBoard.map((score, index) => {
               const {username, highScore} = score;
               return (
-                <li key={index}>{username}: {highScore} points</li>
+                <li key={index}>{username}: <span>{highScore}</span> points</li>
               )
             })
           }

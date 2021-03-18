@@ -10,18 +10,23 @@ input[type='text'] {
 }
 button {  
   margin: 10px auto;  
-  background-color: $turquoiseColor;  
-  color: $blueColor;
-  border: 1px solid transparent;
-  box-shadow: 3px 3px $shadowColor; 
+  box-shadow: 3px 3px $turquoiseColor;
+  color: $whiteColor;
+  background-color: $blueColor;
+  border: 1px solid $turquoiseColor; 
+}
+
+.letsPlay{
+  margin-bottom:60px;
 }
 
 button:hover,
 button:focus {
-  box-shadow: 3px 3px $turquoiseColor;
-  color: $whiteColor;
-  background-color: $blueColor;
-  border: 1px solid $turquoiseColor;
+  background-color: $turquoiseColor;  
+  color: $blueColor;
+  border: 1px solid $blueColor;
+  box-shadow: 3px 3px $shadowColor; 
+  
 }
 
 .dropDown {
@@ -77,51 +82,76 @@ button:focus {
   margin: 0 auto;
   width: 60%;
   h2 {
+    margin:0;
     text-align: center;
     @include fluid-font-size(2rem, 4rem);
     color: $whiteColor;
     text-shadow: 1px 1px 1px $raspberryColor,
-            1px 2px 1px $raspberryColor,
-            1px 3px 1px $raspberryColor,
-            1px 4px 1px $raspberryColor,
-            1px 5px 1px $raspberryColor,
+                1px 2px 1px $raspberryColor,
+                1px 3px 1px $raspberryColor,
+                1px 4px 1px $raspberryColor,    
+}
+  @include tablet{
+    h2{
+      text-shadow: 1px 1px 1px $raspberryColor,
+                  1px 2px 1px $raspberryColor,
+    }
   }
 }
-
 .userSetupContainer {
   min-width: 30%;
   padding: 0 20px 20px 20px;
-  margin-top: 0;
-  margin-bottom: 20px;  
-    li {
-      @include fluid-width-height(15rem, 25rem); 
-      list-style: none;
-      display: flex;
-      flex-direction: column; 
-      justify-content: center;          
-      padding: 5px 2px;
-      margin: 10px;
-      border-radius: 15px;
-      box-shadow: 3px 3px $whiteColor;
-      background-color: rgba(65, 234, 212, 0.4);
+  margin-top: 10%;
+  margin-bottom: 50px;  
+  li {
+    @include fluid-width-height(15rem, 20rem); 
+    list-style: none;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;          
+    padding: 5px 2px;
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 3px 3px $whiteColor;
+    background-color: $avatarBackground;
   } 
   
   .playingInfoContainer {
     display: flex;    
     flex-wrap: wrap;
     justify-content: center;
-    padding: 10px;
+    padding: 0;
     margin-top: 0;
+    max-height: 50vh;
+    overflow-y: hidden;
+    overflow-y:scroll;
+      ::-webkit-scrollbar {
+      width: 0px;
+    }
   }
 
   
   h3 {
   display: flex;  
   color: $whiteColor;
-  @include fluid-font-size(2rem, 3rem);
-  padding: 5px;
-  margin:25px 0 0 0;
-  text-align: left;  
+  text-transform: uppercase;
+  @include fluid-font-size(1.8rem, 2.5rem);
+  padding: 0;
+  margin:0 0 20px 10px;
+  margin-bottom: 20px;
+  text-align: left; 
+  text-shadow: 1px 1px 1px $avatarHeaderShadow,
+            1px 2px 1px $avatarHeaderShadow,
+            1px 3px 1px $avatarHeaderShadow,
+            1px 4px 1px $avatarHeaderShadow,
+            
+  }
+
+  @include tablet{
+    h3{
+      text-shadow: 1px 1px 1px $avatarHeaderShadow,
+                  1px 2px 1px $avatarHeaderShadow,
+    }
   }
 
   .imgContainer {
@@ -191,9 +221,7 @@ button:focus {
   }
 }
 
-.letsPlay:disabled{
-  display: none;
-}
+
 
 
 
