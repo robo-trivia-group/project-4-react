@@ -101,7 +101,7 @@ function QuestionComponent({
                 {decodeURIComponent(randomAnswers[3])}
               </label>
             </span>
-            <p>current score is: <span className="animate__shakeX">{correctAnswers.length}</span></p>
+            <p>current score is: <span className="animate__animated animate__shakeX" >{correctAnswers.length}</span></p>
             <button>submit</button>
           </form>
         </div>

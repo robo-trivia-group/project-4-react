@@ -61,8 +61,7 @@
     }
     
     h3 {
-        display: flex;  
-        list-style: none;
+        display: flex; 
         color: $whiteColor;
         @include fluid-font-size(2rem, 3rem);
         padding: 5px;
@@ -82,13 +81,12 @@
     bottom: 0;
     margin: 0 30px 20px 0;
     @include fluid-font-size-questions(1.6rem, 2rem); 
+    
 
-    span.animate__shakeX{
+    span.animate__animated, .animate__shakeX{
         @include fluid-font-size-questions(2rem, 5rem);
-        animation-name: shakeX;
-        animation-duration: 5s;
-        animation-delay: 1s;
-        // animation-repeat: 1;  
+        // animation: shakeX 2s infinite;
+        
     } 
     
     }
