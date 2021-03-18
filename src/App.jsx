@@ -21,7 +21,8 @@ function App() {
   const [letsPlay, setLetsPlay] = useState(false);
   const [joinBots, setJoinBots] = useState(true);
   const [disabled, setDisabled] = useState(false);
-
+  const [letsPlayDisabled, setLetsPlayDisabled] = useState(false);
+  
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answersArray, setAnswersArray] = useState([]);
   const [correctAnswers, setCorrectAnswers] = useState([]);
@@ -90,6 +91,11 @@ function App() {
       currentQuestion: firebase.database.ServerValue.increment(1),
     });
   };
+
+  const handlePlayAgain = (e) => {
+    e.preventDefault();
+    setLetsPlayDisabled(true);
+  }
 
   const handleLetsPlay = (e) => {
     e.preventDefault();
@@ -192,6 +198,9 @@ function App() {
                 setLocalUser={setLocalUser}
                 setCorrectAnswers={setCorrectAnswers}
                 setDisabled={setDisabled}
+                letsPlayDisabled={letsPlayDisabled}
+                handlePlayAgain={handlePlayAgain}
+                setLetsPlayDisabled={setLetsPlayDisabled}
               />
             </div>
           ) : null}
