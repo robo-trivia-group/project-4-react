@@ -37,11 +37,12 @@ button, input, select{
 }
 
 button{
+  @include fluid-font-size(1.6rem, 3rem);
   width: auto;
   border-radius: 5px; 
   padding: 10px;
-  transition: box-shadow ease-in-out 0.2s,color ease-in-out 0.2s,background-color ease-in-out 0.2s,transform ease-in-out 0.1s;
-  @include fluid-font-size(2rem, 3rem);
+  font-weight: bold;
+  transition: box-shadow ease-in-out 0.2s,color ease-in-out 0.2s,background-color ease-in-out 0.2s,transform ease-in-out 0.1s;  
 }
 
 button:active{

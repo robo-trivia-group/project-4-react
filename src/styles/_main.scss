@@ -9,17 +9,11 @@ input[type='text'] {
   border-bottom: 2px solid $whiteColor;
 }
 button {  
-  margin: 10px auto;
-  @include fluid-font-size(1.6rem, 3rem);
-  width: auto;
-  
-  border-radius: 5px;
+  margin: 10px auto;  
   background-color: $turquoiseColor;  
   color: $blueColor;
   border: 1px solid transparent;
-  box-shadow: 3px 3px $shadowColor;
-  transition: box-shadow ease-in-out 0.2s,color ease-in-out 0.2s, background-color ease-in-out 0.2s,transform ease-in-out 0.1s;
-  
+  box-shadow: 3px 3px $shadowColor; 
 }
 
 button:hover,
@@ -28,10 +22,6 @@ button:focus {
   color: $whiteColor;
   background-color: $blueColor;
   border: 1px solid $turquoiseColor;
-}
-
-button:active{
-  transform: translateY(6px);
 }
 
 .dropDown {
@@ -68,16 +58,11 @@ button:active{
     box-shadow: 4px 4px $raspberryColor;
   }
   button {
-    margin: 10px auto;
-    @include fluid-font-size(2rem, 3rem);
-    width: auto;
-    padding: 10px;
-    border-radius: 5px;
+    margin: 10px auto; 
     background-color: $raspberryColor;    
     color: $whiteColor;
     border: none;
-    box-shadow: 3px 3px $shadowColor;
-    transition: box-shadow ease-in-out 0.2s,color ease-in-out 0.2s,background-color ease-in-out 0.2s,transform ease-in-out 0.1s;
+    box-shadow: 3px 3px $shadowColor;    
   }
 
   button:hover,
@@ -86,9 +71,7 @@ button:active{
     color: $raspberryColor;
     background-color: $whiteColor;
   }
-  button:active{
-    transform: translateY(4px);
-  }
+  
 }
 .startGame {
   margin: 0 auto;
@@ -193,16 +176,11 @@ button:active{
     }
 
     button {
-    margin: 10px auto;
-    @include fluid-font-size(2rem, 3rem);
-    width: auto;
-    padding: 10px;
-    border-radius: 5px;
+    margin: 10px auto; 
     background-color: $raspberryColor;    
     color: $whiteColor;
     border: none;
-    box-shadow: 3px 3px $shadowColor;
-    transition: box-shadow ease-in-out 0.2s,color ease-in-out 0.2s,background-color ease-in-out 0.2s,transform ease-in-out 0.1s;
+    box-shadow: 3px 3px $shadowColor;    
   }
 
   button:hover,
@@ -210,9 +188,6 @@ button:active{
     box-shadow: 3px 3px $raspberryColor;
     color: $raspberryColor;
     background-color: $whiteColor;
-  }
-  button:active{
-    transform: translateY(4px);
   }
 }
 
