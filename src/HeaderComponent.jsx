@@ -11,11 +11,10 @@ function HeaderComponent() {
 
   useEffect(() => {
     const dbScores = firebase.database().ref('/highScore');
-    dbScores.once('value')
-      .then(snapshot => {
-        const key = snapshot.val();
-        console.log(key);
-      })
+    dbScores.on('value', (data) => {
+      const dataVal = data.val()
+      console.log(dataVal);
+    })
       // console.log(data.val());
       // const recordedScores = data.val();
       // const scoreArray = [];
