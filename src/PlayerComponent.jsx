@@ -25,7 +25,8 @@ function PlayerComponent({ handleLetsPlay }) {
 
   return (
     <>
-      <h3>Current Players:</h3>
+    <button onClick={handleLetsPlay}>Let's Play</button>
+      <h3>Current Players:</h3>      
       <ul className="playingInfoContainer">
         {playerInfo.map((player, index) => {
           const {
@@ -40,21 +41,21 @@ function PlayerComponent({ handleLetsPlay }) {
                 <img
                   className="userAvatar"
                   src={avatar}
-                  alt={`Robot avatar for ${username}`}
+                  alt={`avatar for ${username}`}
                 />
               </div>
 
               <div className="scoreContainer">
                 <h4>{username}</h4>
-                <p>Current Score: {currentScore}</p>
-                <p>{`Currently on: ${currentQuestion} / 10`}</p>
+                <p>current Score: {currentScore}</p>
+                <p>{`currently on: ${currentQuestion} / 10`}</p>
               </div>
             </li>
           );
         })}
       </ul>
 
-      <button onClick={handleLetsPlay}>Let's Play</button>
+      
     </>
   );
 }

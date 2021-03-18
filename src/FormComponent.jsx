@@ -40,7 +40,7 @@ function FormComponent({
           required
         >
           <option value="" default disabled>
-            Select a Category
+            Category
           </option>
           <CategoryMap categoryList={categoryList} />
         </select>

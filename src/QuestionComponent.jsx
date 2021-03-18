@@ -45,6 +45,7 @@ function QuestionComponent({
   return (
     <>
       {
+        <div className="wrapper">
         <div className="questions">
           <h3>{decodeURIComponent(question)}</h3>
           <form className="choiceContainer" onSubmit={handleSingleSubmit}>
@@ -100,9 +101,10 @@ function QuestionComponent({
                 {decodeURIComponent(randomAnswers[3])}
               </label>
             </span>
-            <p>Your current score is: {correctAnswers.length}</p>
+            <p>current score is: <span className="animate__shakeX">{correctAnswers.length}</span></p>
             <button>submit</button>
           </form>
+        </div>
         </div>
       }
     </>
