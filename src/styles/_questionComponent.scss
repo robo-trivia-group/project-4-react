@@ -45,16 +45,12 @@
         }
     }
     button {
-        margin: 20px auto;
-        @include fluid-font-size(2rem, 3rem);
-        width: auto;
-        padding: 10px;
-        border-radius: 5px;    
+        margin: 20px auto;  
+        padding: 10px;            
         color: $whiteColor;
         background-color: $blueColor;
         border: 1px solid $whiteColor;
-        box-shadow: 3px 3px $shadowColor;
-        transition: box-shadow ease-in-out 0.2s,color ease-in-out 0.2s,background-color ease-in-out 0.2s,transform ease-in-out 0.1s;
+        box-shadow: 3px 3px $shadowColor;        
     }
 
     button:hover,
@@ -64,10 +60,7 @@
         background-color: $whiteColor;
         border: 1px solid transparent;
     }
-    button:active{
-        transform: translateY(4px);
-    }
-
+    
     h3 {
         display: flex;  
         list-style: none;

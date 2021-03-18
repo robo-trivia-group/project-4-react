@@ -102,7 +102,7 @@ function QuestionComponent({
               </label>
             </span>
             <p>current score is: <span className="animate__shakeX">{correctAnswers.length}</span></p>
-            <button name="submit question">submit</button>
+            <button>submit</button>
           </form>
         </div>
         </div>

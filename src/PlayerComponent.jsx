@@ -25,7 +25,7 @@ function PlayerComponent({ handleLetsPlay }) {
 
   return (
     <>
-    <button name ="Let's play" onClick={handleLetsPlay}>Let's Play</button>
+    <button onClick={handleLetsPlay}>Let's Play</button>
       <h3>Current Players:</h3>      
       <ul className="playingInfoContainer">
         {playerInfo.map((player, index) => {
