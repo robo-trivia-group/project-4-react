@@ -35,7 +35,9 @@ const FinalResultComponent = ({
     });
 
     // Function to remove Players from the quiz once quiz is finished
-    const dbRefPlayers = firebase.database().ref().child('currentPlayers');
+
+    // const dbRefPlayers = firebase.database().ref().child('currentPlayers');
+    const dbRefPlayers = firebase.database().ref('/currentPlayers').child(localUser[0]);
     dbRefPlayers.remove();
     setLocalUser([]);
     setCorrectAnswers([]);
