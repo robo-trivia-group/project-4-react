@@ -20,17 +20,16 @@ function HeaderComponent() {
         return  b.highScore - a.highScore
       })
 
-      const limitedScore = [];
-
-      limitedScore.push(sortedArr[0]);
-      limitedScore.push(sortedArr[1]);
-      limitedScore.push(sortedArr[2]);
-      limitedScore.push(sortedArr[3]);
-      limitedScore.push(sortedArr[4]);
-      
-      setScoreBoard(limitedScore);
+      setScoreBoard(sortedArr);
     })
   }, [])
+
+  const clearScoreBoard = () => {
+    const dbRef = firebase.database().ref('/highScore');
+    dbRef.set({
+      hi: 'test'
+    });
+  }
 
   return (
     <header>
@@ -51,6 +50,7 @@ function HeaderComponent() {
           }
 
         </ul>
+        <button onClick={clearScoreBoard}>Recycle Bots</button>
       </div>
     </header>
   );
