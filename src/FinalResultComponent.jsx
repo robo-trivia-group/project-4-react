@@ -35,8 +35,6 @@ const FinalResultComponent = ({
     });
 
     // Function to remove Players from the quiz once quiz is finished
-
-    // const dbRefPlayers = firebase.database().ref().child('currentPlayers');
     const dbRefPlayers = firebase.database().ref('/currentPlayers').child(localUser[0]);
     dbRefPlayers.remove();
     setLocalUser([]);
@@ -64,12 +62,12 @@ const FinalResultComponent = ({
       className="playAgainBtn" 
       disabled={!letsPlayDisabled} 
       onClick={restartGame}>
-          Confirm?
+          Log High Score!
         </button>
         {letsPlayDisabled && (
           <>
-            <h3>WARNING! Your fellow Bots might still be playing...</h3>
-            <h3>Are they done?</h3>
+            <h3>Be sure to checkout the friendly bots...</h3>
+            <h3>Are you the smartest bot?</h3>
           </>
         )}
     </div>
