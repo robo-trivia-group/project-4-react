@@ -26,9 +26,7 @@ function HeaderComponent() {
 
   const clearScoreBoard = () => {
     const dbRef = firebase.database().ref('/highScore');
-    dbRef.set({
-      hi: 'test'
-    });
+    dbRef.set({});
   }
 
   return (
