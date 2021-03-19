@@ -34,6 +34,12 @@ header {
         1px 25px 35px $h1Shadow,
         1px 30px 60px $h1Shadow       
     }
+
+    @include tablet{
+        &{
+            text-align: center;
+        }
+    }
 }
 
 
@@ -41,9 +47,9 @@ header {
     position: absolute;
     width: 350px;
     right:5%;
-    top:2%;
+    top:10%;
     color: $raspberryColor;    
-    background-color: $scoreBoardColor;
+    background-color: $blueColor;
     padding: 10px;
     border-radius: 15px;
     border: 2px solid black;
@@ -67,12 +73,23 @@ header {
             @include fluid-font-size(1.6rem, 2rem);
             font-weight: bold;
 
+            .userName{
+                text-transform: uppercase;
+            }
+
             span{
                 @include fluid-font-size(1.8rem, 2.5rem);
             }
             
         }
         
+    }
+
+    @include tablet{
+        &{
+            position: static;
+
+        }        
     }
 }
 

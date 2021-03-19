@@ -45,7 +45,7 @@ function HeaderComponent() {
             scoreBoard.map((score, index) => {
               const {username, highScore} = score;
               return (
-                <li key={index}>{username}: <span>{highScore}</span> points</li>
+                <li key={index}><span className="userName">{username}</span>: <span>{highScore}</span> points</li>
               )
             })
           }
