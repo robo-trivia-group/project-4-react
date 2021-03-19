@@ -20,7 +20,7 @@ function App() {
   const [goButton, setGoButton] = useState(false);
   const [letsPlay, setLetsPlay] = useState(false);
   const [joinBots, setJoinBots] = useState(true);
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const [letsPlayDisabled, setLetsPlayDisabled] = useState(false);
   
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -106,6 +106,7 @@ function App() {
 
   const handleJoinBots = () => {
     setJoinBots(false);
+    setDisabled(false);
   };
 
   // testing phase - getting local user
