@@ -32,7 +32,7 @@ function PlayerComponent({ handleLetsPlay, disabled }) {
         Let's Play
       </button>
       {/* Display active players and scores in sidebar */}
-      <h3>Current Players:</h3>
+      <h3>Lobby:</h3>
       <ul className="playingInfoContainer">
         {playerInfo.map((player, index) => {
           const {
