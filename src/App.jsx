@@ -60,7 +60,7 @@ function App() {
     try {
       const response = await axios.get('https://opentdb.com/api.php', {
         params: {
-          amount: 2,
+          amount: 10,
           encode: 'url3986',
           category: categoryChoice,
           difficulty: difficulty,
