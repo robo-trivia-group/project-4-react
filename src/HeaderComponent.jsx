@@ -44,13 +44,13 @@ function HeaderComponent() {
             scoreBoard.map((score, index) => {
               const {username, highScore} = score;
               return (
-                <li key={index}><span className="userName">{username}</span>: <span>{highScore}</span> points</li>
+                <li key={index}>{username}: <span>{highScore}</span> points</li>
               )
             })
           }
 
         </ul>
-        <button onClick={clearScoreBoard}>Recycle Bots</button>
+        <button className="recycle" onClick={clearScoreBoard}>Recycle Bots</button>
       </div>
     </header>
   );

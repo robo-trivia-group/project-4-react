@@ -10,18 +10,18 @@ input[type='text'] {
 }
 button {
   margin: 10px auto;  
-  background-color: $turquoiseColor;
-  color: $blueColor;
-  border: 1px solid transparent;
-  box-shadow: 3px 3px $shadowColor;  
-}
-
-button:hover,
-button:focus {
   box-shadow: 3px 3px $turquoiseColor;
   color: $whiteColor;
   background-color: $blueColor;
   border: 1px solid $turquoiseColor; 
+}
+
+button:hover,
+button:focus {
+background-color: $turquoiseColor;
+  color: $blueColor;
+  border: 1px solid $blueColor;
+  box-shadow: 3px 3px $shadowColor;   
 }
 
 .letsPlay{
@@ -124,7 +124,7 @@ button:focus {
     margin-top: 0;
     max-height: 50vh;
     overflow-y: hidden;
-    overflow-y:scroll;
+    overflow-y:scroll;  
   }
 
   h3 {
@@ -189,13 +189,19 @@ button:focus {
   text-align: center;
 
   h3 {
+    width: 80%;
+    margin: 25px auto;
+    text-align: center;
     color: $whiteColor;
     @include fluid-font-size(2rem, 4rem);
     text-align: center;
     text-shadow: 1px 1px 1px $raspberryColor, 1px 2px 1px $raspberryColor,
       1px 3px 1px $raspberryColor, 1px 4px 1px $raspberryColor,
       1px 5px 1px $raspberryColor, 1px 6px 1px $raspberryColor;
+      
   }
+
+
 
   button {
     margin: 10px auto;    

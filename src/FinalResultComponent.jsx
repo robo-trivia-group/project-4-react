@@ -62,8 +62,8 @@ const FinalResultComponent = ({
         </button>
         {letsPlayDisabled && (
           <>
-            <p>WARNING! Your fellow Bots might still be playing...</p>
-            <p>Are they done?</p>
+            <h3>WARNING! Your fellow Bots might still be playing...</h3>
+            <h3>Are they done?</h3>
           </>
         )}
     </div>
