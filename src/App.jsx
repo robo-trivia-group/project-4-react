@@ -163,7 +163,7 @@ function App() {
             />
           </div>
 
-          {letsPlay && (
+          {!joinBots && letsPlay ? (
             <div className="formContainer animate__animated animate__slideInRight">
               <FormComponent
                 handleDifficultyChange={handleDifficultyChange}
@@ -172,7 +172,7 @@ function App() {
                 handleGoSubmit={handleGoSubmit}
               />
             </div>
-          )}
+          ) : null}
 
           {goButton && allQuestions[questionIndex] && (
             <div className="questionContainer animate__animated animate__slideInRight">
