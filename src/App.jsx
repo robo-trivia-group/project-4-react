@@ -22,7 +22,7 @@ function App() {
   const [goButton, setGoButton] = useState(false);
   const [letsPlay, setLetsPlay] = useState(false);
   const [joinBots, setJoinBots] = useState(true);
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const [letsPlayDisabled, setLetsPlayDisabled] = useState(false);
   
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -116,6 +116,7 @@ function App() {
   // Initialize User login to quiz
   const handleJoinBots = () => {
     setJoinBots(false);
+    setDisabled(false);
   };
 
   // testing phase - getting local user
@@ -173,7 +174,7 @@ function App() {
             />
           </div>
 
-          {letsPlay && (
+          {!joinBots && letsPlay ? (
             <div className="formContainer animate__animated animate__slideInRight">
               <FormComponent
                 handleDifficultyChange={handleDifficultyChange}
@@ -182,7 +183,7 @@ function App() {
                 handleGoSubmit={handleGoSubmit}
               />
             </div>
-          )}
+          ) : null}
 
           {goButton && allQuestions[questionIndex] && (
             <div className="questionContainer animate__animated animate__slideInRight">

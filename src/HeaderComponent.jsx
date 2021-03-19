@@ -1,6 +1,7 @@
 // Importing components
 import firebase from './firebase.jsx';
 import {useEffect, useState} from 'react';
+import { GrPowerReset } from 'react-icons/gr';
 
 function HeaderComponent() {
 
@@ -30,32 +31,35 @@ function HeaderComponent() {
   // Function to clear scoreboard
   const clearScoreBoard = () => {
     const dbRef = firebase.database().ref('/highScore');
-    dbRef.set({
-      hi: 'test'
-    });
+    dbRef.set({});
   }
 
   return (
     <header>
       {/* Adding components to Header */}
       <div className="wrapper">
-        <h1>Robo Trivia</h1>  
-      </div>  
+        <h1>Robo Trivia</h1>
+      </div>
 
       <div className="scoreBoard">
         <h5>Genius-Bots:</h5>
         <ul className="highScores">
-          {
-            scoreBoard.map((score, index) => {
-              const {username, highScore} = score;
-              return (
-                <li key={index}>{username}: <span>{highScore}</span> points</li>
-              )
-            })
-          }
-
+          {scoreBoard.map((score, index) => {
+            const { username, highScore } = score;
+            return (
+              <li key={index}>
+                {username}: <span>{highScore}</span> points
+              </li>
+            );
+          })}
         </ul>
-        <button type="button" onClick={clearScoreBoard}>Recycle Bots</button>
+        <button
+          title="Reset Genius-Bots"
+          aria-label="Reset Genius-Bots"
+          onClick={clearScoreBoard}
+        >
+          <GrPowerReset />
+        </button>
       </div>
     </header>
   );

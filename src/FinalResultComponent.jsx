@@ -52,15 +52,13 @@ const FinalResultComponent = ({
       <h3>The Quiz is Over!</h3>
       <h3>{`Your Total Score is: ${totalScore} /10`}</h3>
 
-      <button 
-      type="button"
+      <button
       className="playAgainBtn" 
       disabled={letsPlayDisabled} 
       onClick={handlePlayAgain}>
         Play Again?
         </button>
       <button 
-      type="button"
       className="playAgainBtn" 
       disabled={!letsPlayDisabled} 
       onClick={restartGame}>

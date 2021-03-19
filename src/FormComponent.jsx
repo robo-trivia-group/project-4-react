@@ -49,7 +49,7 @@ function FormComponent({
           <CategoryMap categoryList={categoryList} />
         </select>
 
-        <button type="button">Go!</button>
+        <button>Go!</button>
       </form>
     </div>
   );

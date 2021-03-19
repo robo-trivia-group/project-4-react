@@ -45,7 +45,7 @@ export default function UserComponent({ localUser, getLocal, handleJoinBots }) {
           required
         />
 
-        <button type="button">Join the Bots</button>
+        <button>Join the Bots</button>
       </form>
     </div>
   );

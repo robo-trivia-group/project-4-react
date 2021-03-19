@@ -28,7 +28,7 @@ function PlayerComponent({ handleLetsPlay, disabled }) {
   return (
     <>
     {/* Button to begin quiz */}
-      <button type="button" className="letsPlay" disabled={disabled} onClick={handleLetsPlay}>
+      <button className="letsPlay" disabled={disabled} onClick={handleLetsPlay}>
         Let's Play
       </button>
       {/* Display active players and scores in sidebar */}

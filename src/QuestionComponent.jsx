@@ -110,7 +110,7 @@ function QuestionComponent({
               <h4 className="animate__animated animate__shakeY">{correctAnswers.length}</h4>
             </div>
             
-            <button type="button">Submit</button>
+            <button>Submit</button>
           </form>
         </div>
         </div>
