@@ -1,5 +1,7 @@
+// Importing components
 import firebase from './firebase.jsx';
 
+// Initialize params for FinalResultComponent function
 const FinalResultComponent = ({
   totalScore,
   setQuestionIndex,
@@ -14,6 +16,7 @@ const FinalResultComponent = ({
   letsPlayDisabled,
   setLetsPlayDisabled
 }) => {
+  // Function to retrieve players from Firebase and push their scores and usernames to highscore
   const restartGame = () => {
     const dbRefCurrent = firebase
       .database()
@@ -31,6 +34,7 @@ const FinalResultComponent = ({
       });
     });
 
+    // Function to remove Players from the quiz once quiz is finished
     const dbRefPlayers = firebase.database().ref().child('currentPlayers');
     dbRefPlayers.remove();
     setLocalUser([]);
@@ -49,12 +53,14 @@ const FinalResultComponent = ({
       <h3>{`Your Total Score is: ${totalScore} /10`}</h3>
 
       <button 
+      type="button"
       className="playAgainBtn" 
       disabled={letsPlayDisabled} 
       onClick={handlePlayAgain}>
         Play Again?
         </button>
       <button 
+      type="button"
       className="playAgainBtn" 
       disabled={!letsPlayDisabled} 
       onClick={restartGame}>

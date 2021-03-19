@@ -1,15 +1,18 @@
+// Importing components
 import firebase from './firebase.jsx';
 import {useEffect, useState} from 'react';
 
 function HeaderComponent() {
 
+  // Initialize scoreBoard state
   const [ scoreBoard, setScoreBoard ] = useState([]);
 
   useEffect(() => {
+    // Retrieve data from firebase
     const dbScores = firebase.database().ref('/highScore');
     dbScores.on('value', (data) => {
       const dataVal = data.val()
-
+      // Pushing Users score to leaderboard
       const unsortedArr = [];
 
       for (let key in dataVal) {
@@ -24,6 +27,7 @@ function HeaderComponent() {
     })
   }, [])
 
+  // Function to clear scoreboard
   const clearScoreBoard = () => {
     const dbRef = firebase.database().ref('/highScore');
     dbRef.set({
@@ -33,6 +37,7 @@ function HeaderComponent() {
 
   return (
     <header>
+      {/* Adding components to Header */}
       <div className="wrapper">
         <h1>Robo Trivia</h1>  
       </div>  
@@ -50,7 +55,7 @@ function HeaderComponent() {
           }
 
         </ul>
-        <button onClick={clearScoreBoard}>Recycle Bots</button>
+        <button type="button" onClick={clearScoreBoard}>Recycle Bots</button>
       </div>
     </header>
   );

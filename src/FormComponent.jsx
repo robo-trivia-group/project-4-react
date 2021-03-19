@@ -1,6 +1,8 @@
+// Importing components
 import CategoryMap from './CategoryMap';
 import InstructionComponent from './InstructionComponent'
 
+// Initialize Params for FormComponent function
 function FormComponent({
   handleDifficultyChange,
   handleCategoryChange,
@@ -11,6 +13,7 @@ function FormComponent({
     <div>
       <InstructionComponent />
       <form onSubmit={handleGoSubmit} className="dropDown">
+      {/* Setting up Dropdowns for difficulty */}
         <label className="srOnly" htmlFor="difficulty">
           Select a Difficulty
         </label>
@@ -29,6 +32,7 @@ function FormComponent({
           <option value="hard">Hard</option>
         </select>
 
+        {/* Setting up dropdowns for Categories */}
         <label className="srOnly" htmlFor="category">
           Select a Category
         </label>
@@ -45,7 +49,7 @@ function FormComponent({
           <CategoryMap categoryList={categoryList} />
         </select>
 
-        <button>Go!</button>
+        <button type="button">Go!</button>
       </form>
     </div>
   );

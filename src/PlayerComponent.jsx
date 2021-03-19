@@ -1,21 +1,19 @@
+// Importing components and states
 import { useEffect, useState } from 'react';
 import firebase from './firebase.jsx';
 
 function PlayerComponent({ handleLetsPlay, disabled }) {
   const [playerInfo, setPlayerInfo] = useState([]);
 
-  // function disableLetsPlayButton() {
-  //   this.state.disabled
-  // }
-
   useEffect(() => {
+    //Retrieve data from firebase
     const dbRef = firebase.database().ref('/currentPlayers');
 
     dbRef.on('value', (data) => {
       const playerData = data.val();
 
       const copyArray = [];
-
+      // Pushing player unique data to an array
       for (let key in playerData) {
         copyArray.push({
           uniqueKey: key,
@@ -29,9 +27,11 @@ function PlayerComponent({ handleLetsPlay, disabled }) {
 
   return (
     <>
-      <button className="letsPlay" disabled={disabled} onClick={handleLetsPlay}>
+    {/* Button to begin quiz */}
+      <button type="button" className="letsPlay" disabled={disabled} onClick={handleLetsPlay}>
         Let's Play
       </button>
+      {/* Display active players and scores in sidebar */}
       <h3>Current Players:</h3>
       <ul className="playingInfoContainer">
         {playerInfo.map((player, index) => {
@@ -53,8 +53,8 @@ function PlayerComponent({ handleLetsPlay, disabled }) {
 
               <div className="scoreContainer">
                 <h4>{username}</h4>
-                <p>current Score: {currentScore}</p>
-                <p>{`currently on: ${currentQuestion} / 10`}</p>
+                <p>Current Score: {currentScore}</p>
+                <p>{`Currently on: ${currentQuestion} / 10`}</p>
               </div>
             </li>
           );
