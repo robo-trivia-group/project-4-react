@@ -53,12 +53,12 @@ function HeaderComponent() {
             );
           })}
         </ul>
-        <button
+        <button className="recycle"
           title="Reset Genius-Bots"
           aria-label="Reset Genius-Bots"
           onClick={clearScoreBoard}
         >
-          <GrPowerReset />
+          <span className="recycleText"><GrPowerReset /></span>
         </button>
       </div>
     </header>

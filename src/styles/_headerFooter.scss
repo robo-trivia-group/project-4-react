@@ -1,19 +1,23 @@
 header {  
     position: relative;
     margin-bottom: 50px;
-    padding: 10px;
+    padding: 30px;
     text-align: left;
     height: auto;
-    background-color: $headerFooterColor;   
+    background-color: $headerFooterColor;  
+    background-image: url('../assets/Mini-Robot.png');
+    background-size: 150px 150px; 
+    background-repeat: no-repeat; 
+    background-position: 0% top; 
     
-    @include headerImage{
+    @include mobile{
         &{
             background-image: none;
         }
     }
 
     h1{
-        margin: 20px auto;
+        margin: 20px 40px;
         color: $whiteColor;
         font-family: $h1font;        
         @include fluid-font-size(4rem, 8rem); 
@@ -32,41 +36,53 @@ header {
         1px 18px 6px $h1Shadow,
         1px 22px 10px $h1Shadow,
         1px 25px 35px $h1Shadow,
-        1px 30px 60px $h1Shadow       
+        1px 30px 60px $h1Shadow    
+    }
+
+    @include tablet{
+        &{
+            text-align: center;
+            padding-top: 15px;
+        }
+
+        h1{
+            margin: 20px auto;
+        }
     }
 }
 
 
-.scoreBoard{    
+.scoreBoard{  
+    font-family: $basicFont;  
     position: absolute;
     width: 350px;
+    height: 200px;
+    overflow-y: hidden;
+    overflow-y:scroll; 
     right:5%;
-    top:2%;
-    color: $raspberryColor;    
+    top:25%;
+    color: $whiteColor;    
     background-color: $scoreBoardColor;
-    padding: 10px;
-    border-radius: 15px;
-    border: 2px solid black;
-    box-shadow: 2px 2px $raspberryColor;
-    background-image: url('../assets/Mini-Robot.png');
-    background-size: 150px 150px; 
-    background-repeat: no-repeat; 
-    background-position: 100% center;
+    padding: 20px;   
+    box-shadow: 4px 4px $raspberryColor;
+    
 
     h5{
         @include fluid-font-size(1.8rem, 2.5rem);
         margin: 0;
+        font-family: $basicFont;
+        text-align: left;
     }
 
     .highScores{
         padding: 0;
         padding-left: 5%;
-        margin-right: 50px;        
+        margin-right: 50px;
+        text-align: left;        
         li{
             list-style-type:circle;
-            @include fluid-font-size(1.6rem, 2rem);
-            font-weight: bold;
-
+            @include fluid-font-size(1.6rem, 1.8rem);
+            
             span{
                 @include fluid-font-size(1.8rem, 2.5rem);
             }
@@ -74,13 +90,61 @@ header {
         }
         
     }
+
+    .recycle{
+        position: sticky;
+        bottom:0%;
+        left:85%;
+        padding: 1.5%;
+        @include fluid-width-height(2.5rem, 5rem);
+        border-radius: 50%;        
+        background-color: $raspberryColor;
+                
+        box-shadow: 3px 3px $shadowColor; 
+        border: none;
+
+        .recycleText{            
+            @include fluid-font-size(1.6rem, 3rem);
+        }
+
+        @include tablet{
+            &{
+                bottom: 5%;
+                left:90%;
+                margin: 0 auto;
+                
+            }        
+        }
+    }
+
+    .recycle:hover,
+    .recycle:focus {
+    box-shadow: 3px 3px $raspberryColor;
+    color: $raspberryColor;
+    background-color: $whiteColor;
+    border: none;    
+}  
+
+    @include tablet{
+        &{
+            position: static;
+            margin: 0 auto;
+            width: 60%;
+        }        
+    }
+
+    @include mobile{
+        &{
+            width: 80%;
+        }
+    }
+
+    @include smallMobile{
+        &{
+            width: 90%;
+        }
+    }
 }
-
-
-
-
-
-
 
 footer{
     position: absolute;

@@ -39,6 +39,7 @@ button, input, select{
 button{
   @include fluid-font-size(1.6rem, 2rem);
   width: auto;
+  font-weight: bold;
   border-radius: 5px; 
   padding: 10px; 
   text-transform: uppercase;
@@ -70,11 +71,19 @@ button:active{
   display: none;
 }
 
+.playAgainBtn:disabled {
+  display: none;
+}
+
+
 form{
   margin-bottom: 30px;
 }
 
-
+::-webkit-scrollbar {
+    width: 0;
+  }
+  
 
 
 
