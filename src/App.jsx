@@ -1,3 +1,4 @@
+// Importing components
 import './styles/styles.scss';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -12,6 +13,7 @@ import Footer from './Footer';
 import FinalResultComponent from './FinalResultComponent';
 
 function App() {
+  //Initialize States
   const [allCategory, setAllCategory] = useState([]);
   const [difficulty, setDifficulty] = useState('');
   const [categoryChoice, setCategoryChoice] = useState('');
@@ -29,6 +31,7 @@ function App() {
 
   const [localUser, setLocalUser] = useState([]);
 
+  // Total score exported to Firebase
   let totalScore;
   totalScore = correctAnswers.length;
   const db = firebase.database();
@@ -51,6 +54,7 @@ function App() {
     getCategories();
   }, []);
 
+  // Call to Open Trivia API to retrieve questions, categories and difficulty
   //todo: main axios call to API to get the questions
   const getQuestions = async () => {
     try {
@@ -71,16 +75,19 @@ function App() {
     }
   };
 
+  // Storing users difficulty selection
   const handleDifficultyChange = (e) => {
     setDifficulty(e.target.value);
     setGoButton(false);
   };
 
+  // Storing users category selection
   const handleCategoryChange = (e) => {
     setCategoryChoice(e.target.value);
     setGoButton(false);
   };
 
+  // Initialize go button to import users quiz and display users current question
   const handleGoSubmit = (e) => {
     e.preventDefault();
     getQuestions(difficulty, categoryChoice);
@@ -92,11 +99,13 @@ function App() {
     });
   };
 
+  // Initialize Play again button
   const handlePlayAgain = (e) => {
     e.preventDefault();
     setLetsPlayDisabled(true);
   }
 
+  // Initialize let's play button
   const handleLetsPlay = (e) => {
     e.preventDefault();
     setLetsPlay(true);
@@ -104,6 +113,7 @@ function App() {
     setDisabled(true);
   };
 
+  // Initialize User login to quiz
   const handleJoinBots = () => {
     setJoinBots(false);
     setDisabled(false);

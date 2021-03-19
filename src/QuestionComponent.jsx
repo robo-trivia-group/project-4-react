@@ -48,7 +48,9 @@ function QuestionComponent({
       {
         <div className="wrapper">
         <div className="questions">
+          {/* Assigns each question a number */}
           <h3>Question #{index + 1}: {decodeURIComponent(question)}</h3>
+        {/* Answer selections assigned to radio buttons */}
           <form className="choiceContainer" onSubmit={handleSingleSubmit}>
             <span>
               <input
@@ -102,12 +104,13 @@ function QuestionComponent({
                 {decodeURIComponent(randomAnswers[3])}
               </label>
             </span>
+            {/* Current score display */}
             <div className="animation">
               <p>current score is:</p> 
               <h4 className="animate__animated animate__shakeY">{correctAnswers.length}</h4>
             </div>
             
-            <button>submit</button>
+            <button>Submit</button>
           </form>
         </div>
         </div>
