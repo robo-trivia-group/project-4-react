@@ -37,30 +37,41 @@ button, input, select{
 }
 
 button{
+  @include fluid-font-size(1.6rem, 2rem);
   width: auto;
   border-radius: 5px; 
-  padding: 10px;
-  transition: box-shadow ease-in-out 0.2s,color ease-in-out 0.2s,background-color ease-in-out 0.2s,transform ease-in-out 0.1s;
-  @include fluid-font-size(2rem, 3rem);
+  padding: 10px; 
+  text-transform: uppercase;
+  transition: box-shadow ease-in-out 0.2s,color ease-in-out 0.2s,background-color ease-in-out 0.2s,transform ease-in-out 0.1s;  
+  cursor: pointer;
 }
 
 button:active{
   transform: translateY(4px);
 }
 
-
-
-
 .formContainer,
 .questionContainer,
 .finalResultContainer {
+  margin-top:10%;
   min-width: 70%;
-  margin-bottom: 70px;
+  margin-bottom: 100px;
+  animation: slideInRight;
+  animation-duration: 1s;
   @include tablet{
     &{
       width: 100%;
+      margin-top:5%;
     }
   }
+}
+
+.letsPlay:disabled{
+  display: none;
+}
+
+form{
+  margin-bottom: 30px;
 }
 
 

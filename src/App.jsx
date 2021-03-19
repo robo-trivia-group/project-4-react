@@ -164,7 +164,7 @@ function App() {
           </div>
 
           {letsPlay && (
-            <div className="formContainer">
+            <div className="formContainer animate__animated animate__slideInRight">
               <FormComponent
                 handleDifficultyChange={handleDifficultyChange}
                 categoryList={allCategory}
@@ -175,7 +175,7 @@ function App() {
           )}
 
           {goButton && allQuestions[questionIndex] && (
-            <div className="questionContainer">
+            <div className="questionContainer animate__animated animate__slideInRight">
               <QuestionComponent
                 correctAnswers={correctAnswers}
                 handleAnswerSubmit={handleAnswerSubmit}
@@ -187,7 +187,7 @@ function App() {
           )}
 
           {questionIndex > 0 && questionIndex === allQuestions.length ? (
-            <div className="finalResultContainer">
+            <div className="finalResultContainer animate__animated animate__slideInRight">
               <FinalResultComponent
                 setGoButton={setGoButton}
                 setLetsPlay={setLetsPlay}
