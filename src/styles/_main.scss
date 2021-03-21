@@ -125,6 +125,8 @@ background-color: $turquoiseColor;
     max-height: 50vh;
     overflow-y: hidden;
     overflow-y:scroll;  
+    scrollbar-width:thin;
+    scrollbar-color: $avatarBackground $blueColor;
   }
 
   h3 {
