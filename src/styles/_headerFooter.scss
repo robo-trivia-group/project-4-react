@@ -53,18 +53,20 @@ header {
 
 
 .scoreBoard{  
-    font-family: $basicFont;  
+    font-family: $basicFont;      
     position: absolute;
     width: 350px;
     height: 200px;
     overflow-y: hidden;
-    overflow-y:scroll; 
+    overflow-y:scroll;
+    scrollbar-width:thin;
+    scrollbar-color: $avatarBackground $blueColor;
     right:5%;
     top:25%;
     color: $whiteColor;    
     background-color: $scoreBoardColor;
     padding: 20px;   
-    box-shadow: 4px 4px $raspberryColor;
+    box-shadow: 6px 6px $raspberryColor;
     
 
     h5{
@@ -96,7 +98,7 @@ header {
         bottom:0%;
         left:85%;
         padding: 1.5%;
-        @include fluid-width-height(2.5rem, 5rem);
+        @include fluid-width-height(2.7rem, 3rem);
         border-radius: 50%;        
         background-color: $raspberryColor;
                 
@@ -104,7 +106,7 @@ header {
         border: none;
 
         .recycleText{            
-            @include fluid-font-size(1.6rem, 3rem);
+            @include fluid-font-size(1.6rem, 2rem);
         }
 
         @include tablet{
